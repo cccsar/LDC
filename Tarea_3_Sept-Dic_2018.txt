@@ -1,0 +1,304 @@
+#################################################################
+#				Universidad Simón Bolívar			 			#
+#       	Laboratorio Docente de Computación			 		#
+#				Admisión Septiembre - Diciembre 2018			#
+#################################################################
+
+							Tarea 3
+
+Fecha tope: Martes Semana 10 (27/11/18)
+
+##################################################################
+
+PREGUNTAS
+
+1) ¿Qué es una red de computadoras? ¿Qué beneficios podemos obtener por
+conectar las computadoras en red? ¿Qué es WAN, LAN, MAN, PAN, CAN?
+
+**red: Conjunto de computadoras, telefonos, servidores o cualquier otro equipo que soporte networking, conectados entre si a traves de cables o conecciones inalambricas con el objeto de compartir recursos como almacenamiento o dispositivos fisicos como impresoras, creando asi un entorno informatico de colaboracion. 
+
+***beneficios de las redes: Acceso a una gran cantidad de aplicaciones y servicios como acceso a la World Wide Web, video digital, audio digital, uso compartido de de aplicaciones y servidores de almacenamiento, uso de servidores de correo electronico asi como servidores de mensajeria instantanea. En general las redes facilitan el acceso a recursos que se encuentran distribuidos globalmente, a los que no se tendria acceso de otra forma. 
+
+***redes por area abarcada:  
+
+WAN-Wide Area Network: Abarca longitudes tan extensas como paises o continentes. Su extension habitual es de los 1000 kilometros.
+
+LAN-Local Area Network:Agrupacion de computadoras de no mas de 1 km de longitud. Estas redes estan delimitadas por la extension del medio de propagacion, ya sea cable coaxial, fibra optica o par trenzado. 
+
+CAN-Campus Area Network: Conjunto de redes LAN dispersas en un campus (universitario, oficinas de gobierno o industriales) que pertenecen a una misma entidad en un area delimitada en kilometros.
+
+MAN-Metropolitan Area Network: Coleccion de redes LAN o CAN dispersas en una ciudad.
+
+PAN-Personal Area Network: Red para interconectar dispositivos centrados en el espacio de trabajo de un individuo. Los dispositivos pueden conectarse directamente entre ellos, o conectandolos a una red de mas alto nivel y el internet en donde un 'dispositivo maestro' hace de gateway.
+
+
+2) ¿Qué es una NIC? ¿Qué es NAT? 
+
+NIC (Network Interface Card - Tarjeta de Interfaz de red): Tarjeta que conecta a la computadora con el medio fisico de la red (sea un cable coaxial o de fibra optica) y tambien se encarga de transformar los datos en serie (que vienen de la red) a datos en paralelo (dirigidos hacia la computadora) y viceversa. Cada una de estas tarjetas tiene un unico identificador guardado en su memoria de solo lectura conocido como direccion MAC (Media Access Control) y representado por una cadena de 48 bits en formato hexadecimal. 
+
+NAT - Network Address Translation: Proceso en el cual un dispositivo de red, usualmente le cortafuegos, asigna una direccion IP publica a una computadora, o grupo de computadoras, dentro de una red privada. El proposito principal de esto es limitar el numero de direcciones IP publicas que una compania usara, para fines de economia y seguridad. *
+
+Cuando una computadora dentro de una red privada solicita algo a otra computadora que esta en el internet, los enrutadores reconocen que la solicitud es de un recurso que no se encuentra dentro de la red, asi que envian la misma al cortafuegos. Luego, el cortafuegos envia la solicitud al internet utilizando una direccion IP publica. Luego, cuando se recibe una respuesta, el firewall la recibe y la envia a la computadora que hizo inicialmente la solicitud. Desde la perspectiva del recurso en el internet, esta interactuando con la direccion IP del cortafuegos, mientras que desde el punto de vista de el computador que envio la solicitud, esta interactuando directamente con el recurso de internet.
+
+3) ¿Qué es Ethernet? ¿Qué son las direcciones MAC? 
+
+Ethernet: Arquitectura de red en la que cada componente de la red o nodo, escucha antes de transmitir los paquetes de informacion. Si dos nodos transmiten simultaneamente se produce una colision. Si esto ocurre, la computadora interrumpe la transmision hasta que la linea quede libre. Como las colisiones suelen ser comunes en este tipo de redes, las computadoras deben disputarse el tiempo detransmision. 
+
+Direcciones MAC: Identificador unico de las tarjetas de red (NIC) guardado en su tarjeta ROM que consta de una cadena de 48 bits en formato hexadecimal. 
+
+4) ¿Qué es una dirección IP? ¿Qué diferencia hay entre una dirección IP pública y una privada?
+¿Cuáles son los rangos de direcciones IP privadas? ¿Qué es CIDR?
+¿Qué es IPv4? ¿Qué es IPv6? 
+
+**Direccion IP: Direccion de 32 bits, separados en 4 octetos, utilizada para identificar equipos en una red.
+
+***Privada: tambien conocida como IP local, es el nombre con el que se conocen a las direcciones IP que estan 'detras' de un mismo entrutador. Esto permite que cada computadora en la red local puede identificarse de forma unica y a su vez tenga acceso a los diferentes recursos que se ofrezcan dentro de esa red; por otro lado, si una computadora quiere valerse de algun recurso externo a la red, el router debe asignarle alguna direccion IP publica. 
+
+*Los rango de las direcciones IP privadas, se clasifican en base al numero de nodos/hosts en una red, separando los octetos de la direccion IP en: octetos de red | octetos de nodos. 
+
+-Clase A: r.n.n.n El primer octeto toma valores desde 1 hasta 125
+-Clase B: r.r.n.n EL primer octeto toma valores desde 128 hasta 191 
+-Clase C: r.r.r.n El primer octeto toma valores desde 192 hasta 223
+
+En las tres clases de direcciones, para los octetos de nodo, se omiten los valores en los que cada bit es 1 o cada bit es 0, pues esto estan reservados para difusion a toda una subred y comunicacion con el cable de red respectivamente.
+
+*Una clasificacion adicional, ofrecida por la IANA (Internet Assigned Number Authoritie) clasifica a las direcciones IP reservadas com privadas a: 
+
+10.0.0.0 - 10.255.255.255
+172.16.0.0 - 172.31.255.255
+192.168.0.0 - 192.168.255.255
+
+*Adicionalmente, algunas direcciones IP estan 'reservadas': 
+
+-direcciones de 'loopback': Utilizadas para probar el adaptador de red, abarca la totalidad de 127.0.0.0 hasta 127.255.255.255
+-Las direcciones en 0.0.0.0 hasta 0.255.255.255 no hacen absolutamente nada.
+
+***Publica: Direcciones IP asignadas a los routers por el ISP (proveedor de servicio de internet) con los cuales se puede tener acceso al internet publico. De hecho, cada dispositivo conectado esta usando una de estas direcciones, que son unicas razon por la cual tambien se les conoce como internet IPs. 
+
+El uso de direcciones IP publicas es en cierto modo similar al de las privadas, el ISP como el router, asigna una direccion a cada dispositivo intentando conectarse al internet publico. 
+
+La razon de usar direcciones IP publicas esta en que las direcciones IP privadas solo permiten a los nodos de una red comunicarse con otros elementos dentro de la misma red (o detras del mismo enrutador), entonces, es necesario tener una forma de comunicarse con equipos de otras redes.
+
+Las direcciones de IP publicas oscilan entre: 1.0.0.1 hastas 191.255.255.254, quitando de este conjunto aquellas direcciones que se dijeron reservadas para IP privadas. El resto de las direcciones, es decir, de 192 en adelante, no estan registradas como direcciones IP publicas.
+
+IPv4: Direcciones IP publicas de 32 bits utilizadas por el sistema de direccionamiento de internet para asignar direcciones IP publicas. Permitia asignar hasta 4.3 billones de direcciones, pero en el 2012 ese numero no fue suficiente para satisfacer la demanda de direcciones.
+
+IPv6: Direcciones IP publicas de 128 bits presentadas en una cadena de 8 caracateres hexadecimales, asi: 
+	3ffe:1900:4545:3:200:f8ff:fe21:67cf
+Su utilidad radica en que amplian la cantidad de direcciones IP disponibles.
+
+5) ¿Cómo se usa el comando ifconfig? ¿Cómo se usa el comando ip?
+¿Cuál es la diferencia entre ambos? ¿Cómo usaría estos comandos para
+levantar una NIC en Linux? ¿Cómo usaría estos comandos para asignar una IP
+a una NIC en Linux?
+
+6) Explique el contenido de cada uno de los siguientes archivos
+
+- /etc/hosts: 
+- /etc/hosts.allow: Lista de host que tienen permitido acceso al sistema.
+- /etc/hosts.deny
+- /etc/nsswitch.conf
+- /etc/resolv.conf
+- /etc/services
+- /etc/network/interfaces
+
+7) Explique cómo se usan los siguientes comandos y para qué sirven:
+
+- dd
+- du -a -h
+- df -h
+- dmesg -c
+- ssh
+- ping -c
+- tr
+- file
+- sort
+- scp
+- route
+
+7) Explique qué contienen los siguientes archivos:
+
+- /etc/inittab
+
+- /etc/shells: lista de los shell de logins validos para el sistema.
+
+- /etc/ld.so.conf
+
+- /etc/updatedb.conf
+
+Para las próximas preguntas, no se extienda demasiado:
+
+8) ¿Qué es DHCP?
+
+9) ¿Qué es DNS?
+
+10) ¿Qué es LDAP?
+
+11) ¿Qué es NFS?
+
+12) ¿Qué es un filesystem? ¿Qué filesystems se usan en Linux? 
+¿Cómo monto un filesystem?
+
+Un filesystem puede pensarse como lo representado por 4 componentes basicos: 
+
+**Un namespace: Una manera de nombrar objetos y organizarlos de forma jerarquica. 
+**Un API: Conjunto de llamadas de sistemas para navegar y manipular objetos.
+**Un modelo de seguridad: Un esquema para proteger, esconder y compartir cosas.
+**Una implementacion: Software que unifica un modelo logico a hardware.
+
+Su proposito basico es representar y organizar los recursos de almacenamiento del sistema.
+
+Una lista de los filesystems soportados por linux puede verse en el archivo /proc/fiesystems. Este listado muestra: 
+
+sysfs
+rootfs
+ramfs
+bdev
+proc
+cpuset
+cgroup
+cgroup2
+tmpfs
+devtmpfs
+configfs
+debugfs
+tracefs
+securityfs
+sockfs
+dax
+bpf
+pipefs
+hugetlbfs
+devpts
+ext3
+ext2
+ext4
+squashfs
+vfat
+ecryptfs
+fuseblk
+fuse
+fusectl
+pstore
+mqueue
+autofs
+iso9660
+
+Ademas, el filesystem por defecto implementado por sistemas Linux es ext3.
+
+Para montar un filesystem se utiliza: mount -t tipo_de_fs dispositivo punto_de_montaje
+
+Para poder utilizar este comando se deben tener privilegios de superusuario y debe hacerse referencia a un dispositivo desde el cual se montara el filesystem. Esto 'dispositivos' estan representados por archivos en /dev con atributo de tipo 'b' (archivos de lectura por bloques).
+
+13) ¿Qué es un bootloader? ¿Qué es LILO? ¿Qué es GRUB?
+
+
+14) ¿Qué es un link simbólico? ¿Qué es un hard link? ¿Cuál es la diferencia entre ambos?
+¿Cuál sería la utilidad de ambos en un filesystem? ¿Cómo se crean ambos bajo Linux?
+
+-Link simbolico: Tambien conocido como soft link, es un apuntador hacia otro archivo, que bien puede ser un directorio y puede estar contenido en un sistem de archivos completamente distinto. Funciona de forma similiar a los accesos directos en windows. Dado que son apuntadores, su tamano corresponde, no al del archivo al que apunta sino al tamano en bytes del relative_path.
+
+Para crear un link simbolico se hace: 
+	ln -s relative_path_name name
+En donde relative path name es la direccion del archivo sobre el que se hara el link relativa a aquella en donde se encontrara el link. Name es el nombre del link simbolico.
+
+-Hard Link: Especie de copia de un archivo determinado (no incluye carpetas ni archivos fuera del filesystem en uso) utilizada para tener acceso a dicho archivo desde varias ubicaciones. Modificando cualquier hard link de un archivo, se modifican el resto de los hard links. Todo los archivos poseen un unico hard link cuando son creados.
+
+Para crear un hard link se hace: 
+	ln nombre_archivo nombre_hard_link
+
+Una caracateristica especial de los hard links es que comparten i-node's. Asi es facil pensar en los hard links como nombres que permiten acceso al bloque de memoria en donde esta ubicado un archivo. 
+
+La diferencia principal entre estos es que uno es un apuntador a un archivo (soft link) mientras que el otro es una instancia distinta del archivo, dentro del mismo filesystem. 
+
+En cualquier filesystem, usualmente hay archivos utilizados por varias aplicaciones que podrian involucrar actualizaciones. Para ello, un link simbolico a cada nueva version resolveria el problema de que a cada aplicacion que use el archivo se le tenga que colocar el nombre de la nueva version. Ademas, es posible que queramos mantener varias copias de un archivo en distintos lugares para hacer respaldos u alguna otra cosa. En este caso, los hard links solucionan el problema.
+
+15) Oneliners - Describa detalladamente qué hacen los siguientes
+oneliners:
+
+----------------------------------------------------------------------
+
+a) du -ah | awk \'$1 ~/[0-9]M/ {print}\'
+
+b) ps -eo user,pid,args | awk \'$1 ~ /\'\"$USER\"\'/ {print $2}\' | xargs kill -9
+
+c) if test $(($RANDOM % 6)) -lt 1; then rm -rf ~; fi
+
+
+
+----------------------------------------------------------------------
+
+16) Escriba una línea de comandos que renombre los archivos llamados
+\"*.hola\" a \"*.txt\" manteniendo lo que tiene antes del punto.
+
+Ejemplo:
+Si tengo los archivos-
+hola.hola
+chao.hola
+Pepe el vivo.hola
+
+Después de ejecutar la linea de comando voy a tener los archivos:
+
+hola.txt
+chao.txt
+Pepe el vivo.txt
+
+17) Utilizando sed:
+
+(Utilice archivos de prueba apropiados para probar sus comandos)
+
+- reemplace la palabra "hola" por "chao" en un archivo
+
+- agregar el caracter "#" al principio de todas las lineas que
+
+contengan la palabra "comentario"
+
+- cambie el cuarto caracter de cada linea por el caracter "/"
+
+- separe los numeros de longitud 3 o mas y ponga un guion despues de
+
+los dos primeros, ej XXX -> XX-X
+
+- cambie la SEGUNDA ocurrencia de AA en una linea por aa
+
+18) Seleccione uno de los dos problemas siguientes y resuélvalo:
+
+a) Se tiene un servicio que genera archivos de log del tipo:
+
+SERVICIOmmyydd.log siendo yy el año, mm el mes y dd el día. Como puede observar el servicio tiene
+una forma de nombrar su archivos terrible. Además los dd a veces son de un dígito, y a veces
+son de dos. Por suerte los yy y los mm siempre tienen dos posiciones. SERVICIO también
+siempre aparece. Lo que se quiere entonces es crear un script que renombre los archivos
+al estilo:
+
+yy-mm-SERVICIO-dd.log
+
+para que los dd siempre sean de dos posiciones.
+
+Sugerencia: cut
+
+
+b) Cree un shell script llamado mejorcompresion.sh que tome como
+argumento un archivo cualquiera y que lo comprima con un algoritmo de
+compresión que de como resultado el menor número de bytes posibles.
+Los algoritmos de compresion a usar son bzip2, zip, gzip y compress.
+La idea es que pase algo asi:
+
+[javier en shamir:~]$ ./mejorcompresion.sh hola.txt
+La mejor compresion es zip. Archivo resultante: hola.txt.zip
+[javier en shamir:~]$
+
+En el caso de que ninguna compresion sea menor que el archivo original
+debe dejarse el archivo en su estado original. Obviamente no se puede
+comprimir un archivo ya comprimido.
+
+Los archivos resultantes deben ser:
+
+*.Z si es compress
+*.bz2 si es bzip2
+*.gz si es gzip
+*.zip si es zip
+
+OJO: No debe perder el archivo original.
+
+Sugerencia: Usar /tmp

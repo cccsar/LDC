@@ -1,0 +1,101 @@
+**Adding users: 
+
+*PASSWORD FILE: 
+
+--Login name: 
+Also known as usernames, must be unique and no more than 32 characters long. They may contain any characters except newlines and colons.
+
+--Encrypted password or passhord placeholder:
+They can be set either by using the command password or by copying an encrypted password string from somewhere else.
+
+While creating an account, we can either put an 'x' or a '*' into the password field. The star prevents unauthorized used of the account until the password is set. Also, a '!' will indicate no password.
+
+//Most distros recognize more than one encryption scheme and most of the default on MD5 encryption. MD5 passwords are easy to recognize because they begin with $1$.
+
+Passwords are combined with some random 'salt' so a given password can correspond to many different encrypted forms. //
+
+--UID: 
+32 bit integers unsigned (without the 'sign' bit i guess) 
+
+By definition, root has UID 0. Most systemas also define pseudo-users: bin, daemon and lots of others, which are given low UID's. 
+
+--default GID: 
+Also a 32 bits integer. 
+
+The group 0 is reserved for the group 'root' GID 1 group 'bin' and GID 2 is for the group 'daemon'.
+
+As a remark, groups are actually defined in /etc/group, with the GID field in /etc/passwd providing the default (or 'effective') GID at login time.
+
+--GECOS information (full name, office, extension, home, phone): 
+commonly used to record personal information about each user. 
+
+It originally held the inforamtion needed to transfer batch jobs from UNIX systems at bell labs to a mainframe running GECOS (General Electric Comprehensive Operating System)
+
+--Home directory: 
+Directory that holds the tree for users files, and users are cd'ed to their home directories when they login. If a users home directory is missing at login time, shell will print 'no home directory' 	
+
+--Login shell:
+Command interpreter such as bash.
+
+bash is the default and is used if no login shell is specified.
+
+----------------------------------------------------------------------------
+
+Since its unsecure leave an encrypted password in plainview, most UNIX based systems allow people to hide their encrypted password by placing them into a separate file. This mechanism is known as password shadowing.
+
+**SHADOW FILE:
+
+The only fileds that are required to be nonempty are the login and password fields.
+
+Shadow default parameters are specified in /etc/login.defs
+
+Absolute days fields are specified in terms of days sin Jan 1, 1970.**
+
+--Date of last password change: records the date at which the user password was last changed
+--Minimum days for changing the password: This field is recommended to be set 0.
+--Maximum days for changing the password: **As a remark, the password enforcement comes with this field and the seventh (grace period) field.
+--Number of days in advance to warn users about password expiration: This indicates the number of days before password expiration the login should start asking the user for password update.
+--Number of days after password expiration that account is disabled: This field is used to know if an account is considered as disabled or not.
+-Account expiration date: UNIX time for the expiration date. If left in blank the account will never expire.
+
+-The ninth field is reserved for future use.
+
+*GROUP FILE: 
+
+Every Linux sistem includes a group shadow file for shadowing passwords for groups.
+
+If a user defaults to a group in /etc/passwd but isn't listed on it in /etc/group, /etc/passwd wins the argument.
+
+-Group name
+-Encrypted password holding an 'x'
+-GID 
+-List of members, separated by commas 
+
+
+----------------------------------------------------------------------------
+
+Adding users: 
+
+Mechanically this consist of four steps required by the system, each of which must be performed as root or sudo: 
+
+--Edit the password and shadow files to define the user's account.
+To safely edit the /etc/passwd file run 'vipw' to invoke a text editor on a copy of it. The existence of this temporary file serves as a lock since vipw allows only one person to edit the passwd file at the time, and prevents users from changing their passwords.
+
+To edit the shadow file use 'vipw -s'
+
+--Add the user to the /etc/group file. 
+The kernell actually doesn't care about the content's of /etc/passwd or /etc/group it only concerns UID and GID.
+
+--Set an initial password
+Root can set up any user's password with the password command.
+It is also possible to create an encrypted password with mkpasswd.
+
+--Create, chown and chmod the user's home directory
+Since any directory created as root is by default owned by root, it's ownership must be changed.
+
+--Copying the default startup files: 
+Some utilities and commands can be customized by placing 'startup files' at the user's home directory. Startup files usually begin with a dot and end with 'rc' short for run command, a relic of the CTSS operating system.
+To add up this startup files, just go to /etc/skell and copy them.
+
+--Verify the new login: 
+Log in as the new user and check out the working directory and startup files

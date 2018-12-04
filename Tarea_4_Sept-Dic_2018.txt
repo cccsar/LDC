@@ -1,0 +1,45 @@
+#################################################################
+#				Universidad Simón Bolívar			 			#
+#       	Laboratorio Docente de Computación			 		#
+#				Admisión Septiembre - Diciembre 2018			#
+#################################################################
+
+							Tarea 4
+
+Fecha tope: Miércoles Semana 11 (05/12/18)
+
+##################################################################
+
+PREGUNTAS
+
+1) Explique detalladamente los siguientes comandos con sus flags (Mínimo 2)
+
+- ldconfig -p
+- locate -i
+- ln -s
+- split
+- init
+- uniq
+
+2) Que hace la combinacion de los siguientes comandos?
+sudo /bin/bash; cd /home/jose; chown -R jose:ldc .*
+
+3) ¿Que es awk? ¿Cómo se usa?
+
+4) En AWK:
+
+Se tiene el siguiente texto de ejemplo
+400 Josmaykel Vendedor Pastelito Bs15,000
+500 Yulesneysis Vendedor Donas Bs8,500
+600 Yelwinson Vendedor Cachitos Bs12,500
+900 Daniela Vendedor Arepas Bs11,500
+- Imprima SOLAMENTE el nombre y que vendio cada persona.
+- Imprima SOLAMENTE las lineas de los empleados con id entre 500 y 800
+
+5) ¿Qué es un servidor? ¿Qué servicios proveen los servidores del LDC?
+¿Cualquier computador puede ser un servidor?
+
+6) ¿Cómo está estructurada la red del LDC?
+
+7) ¿Qué tal le pareció el proceso de admisión? ¿Qué cosas mejoraría?
+¿Qué cosas eliminaría? Sea sincero, de los errores se aprende.
