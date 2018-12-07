@@ -321,11 +321,21 @@ oneliners:
 
 a) du -ah | awk \'$1 ~/[0-9]M/ {print}\'
 
+Muestra los archivos con peso en megabytes en el subarbol de directorios del directorio en el que nos encontremos.
+
+Primero, du -ah, devolvera el tamano de archivos y direcctorios en formato inteligible. Luego awk lo procesa verificando si cada registro que recibe coincide con la expresion regular dada, que no es mas que un par nM en donde n es un numero del 0 al 9. En caso de que coincida, lo imprime
 
 b) ps -eo user,pid,args | awk \'$1 ~ /\'\"$USER\"\'/ {print $2}\' | xargs kill -9
 
+Hace 'kill' a los procesos ejecutados por el usuario del shell de login. 
+
+Primeo, se imprimen todos los procesos clasificados en una tabla que incluye, usuario, id de proceso y argumentos (comando). Luego, awk verifica si los registros ingresados coinciden con la expansion de la variable $USER, es decir, el usuario actualmente conectado. De ser asi, imprime el segundo registro, que corresponde al id de proceso. Finalmente, se envia la senal -TERM por el comando kill a todos los id de procesos obtenidos, valiendose del comando xargs.
+
 c) if test $(($RANDOM % 6)) -lt 1; then rm -rf ~; fi
 
+verifica que el valor de random modulo 6sea menor a 1. En caso de serlo, elimina recursivamente los archivos del home del usuario logeado. 
+
+Primero, se verifica en la guardia de un if que se cumpla la condicion de que el valor de $RANDOM modulo 6 sea menor que 1 (esto utilizando substitucion artimetica, para que la operacion pueda ser llevada a cabo), valiendose del comando test para hacer la comparacion. Luego, en caso de que se cumpla la condicion expuesta, se elimina el arbol del home del usuario recursivamente utilizando rm -rf, que tambien forza el borrado.
 
 
 ----------------------------------------------------------------------
@@ -345,6 +355,7 @@ hola.txt
 chao.txt
 Pepe el vivo.txt
 
+ls | awk ' $1 ~ ".hola" {sub(".hola",".txt"); print} ' | mv <--falta
 17) Utilizando sed:
 
 (Utilice archivos de prueba apropiados para probar sus comandos)
