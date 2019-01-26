@@ -229,7 +229,7 @@ los procesos: PID, PPID, UID, EUID, GID, EGID, NICE.
 Los procesos son la forma en la que linux organiza a los diferentes programas que esperan por su turno en el CPU. Un proceso puede ser de tres tipos basicos: 
 	interactivo: ejecutados de forma interactiva por un usuario.
 	batch: enviados por una cola de procesos - no asociados con usuarios.
-	daemon: procesos que son hijos de root
+	daemon: procesos que son hijos inmediatos de root *** 
 
 PID: ID del proceso, numero que lo identifica de forma unica. Estos ID's son asignado de forma creciente a medida que se crean procesos.
 PPID - Parent Process ID: Dado que para que se cree un nuevo proceso, un proceso existente debe clonarse se hace una distincion entre proceso padre (original) y el hijo (copia). De este modo, se asigna un ID al proceso padre de un proceso dado.
