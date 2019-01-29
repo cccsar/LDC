@@ -228,11 +228,15 @@ nombre En el DNS.
         a) ¿Cual es el servidor de DNS del LDC?
 		prueba 'dig short dns.ldc.usb.ve' devuelve 159.90.10.77
 		prueba2 'dig +short -x 159.90.10.77' devuelve bainne.ldc.usb.ve por lo que el nombre del servidor de DNS es bainne.
+		
 	
         b) ¿Cual es el servidor de NFS del LDC?
+		prueba 'host -a home.ldc.usb.ve' devuelve atreides.ldc.usb.ve por lo que el nombre es atreides
+		su IP es 159.90.10.157 
 
         c) ¿Cual es el servidor de LDAP del LDC?
 		prueba: 'host ldap.ldc.usb.ve' devuelve shaddam.ldc.usb.ve asi el nombre del servidor es shaddam.	
+		su IP es 159.90.10.10
 
         d) ¿Cual es el servidor de correo del LDC?
 		prueba: 'host -t MX ldc.usb.ve' devuelve: 
@@ -240,6 +244,7 @@ nombre En el DNS.
 			20 skynet.usb.ve
 			30 altair.usb.ve
 		Puesto que arrakis aparece bajo el DNS del ldc, el nombre del servidor de correo es arrakis.
+		su IP es 159.90.10.114
 
 10) ¿Cual es el proceso para crear una cuenta en el servidor LDAP del LDC? 
 Indique los pasos detalladamente, si debe crear archivos, a qué máquinas debe conectarse
