@@ -101,9 +101,24 @@ opciones: Adicionalmente, dig posee una lista de opciones que permiten modificar
 03) ¿Que es LDAP? Para que se usa? Explique detalladamente
 Que es un servidor LDAP?
 
-LDAP/Lightweigth directory access protocol - protocolo de acceso ligero a directorios: Protocolo basado en mensajes y coneccion, disenado para facilitar las operaciones de consulta en un servicio de directorios.
+LDAP/Lightweigth directory access protocol - protocolo de acceso ligero a directorios: Protocolo basado en mensajes y orientado a conexion,  disenado para facilitar las operaciones de consulta en un servicio de directorios. Habitualmente, permite almacenar informacion de autenticacion (usuario y contrasena) y es usado para autenticarse, aunque puede almacenar otra informacion. En resutmen, LDAP es un protocolo de acceso unificado a un conjunto de informacion sobre una red.
 
-Posee un modelo de informacion basado en entradas. Una entrada es una coleccion de atributos que posee un DN (Distinguished Name) que identifica a la entrada de forma unica. A su vez, cada atributo tiene un tipo y uno o mas valores. Los valores de los atributos dependen del tipo que sean, asi mismo, cada entrada debe poseer un atributo del tipo 'ObjectClass' que determine los atributos 'obligatorios' que debe contener la entrada. 
+Posee un modelo de informacion basado en entradas. Una entrada es una coleccion de atributos entre los que esta un DN (Distinguished Name) que identifica a la entrada de forma unica. A su vez, cada atributo tiene un tipo y uno o mas valores. Los valores de los atributos dependen del tipo que sean.
+
+//
+*ObjectClass - Clase Objeto: Elemento de 'esquema' de tipo atributo, que en conjunto con sus reglas de esquema determinan los atributos que una entrada debe y puede tener.
+
+Todo archivo LDAP debe contener exactamente una 'Clase Objeto' estructural, y una o mas clases objeto auxiliares.
+
+Cada valor que puede tomar este atributo esta definido con una lista de otros atributos separados en 'MUST', atributos impositivos para este 'objeto', y 'MAY', atributos opcionales. 
+
+*Structural ObjectClass - Clase Objeto Estructural: Representa uno de los tipos de 'clase de objeto primarios'. Es usada para dar una especificacion estructural del DIT (Directory Information Tree) y mas directamente para controlar el contenido de las entradas. Estas tienen caracteristicas como: 
+	*Una clase objeto estructural creada, no puede ser cambiada.
+	*Toda clase objeto estructural es una subclase de la clase objeto 'Top'.
+	*Ninguna clase objeto estructural puede ser subclase de una clase objeto auxiliar.
+	*Toda entrada se dice pertencer a su respectiva clase objeto estructural, al igual que todas las subclases objeto.
+//
+
 
 Las entradas se encuentran organizadas de forma jerarquica. En algunos casos, este orden responde a limites geograficos o nombres de dominio.
 
@@ -111,59 +126,59 @@ Para referenciar una entrada en particular, se debe escribir el RDN (relative di
 
 Este protocolo define operaciones para interrogar y actualizar el directorio. A su vez, existen operaciones para anadir y eliminar entradas, asi como actualizarlas y cambiar sus nombres. A pesar de esto, ***Es mas frecuente utilizar LDAP para operaciones de busqueda***, estas funcionan examinando el directorio, buscando coincidencias que concuerden con un filtro de busqueda especificado.
 
-04) Para que sirve el comando "ldapsearch", "ldapadd"
-y "ldapmodify"? ¿Cuales son sus flags y para que sirve cada uno?
+4) Para que sirve el comando "ldapsearch", "ldapadd"
+ "ldapmodify"? ¿Cuales son sus flags y para que sirve cada uno?
 
-ldapsearch: Permite conectarse a un servidor LDAP y realizar busquedas empleando los parametros especificados. De no asignar un filtro, se toma por defecto ObjectClass=*
+dapsearch: Permite conectarse a un servidor LDAP y realizar busquedas empleando los parametros especificados. De no asignar un filtro, se toma por defecto ObjectClass=*
 
-sintaxis: ldapsearch opciones filtro atributos
+intaxis: ldapsearch opciones filtro atributos
 
-De hallar una o mas entradas, el comando regresa los atributos especificados en 'atributos'.
+e hallar una o mas entradas, el comando regresa los atributos especificados en 'atributos'.
 
-flags: 
-	*-x: Permite realizar una coneccion anonima al servidor, en vez de utilizar SASL.
-	*-D binddn: Usa el DN binddn para enlazar con el directorio LDAP.
-	*-w passwd: Utilizar passwd para realizar autenticacion simple.
-	*-W : Solicitar autenticacion simple. Se utiliza para no tener que escribir la passwd inmediatamente.
-	*-H ldapURI: Permite especificar el URI del servidor LDAP. Se espear recibir entradas del tipo ldap[si]://[name[:port]], en donde el nombre puede ser el DNS del servidor en cuestion o su direccion IP. La opcion del puerto es opcional, de no especificarlo se utiliza el puerto 389 del protocolo TCP. 
-	*-b searchbase: utilizar searchbase para hacer busquedas como sustito a la especificada en /etc/ldap/ldap.conf. Esto es un DN, es decir, un conjunto pares atributo=valor separados por coma y se colocan comillas para evitar interpretacion de caracteres especiales.
-	*-s {base|one|sub|children} : permite especificar si el alcance de la busqueda sera base object, one-level, subtree o children. Por defectose usa -s sub.
-	*-l timelimit: espera al menos timelimit para que se complete una busqeuda.
-	*-L : Sirve para mostrar los resultados en formato LDIF. Una sola L muestra la salida en fomrato LDIFv1, una segunda omite comentarios y una ultima evita mostrar la version de LDIF.
-	*-S : organiza entradas en base a los atributos
+lags: 
+       *-x: Permite realizar una coneccion anonima al servidor, en vez de utilizar SASL.
+       *-D binddn: Usa el DN binddn para enlazar con el directorio LDAP.
+       *-w passwd: Utilizar passwd para realizar autenticacion simple.
+       *-W : Solicitar autenticacion simple. Se utiliza para no tener que escribir la passwd inmediatamente.
+       *-H ldapURI: Permite especificar el URI del servidor LDAP. Se espear recibir entradas del tipo ldap[si]://[name[:port]], en donde el nombre puede ser el DNS del servidor en cuestion o su direccion IP. La opcion del puerto es opcional, de no especificarlo se utiliza el puerto 389 del protocolo TCP. 
+       *-b searchbase: utilizar searchbase para hacer busquedas como sustito a la especificada en /etc/ldap/ldap.conf. Esto es un DN, es decir, un conjunto pares atributo=valor separados por coma y se colocan comillas para evitar interpretacion de caracteres especiales.
+       *-s {base|one|sub|children} : permite especificar si el alcance de la busqueda sera base object, one-level, subtree o children. Por defectose usa -s sub.
+       *-l timelimit: espera al menos timelimit para que se complete una busqeuda.
+       *-L : Sirve para mostrar los resultados en formato LDIF. Una sola L muestra la salida en fomrato LDIFv1, una segunda omite comentarios y una ultima evita mostrar la version de LDIF.
+       *-S : organiza entradas en base a los atributos
 
-ldapadd y ldapmodify: se presentan juntas pues ldapadd es un hard link a ldapmodify -a. Son herramientas usadas para conectarse a servidores LDAP, enlazar y anadir o modificar entradas en el mismo. 
+dapadd y ldapmodify: se presentan juntas pues ldapadd es un hard link a ldapmodify -a. Son herramientas usadas para conectarse a servidores LDAP, enlazar y anadir o modificar entradas en el mismo. 
 
-Poseen la misma sintaxis y comparten (casi en su totalidad) los mismos flags con ldapsearch. De los flags mostrados difieren en que los comandos de los que se esta hablando no usan -b ni -s.
+oseen la misma sintaxis y comparten (casi en su totalidad) los mismos flags con ldapsearch. De los flags mostrados difieren en que los comandos de los que se esta hablando no usan -b ni -s. Adicionalmente, para hacer uso efectivo de ellos, es necesario poseer privilegios en el directorio LDAP sobre el que se usaran. Es decir, sera necesario autenticarse (usando los flags -D y -W o -w) para poder usarlos.
 
 
-05) ¿Que es un archivo LDIF? ¿Cual es la sintaxis/formato de Un LDIF (como está estructurado)? 
-¿Cuales son los uid, gid para crear su cuenta personal del LDC?
+5) ¿Que es un archivo LDIF? ¿Cual es la sintaxis/formato de Un LDIF (como está estructurado)? 
+Cuales son los uid, gid para crear su cuenta personal del LDC?
 
-LDIF/LDAP Interchange Format - Formato de intercambio LDAP: Formato estandar de texto utilizado para almacenar configuracion de archivos LDAP y el contenido de directorios. Basicamente contiene un conjunto de entradas de directorio separadas por saltos de lineas, pares valor-atributo. Tambien contiene solicitudes de modificacion, tales como solicitudes para actualizar o anadir una entrada.
+LDIF/LDAP Interchange Format - Formato de intercambio LDAP: Formato estandar de texto utilizado para almacenar configuracion de archivos LDAP y el contenido de directorios. Basicamente contiene un conjunto de entradas de directorio separadas por saltos de lineas y pares valor-atributo. Tambien contiene solicitudes de modificacion, tales como solicitudes para actualizar o anadir una entrada.
 
-Algunos atributos importantes son: 
-	*dn (distinguised name): Corresponde al DN de la entrada en cuestion. 
-	*dc (domain component): Se refiere a partes de un nombre de dominio (que como se menciono, tambien son usadas para clasificar a las entradas en LDAP).
-	*ou (organizational unit): Se refiere a la corporacion, en algunos casos el grupo, del que un usuario es parte. 
-	*cn (common name): Nombre que se consulta.
-	*ObjectClass: Este atributo debe estar presente en cada entrada dado que actuara como una plantilla para los atributos adicionales que debera y podra contener dicha entrada. Cada valor que puede tomar este atributo esta definido con una lista de otros atributos separados en 'MUST', atributos impositivos para este 'objeto', y 'MAY', atributos opcionales. 
+lgunos atributos importantes son: 
+       *dn (distinguised name): Corresponde al DN de la entrada en cuestion. 
+       *dc (domain component): Se refiere a partes de un nombre de dominio (que como se menciono, tambien son usadas para clasificar a las entradas en LDAP).
+       *ou (organizational unit): Se refiere a la corporacion, en algunos casos el grupo, del que un usuario es parte. 
+       *cn (common name): Nombre que se consulta.
 
 Es importante saber que el contexto de nombre de un directorio es el DN de su primera entrada (TOP), que sera comparada contra el filtro de busqueda para hallar coincidencias. 
 
-Los comentarios se realizan colocando '#' al comienzo de una linea.  
-Cada atributo va antes de ':' y luego de un espacio, va su valor.  
-
--Para saber el uid que usare en mi cuenta, debo buscar alguno que este disponible, asi hago: 
-
-ldapsearch -x -H ldap://shaddam.usb.ve -b 'ou=People,dc=ldc,dc=usb,dc=ve' uid=25532
-
-como esta consulta no arroja ninguna coincidencia, el uid a tomar sera 25532
-
--Para el grupo, primero se consulta el grupo al que pasaria a formar parte y luego, se revisa el gid que contiene alguno de los miembros. En este caso, el resultado de la consulta es 1115, por lo tanto, el gid a tomar es 1115.
+os comentarios se realizan colocando '#' al comienzo de una linea.  
+ada atributo va antes de ':' y luego de un espacio, va su valor.  
 
 
-06) ¿Que es NFS? Explique detalladamente. ¿Que es un servidor NFS? 
+Para saber el uid que usare en mi cuenta, debo buscar alguno que este disponible, asi hago: 
+
+dapsearch -x -H ldap://shaddam.usb.ve -b 'ou=People,dc=ldc,dc=usb,dc=ve' uid=25532
+
+omo esta consulta no arroja ninguna coincidencia, el uid a tomar sera 25532
+
+Para el grupo, primero se consulta el grupo al que pasaria a formar parte y luego, se revisa el gid que contiene alguno de los miembros. En este caso, el resultado de la consulta es 1115, por lo tanto, el gid a tomar es 1115.
+
+
+6) ¿Que es NFS? Explique detalladamente. ¿Que es un servidor NFS? 
 
 Protocolo que permite a las computadoras conectadas en una misma red de area local, compartir ficheros remotos como si estuviesen en la misma computadora. 
 
@@ -232,4 +247,17 @@ qué usuarios debe usar, qué comandos debe usar, etc.
 Debe crear su archivo LDIF y enviarlo anexo con su tarea.
 Recuerde que si tiene dudas, consulte con los miembros del LDC.
 
+Primero debe crearse un LDIF con las entradas necesarias para anadir la cuenta al servidor LDAP. En este caso, se anadira una entrada sobre el grupo 'ou=People,dc=ldc,dc=usb,dc=ve' y a su vez, se modificaran los grupos 'cn=ldc,dc=Group,dc=ldc,dc=usb,dc=ve' y 'cn=3h,ou=Group,dc=ldc,dc=usb,dc=ve' a los que se les anadira un nuevo atributo 'memberUid' que corresponde al 'uid' asignado al usuario.
 
+Luego, utilizando una cuenta con privilegios administrativos del servidor ldap del ldc. Asi: 
+
+	ldapadd -h shaddam.ldc.usb.ve -D 'Distinguished name de la cuenta' -w contrasena -f Cesar.ldif
+
+Una vez anadida la entrada, se debe crear el directorio home por consistencia e igualmente anadir los bitmodales y colocarle a su nuevo dueno. Para esto, sabiendo que bainne es el servidor NFS del ldc, en donde se creara el home, se debe hacer ssh con una cuenta con privilegios administrativos, asi: 'ssh cuenta' y luego de autenticar, se procede a hacer las respectivas modificaciones.
+
+	cd /home 
+	mkdir cesarr
+	chown -R cesarr:1115 cesarr
+	chmod -R 774
+
+El home podria no estar en el directorio habitual por lo que habria que buscarlo.

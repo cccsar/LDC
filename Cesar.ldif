@@ -1,0 +1,40 @@
+dn: uid=cesarr,ou=People,dc=ldc,dc=usb,dc=ve
+uid: cesarr
+cn: Cesar Alfonso 
+givenName: Cesar Alfonso Rosario Escobar
+sn: Rosario Escobar
+mail: cesarr@ldc.usb.ve
+loginShell: /bin/bash
+uidNumber: 25532
+gidNumber: 1115
+homeDirectory: /home/cesarr
+gecos: LDC - Cesar Rosario
+ObjectClass: inetOrgPerson
+ObjectClass: posixAccount
+ObjectClass: top
+ObjectClass: shadowAccount
+shadowMax: 999999
+ShadowWarning: 7
+userPassword: {SHA} $6$iKXbkX6URKy4$z9YWyw9Ry96iiVcewDJ0IzNssWEVv/eAL6nDflNrOPMxHX0sOqdDtZKCxgWENMGKCoE6tQXlguc78Rhl9JRQt0
+
+dn: cn=ldc,ou=Group,dc=ldc,dc=usb,dc=ve
+changetype: modify
+add: memberUid
+memberUid: cesarr
+
+dn: cn=3h,dc=Group,dc=ldc,dc=usb,dc=ve
+changetype: modify
+add: memberUid
+memberUid: cesarr
+
+dn: cn=ldc,ou=Group,dc=ldc,dc=usb,dc=ve
+changetype: modify
+delete: memberUid
+memberUid: gus
+
+dn: cn=3h,ou=Group,dc=ldc,dc=usb,dc=ve
+changetype: modify
+delete: memberUid
+memberUid: gus
+
+
