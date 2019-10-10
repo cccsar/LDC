@@ -1,0 +1,122 @@
+############################################################
+# Sartenejas, 01 de Octubre de 2012                        #
+# Universidad Simon Bolivar                                #
+# Laboratorio Docente de Computacion                       #
+# Tarea 01 - Teoria de Redes                               #
+# Autor: Jose Luis Lo Huang                                #
+############################################################
+
+00) Que Es Una Red de Computadoras? Que Es Una SubRed? Que Es 
+WAN, MAN Y LAN?
+Conjunto de equipos: laptops, desktops, enrutadores, telefonos, impresoras, entre otros dispositivos. Conectados entre si a traves de algun medio fisico (cables) o inalambrico, que les permite establecer comunicaciones e intercambiar recursos.
+
+WAN (Wide Area Network): 
+MAN (Metropolitan Area Network): 
+LAN (Long Area Network): 
+
+01) Que Es Una Direccion IP? Describa Una Direccion IPv4 Y Una IPv6. 
+Que Es Una Direccion de Clase A, B, C, Etc...
+
+Direccion IP: direccion logica de 32 bits o 4 bytes (en un principio), agrupada en segmentos de 1 byte. que permite identificar a equipos en redes. Es jerarquica pues partes de ella identifican a la red, subred e individuo. 
+
+Existen varias clasificaciones para ellas: 
+
+Publicas/Privadas: Organismos de estandarizacion utilizan rango de direcciones que se reservan para uso publico (en Internet) o uso privado (intrantes, redes LAN, ...). 
+
+La norma para direcciones privadas utiliza una subdivision en "clases" que depende de la cantidad de equipos (o subredes) que se necesitaran usar. Esto ultimo va de la mano con las llamadas "mascaras de subred", tambien cadenas de 32 bits (separadas en grupos de 4 bytes) que permiten discernir entre la direccion de red y la direccion de usuario (o host) al operarse logicamente con las direcciones IP. En definitivo, los rangos de IP privadas, separados en clases son: 
+
+Clase A: 
+	rango: 10.0.0.0 - 10.255.255.254 (se omite 10.255.255.255 por no representar ni a un host o a una red, se le conoce en general como direccion de difusion) 
+	mascara de subred: 255.0.0.0
+
+Clase B: 
+	rango 172.16.0.0 - 172.31.255.254
+	mascara de subred: 255.255.0.0 (aunque creo que no, revisar CIDR) 
+
+Clase C: 
+	rango 192.168.0.0 - 192.168.255.254
+	mascara de subred: 255.255.255.0
+
+En el caso de las direcciones IP publicas, corresponden al complemento entre todas las direcciones posibles desde 0.0.0.0 hasta alguna del orden de 200.*.*.* y las direcciones privadas mencionadas. Adicionalmente, existe bajo la regla mencinada, un rango de direccinoes IP publicas: 
+
+Clase A: 0.0.0.0 - 126.255.255.254
+
+Clase B: 128.0.0.0 - 191.255.255.254
+
+Clase C: 192.0.0.0 - 223.255.255.254 ... direcciones posteriores a esta (hasta el limite posible) se consideran de uso experimental.
+
+Adicionalmente existe una direccion IP reservada para uso local, conocida como 'loopback' y abarca el rango: 127.0.0.0.0 hasta 127.255.255.255
+
+Se hablo de direcciones IP publicas y privadas, bajo el contexto de direcciones IPv4, otro tipo de direccion IP es IPv6, que se representan como cadenas de 128 bits o 16 bytes, agrupadas en grupos de  
+02) Que Es el Modelo OSI? Explique Brevemente Cada Una de Sus Capas.
+
+03) Que Es TCP/IP? Explique Brevemente Cada Una de Sus Capas.
+
+04) Cual Es Entonces La Diferencia Entre OSI Y TCP/IP? Es Un Reemplazo 
+O Pueden Usarse Juntos?
+
+05) Que Es La IEEE? IANA? IETF? LACNIC?
+
+06) Que Son Los Archivos Request For Comments (RFC)? Cuantos Van 
+Actualmente?
+
+07) Que Es Una Direccion MAC (Direccion Fisica)? Se Puede Cambiar Esta 
+Direccion? De Ser Afirmativa La Respuesta.. Como Lo Hace?
+
+08) Que Es CIDR? Suponga Que Tiene Una SubRed de Tipo C. Como Subdivide
+La Misma Para Proporcionar Internet A 520 Maquinas.
+
+09) Que Es ARP Y RARP?
+
+10) Para Que Sirve el Comando ip. Como Uso este Comando Para:
+
+	a) Ver Las Tablas de Routeo.
+	b) Ver Que Tipo de Tarjetas de Red Tengo.
+	c) Ver Que Numero IP Tienen Mis Tarjetas de Red.
+	d) Ver La Tabla de ARP.
+	e) Cambiarle el IP a mi interfaz eth0 de 159.90.10.56 
+	a 159.90.10.233.
+	f) Eliminar la entrada de routeo default.
+
+11) Que Hace el Comando route? Explique Un Ejemplo.
+
+12) Que Hace el Comando ifconfig? Diga Los Flags Mas Importantes.
+
+13) Que Es ICMP? Que Hace el Comando ping? Explique Con Detalle Su Salida.
+
+14) Cual Es La Diferencia Entre el ping de Solaris Y el de Debian. 
+Como Hago Que En Solaris Me Muestre Mas Informacion?
+
+15) Que Hace el Comando traceroute? Que Significa Cuando En La 
+Salida Aparece ***? Que Utilidad Tiene este Comando?
+
+16) Que Hace el Comando nmap? Cuales Son Los Flags Mas Importantes? Diga que usos importantes puede tener este comando en el ambito 
+de administracion de redes.
+
+17) Que Es Hacer Sniffing? Que Aplicacion Existe Que Permita Hacer Esto?
+
+18) Que Es tcpdump Y Como Funciona? Que Es WireShark Y Como Funciona?
+Pruebe Los Comandos En Su Casa Y Verifique La Salida.
+
+19) En Windows Es Posible Cambiar el MAC Address?? De Ser Posible 
+Diga Como.
+
+20) Cual Es La Diferencia Entre Un Router, Un Switch, Un Patch 
+Y Un Hub?
+
+21) Que Son Las Tablas de Routeo?
+
+22) Que Es Un Gateway? Que Es Una Mascara de Red?
+
+23) Cual Es el Rango de IPs del LDC? Cual Es el Gateway Default del LDC?
+Cual Es La Mascara de Red del LDC? Que funcion cumplen estos elementos 
+dentro de la configuracion de la red del ldc?
+
+24) Explique el Recorrido (Por Que Maquinas Pasa Y Que Funcion Realiza 
+Cada Una) de Un Paquete Que Viene del Exterior Hacia el LDC Y el de Uno 
+Que Va del LDC Hacia el Mundo de La Nube.
+
+25) Problema: Llega Un Profesor Al LDC Y Dice Que No Tiene Internet. 
+Diga Los Comandos Para Configurar Su IP A Mano Y Que Tenga Internet.
+
+############################################################

@@ -1,0 +1,26 @@
+#################################################### Sartenejas, 29 de Noviembre de 2012             ## Universidad Simon Bolivar                       ## Laboratorio DOcente de Computacion              ## Secure SHell (SSH)                   			  ## Autor: Jose Luis Lo Huang             		  ####################################################
+00. Que Es SSH?, Por Que Fue Creado?01. Que Es un Algoritmo de Cifrado, Cuales Son Los Que Utiliza SSH?
+02. En Windows, Que Son Putty, Poderosa Y PowerSHELL? Que Es MSYSGit?
+03. Explique Lo Que Sucede Desde Que Hacemos SSH A Una Maquina Desde el Terminal Hasta Que Finalmente Ya Estamos Autenticados.
+04. Que Son Las Llaves SSH? Como Funcionan? Para Que Sirven?Donde Se Almacenan Las Llaves SSH de Un Usuario?
+05. Como Se Crean Las Llaves SSH de Un Usuario? Debe Crear Sus Llaves SSH.
+06. Indique Una Posible Situacion En La Que Sea Muy Util Tener Las Llaves SSH.
+07. Si Usted Fuera Operador del LDC, Utilizaria Llaves SSH En La Pecera Para Los Servidores? Explique Su Respuesta.08. Explique Por Que Shamir Es Una Maquina Importante En el LDC?Es Un Riesgo Que Esta Maquina este Configurada de Esta Manera?
+09. Que Es ssh-agent? Para Que Sirve el Comando ssh-add?
+10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
+11. Que Es rsh, rcp y ftp? Cuales Son Las Versiones Seguras de Estos Comandos.
+12. Como Hago Para Conectarme A Una Maquina Y Ejecutar Un Comando Y Que Luego de Esto Se Cierre La Conexion.
+13. Que Es Un Tunel SSH? Cree Un Tunel SSH Desde Afuera de La Universidad Hacia Una de Las Maquinas del LDC Por el Puerto 20000.
+14. Si Tengo Un Servidor Dentro de Un NAT, Como Hago Para Conectarme Al Mismo?15. Donde Se Encuentran Los Logs del SSH? Que Es DenyHost, Cual Es Su Relacion Con SSH?
+16. Como Exporto Las X Mediante SSH?17. Que Es el Archivo known_hosts? Para Que Sirve? Que Pasa Si Se Borra?
+18. Que Es rsync? Como Es La Sintaxis?
+19. Si Necesita Copiar Una Gran Cantidad de Archivos, Que Utilizaria Entre scp y rsync? Por Que?
+20. Que Es ClusterSSH?21. Indique Para Que Sirve el Archivo ~/.ssh/config. De Un Ejemplo de Su Uso.
+22. Que Es SSHFS? Podria Usarse En el LDC?23. Que Es autossh? Como Mantienes Una Sesion Abierta Para Siempre?
+24. Indique Que Significa Cada Uno de Los Siguientes Avisos Y Como Resolver el Problema.
+a) 
+The authenticity of host 'arrakis (159.90.10.114)' can't be established.RSA key fingerprint is 6a:37:74:c3:a7:d2:51:1f:93:cb:5a:e6:b0:3e:7f:76.Are you sure you want to continue connecting (yes/no)? b) @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!Someone could be eavesdropping on you right now (man-in-the-middleattack)!It is also possible that the RSA host key has just been changed.The fingerprint for the RSA key sent by the remote host is69:0c:bb:24:74:89:1a:fc:55:cf:4e:f2:d1:b2:b5:cc.Please contact your system administrator.Add correct host key in /home/edward/.ssh/known_hosts to get rid of thismessage.Offending key in /etc/ssh/ssh_known_hosts:4RSA host key for titan has changed and you have requested strictchecking.Host key verification failed.c)
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@The RSA host key for dhcp has changed,and the key for the corresponding IP address 159.90.10.9is unchanged. This could either mean thatDNS SPOOFING is happening or the IP address for the hostand its host key have changed at the same time.Offending key for IP in /home/jose/.ssh/known_hosts:26
+d) 
+Warning: the RSA host key for 'taraza' differs from the key for the IP address '159.90.10.218'Offending key for IP in /etc/ssh/ssh_known_hosts:222Matching host key in /home/jose/.ssh/known_hosts:45Are you sure you want to continue connecting (yes/no)? 
+25. Problema: La Profesora Marlene Goncalves Tiene En Su Casa Una Red. En Esa Red Tiene Una Computadora (Host Inalcanzable). Desde La Computadora Donde Estoy No Puedo Acceder A La Computadora Que Ella Tiene En Su Casa, Pero Desde La Computadora Que Esta En Su Cubiculo Si Puedo (Host Alcanzable). Indique Como Puedo Conectarme A La Computadora Que Se Encuentra En Su Casa Desde Mi Computadora Con Una Sola Linea de Comando Y Sin Usar el Caracter ; En Su Super Linea. Alcanzar Un Host Inalcanzable Mediante Un Host Alcanzable.

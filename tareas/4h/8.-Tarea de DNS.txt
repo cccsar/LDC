@@ -1,0 +1,66 @@
+#############################################################
+# Sartenejas, 15 de Octubre de 2012                         #
+# Universidad Simon Bolivar                                 #
+# Laboratorio Docente de Computacion                        #
+# Tarea 02 - DNS                                            #
+# Autor: Jose Luis Lo Huang       0741108                   #
+#############################################################
+
+00. Que Es ARPANET? Que Archivo Se Usaba Antes Para Hacer La 
+Correspondencia Entre Una IP Y Su Nombre de Dominio?
+
+01. Que Es DNS? Para Que Y Como Se Utiliza?
+
+02. Cuales Son Los Software Mas Famosos Que Permiten Implementar Un 
+Servidor DNS (Minimo 3). Cual Usamos En el LDC?
+
+03. Que Es el Espacio de Nombres? Como Hace Un Paquete Desde 
+amtal.ldc.usb.ve Para Llegar Hasta www.google.com Si Es La 
+Primera Vez Que Es Enviado Desde Esa Maquina? 
+
+04. Cual Es La Diferencia Entre Resolucion Recursiva Y 
+Resolucion Iterativa En DNS? Utilice Los Dominios Anteriores 
+Y Diga Como Seria En Cada Caso.
+
+05. Para Que Es Un Resource Record? Enumere Los Mas Importantes 
+Y Explique Como Se Utiliza (Obligatorios: SOA, NS, A, CNAME, PTR). 
+
+06. Que Es Una Zona? Que Es Un Archivo de Zona (Archivo Forward)? 
+Cual Es Su Sintaxis?
+
+07. Que Es Un Archivo Reverso? Cual Es Su Sintaxis?
+
+08. En Bind, Cual Es el Archivo Principal Que Debemos 
+Modificar? Explique Su Contenido.
+
+09. En Las Maquinas Clientes, Cual Es el Archivo Que 
+Debemos Modificar? Explique Su Contenido.
+
+10. Cuantos Son Los Servidores Raiz Y En Que Lugar del 
+Mundo Estan?
+
+11. Cual Es el Demonio de Bind? Cuales Tipos de Servidor 
+Puede Haber? 
+
+12. Que Es DNS Cache Poisoning? Explique Detalladamente 
+Como Funciona este Tipo de Ataque.
+
+13. Que Es TTL? Como Funciona?
+
+14. Que Es Un DNS Esclavo? Como Funciona?
+
+15. Indique Detalladamente La Salida del Comando dig.
+Como Hago Si Solo Quiero Que Me Aparezcan Los Hosts? 
+Como Hago Si Solo Quiero Que Me Aparezcan Los Servidores 
+de Correo?
+
+16. Problema: Una Maquina Tiene el Nombre de Dominio 
+choroni.ldc.usb.ve Con IP 159.90.11.193. La Profesora 
+Maria Esther Quiere Que Cuando Entren A Su IP 159.90.11.58 
+Por Un Web Browser En Realidad Se Abra La Pagina Que Tiene 
+En choroni. La Maquina choroni No Puede Cambiar Su IP PorQue 
+Corre Otros Servicios. Como Lo Soluciona?
+
+#############################################################
+
+

@@ -1,0 +1,87 @@
+############################################
+# Sartenejas, 30 de Octubre de 2012        #
+# Universidad Simon Bolivar                #
+# Laboratorio Docente de Computacion       #
+# Tarea 03 - Network File System           #
+# Autor: Jose Luis Lo Huang     0741108    #
+############################################
+
+00. Que Es P2P? Que Es Cliente - Servidor? 
+Cual Fue el Motivo de Su Nacimiento?
+
+01. Que Es NFS? Para Que Y Como Se Utiliza?
+
+02. Cuales Son Los Softwares O Mecanismos Mas Famosos Que 
+Permiten Implementar Un FS En Red?.
+
+03. Que Es RPC? Como Funciona?
+
+04. Como Funciona NFS? Explicacion Detallada
+
+05. Cuales Son Los Archivos Principales Que Se Deben 
+Modificar En el Servidor? Explique Su Contenido
+
+06. Cuales Son Los Archivos Principales Que Se Deben Modificar 
+En el Cliente? Explique Su Contenido
+
+07. Que Es biod, rpc.lockd, rpc.statd Y rpc.mountd? 
+
+08. Que Es Autofs? Que Es Automount? Cual Es La 
+Diferencia?
+
+09. Cuando Guardo Un Archivo, Se Envian Los Cambios 
+de Una Vez Al Servidor O Se Envian Cuando Cierro 
+Sesion? Por Que?
+
+10. Indique Para Que Sirven Las Siguientes Opciones Cuando 
+Exportamos En NFS: rw, ro, access, root, anon, secure. Como Se 
+Utiliza Cada Una?
+
+11. Cual Es el Formato del Archivo /etc/fstab? Y En Solaris Cual 
+Es el Archivo Equivalente?
+
+12. Que Es Un Punto de Montaje? Como Uso mount Y umount? Como 
+Hace Para Montar el Directorio de Un Profesor Desde Su Computadora 
+A Mano?
+
+13. Los Directorios Que Voy A Exportar Deben Estar En /export 
+O Puedo Colocarlos En Otro Directorio Como /var? Que Es no_root_squash?
+
+14. Que Es Un Mapa Directo Y Un Mapa Indirecto? Como Es 
+La Estructura de Cada Uno?
+
+15. Como Me Muevo Al /ldc de Otra Maquina Mediante el Comando cd?
+Como Funciona Esto?
+
+16. Por Que el LDAP Es Necesario Para Montar Algunos Homes En el LDC?
+
+17. Como Verifico La Version del NFS? Que Version Usa el LDC?
+
+18. Que Es NIS? Como Funciona? Se Utiliza En el LDC? 
+De Ser Afirmativo Indique Como?
+
+19. Como Asigna Cuotas A Un Usuario? Como Funcionan Las 
+Cuotas En el LDC? En Que Maquinas Puede Asignar Cuotas A 
+Los Usuarios del LDC?
+
+20. Problema: Llega La Profesora Xiomara Contreras Y Les 
+Indica Que Su Maquina Esta Logueando Pero Su Home No Se Monta. 
+Cuales Pueden Ser Los Errores? Pueden Ser Varias Cosas. Enumere 
+Cada Una de Ellas Y Su Solucion.
+
+21.explique como se “monta” el home de los usuarios del LDC (profesores,
+miembros del LDC y estudiantes de pregrado)
+
+22.explique de que manera se comparten los /ldc de las maquinas del LDC
+
+23.explique los netgroups que se encuentran en el árbol LDAP del ldc,
+que es una tripleta de nis?
+
+24.explique la siguiente linea (tomada del /etc/exports)
+/ldc    @maq-ldc(rw,sync,no_subtree_check)
+
+25. Un profesor compra una laptop y tener su home del ldc en /homeldc,
+diga los pasos para lograr esto de manera correcta; suponga que el home
+del profesor tiene miles de archivos por lo que es ineficiente montar
+el home si no lo va a utilizar, como haría para que se monte el home
+solo cuandolo quiera utilizar?

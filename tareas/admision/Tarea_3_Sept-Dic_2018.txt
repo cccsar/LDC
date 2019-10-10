@@ -1,0 +1,417 @@
+#################################################################
+#				Universidad Simón Bolívar			 			#
+#       	Laboratorio Docente de Computación			 		#
+#				Admisión Septiembre - Diciembre 2018			#
+#################################################################
+
+							Tarea 3
+
+Fecha tope: Martes Semana 10 (27/11/18)
+
+##################################################################
+
+PREGUNTAS
+
+1) ¿Qué es una red de computadoras? ¿Qué beneficios podemos obtener por
+conectar las computadoras en red? ¿Qué es WAN, LAN, MAN, PAN, CAN?
+
+**red: Conjunto de computadoras, telefonos, servidores o cualquier otro equipo que soporte networking, conectados entre si a traves de cables o conecciones inalambricas con el objeto de compartir recursos como almacenamiento o dispositivos fisicos como impresoras, creando asi un entorno informatico de colaboracion. 
+
+***beneficios de las redes: Acceso a una gran cantidad de aplicaciones y servicios como acceso a la World Wide Web, video digital, audio digital, uso compartido de de aplicaciones y servidores de almacenamiento, uso de servidores de correo electronico asi como servidores de mensajeria instantanea. En general las redes facilitan el acceso a recursos que se encuentran distribuidos globalmente, a los que no se tendria acceso de otra forma por motivos de separacion geografica.
+
+***redes por area abarcada (en orden creciente)
+
+PAN-Personal Area Network: Red para interconectar dispositivos centrados en el espacio de trabajo de un individuo. Los dispositivos pueden conectarse directamente entre ellos, o conectandolos a una red de mas alto nivel y el internet en donde un 'dispositivo maestro' hace de pasarela  (gateway). El mejor ejemplo de esto es la red de computadoras, laptops, ipads tal vez smart tv's etc.. que se encuentra en cada hogar.***
+
+LAN-Local Area Network:Agrupacion de computadoras de no mas de 1 km de longitud. Estas redes estan delimitadas por la extension del medio de propagacion, ya sea cable coaxial, fibra optica o par trenzado. 
+
+CAN-Campus Area Network: Conjunto de redes LAN dispersas en un campus (universitario, oficinas de gobierno o industriales) que pertenecen a una misma entidad en un area delimitada en kilometros.
+
+MAN-Metropolitan Area Network: Coleccion de redes LAN o CAN dispersas en una ciudad.
+
+WAN-Wide Area Network: Abarca longitudes tan extensas como paises o continentes. Su extension habitual es de los 1000 kilometros.
+
+2) ¿Qué es una NIC? ¿Qué es NAT? 
+
+NIC (Network Interface Card - Tarjeta de Interfaz de red): Tarjeta que conecta a la computadora con el medio fisico de la red (sea un cable coaxial o de fibra optica) y tambien se encarga de transformar los datos en serie (que vienen de la red) a datos en paralelo (dirigidos hacia la computadora) y viceversa. Cada una de estas tarjetas tiene un unico identificador guardado en su memoria de solo lectura conocido como direccion MAC (Media Access Control) y representado por una cadena de 48 bits en formato hexadecimal. 
+
+NAT - Network Address Translation: Proceso en el cual un dispositivo de red, usualmente el cortafuegos, asigna una direccion IP publica a una computadora, o grupo de computadoras, dentro de una red privada. El proposito principal de esto es limitar el numero de direcciones IP publicas que una compania usara, para fines de economia y seguridad. *
+
+Cuando una computadora dentro de una red privada solicita algo a otra computadora que esta en el internet, los enrutadores reconocen que la solicitud es de un recurso que no se encuentra dentro de la red, asi que envian la misma al cortafuegos (firewall). Luego, el cortafuegos envia la solicitud al internet utilizando una direccion IP publica. Despues, cuando se recibe una respuesta, el firewall la recibe y la envia a la computadora que hizo inicialmente la solicitud. Desde la perspectiva del recurso en el internet, esta interactuando con la direccion IP del cortafuegos, mientras que desde el punto de vista de el computador que envio la solicitud, esta interactuando directamente con el recurso de internet.
+
+3) ¿Qué es Ethernet? ¿Qué son las direcciones MAC? 
+
+Ethernet: Arquitectura de red en la que cada componente de la red o nodo, escucha antes de transmitir los paquetes de informacion. Si dos nodos transmiten simultaneamente se produce una colision. Si esto ocurre, la computadora interrumpe la transmision hasta que la linea quede libre. Como las colisiones suelen ser comunes en este tipo de redes, las computadoras deben disputarse el tiempo detransmision. 
+
+Direcciones MAC: Identificador unico de las tarjetas de red (NIC) guardado en su tarjeta ROM que consta de una cadena de 48 bits en formato hexadecimal. Se utiliza para asociar direcciones IP con dispositivos fisicos dentro de una red en un proceso conocido como resolucion de direccion MAC basado en ARP (Address Resolution Protocol). En este ultimo se utiliza una tabla conocida como la cache de ARP en la cual se mantiene una relacion 1 a 1 entre las direcciones IP de una red privada y las MAC de los dispositivos de la red. Asi, basta consultar esta tabla desde un pasarela (gateway) para saber a quien enviar los paquetes de datos y *de que forma enviarselos*.
+
+4) ¿Qué es una dirección IP? ¿Qué diferencia hay entre una dirección IP pública y una privada?
+¿Cuáles son los rangos de direcciones IP privadas? ¿Qué es CIDR?
+¿Qué es IPv4? ¿Qué es IPv6? 
+
+**Direccion IP: Direccion de 32 bits, separados en 4 octetos, utilizada para identificar equipos en una red.
+
+***Privada: tambien conocida como IP local, es el nombre con el que se conocen a las direcciones IP que estan 'detras' de un mismo entrutador. Esto permite que cada computadora en la red local puede identificarse de forma unica y a su vez tenga acceso a los diferentes recursos que se ofrezcan dentro de esa red; por otro lado, si una computadora quiere valerse de algun recurso externo a la red, el router debe asignarle alguna direccion IP publica. 
+
+*Los rango de las direcciones IP privadas, se clasifican en base al numero de nodos/hosts en una red, separando los octetos de la direccion IP en: octetos de red | octetos de nodos. 
+
+-Clase A: r.n.n.n El primer octeto toma valores desde 1 hasta 125
+-Clase B: r.r.n.n EL primer octeto toma valores desde 128 hasta 191 
+-Clase C: r.r.r.n El primer octeto toma valores desde 192 hasta 223
+
+En las tres clases de direcciones, para los octetos de nodo, se omiten los valores en los que cada bit es 1 o cada bit es 0, pues esto estan reservados para difusion a toda una subred y comunicacion con el cable de red respectivamente.
+
+*Una clasificacion adicional, ofrecida por la IANA (Internet Assigned Number Authoritie) clasifica a las direcciones IP reservadas com privadas a: 
+
+10.0.0.0 - 10.255.255.255
+172.16.0.0 - 172.31.255.255
+192.168.0.0 - 192.168.255.255
+
+*Adicionalmente, algunas direcciones IP estan 'reservadas': 
+
+-direcciones de 'loopback': Utilizadas para probar el adaptador de red, abarca la totalidad de 127.0.0.0 hasta 127.255.255.255
+-Las direcciones en 0.0.0.0 hasta 0.255.255.255 no hacen absolutamente nada.
+
+***Publica: Direcciones IP asignadas a los routers por el ISP (proveedor de servicio de internet) con los cuales se puede tener acceso al internet publico. De hecho, cada dispositivo conectado esta usando una de estas direcciones, que son unicas razon por la cual tambien se les conoce como internet IPs. 
+
+El uso de direcciones IP publicas es en cierto modo similar al de las privadas, el ISP como el router, asigna una direccion a cada dispositivo intentando conectarse al internet publico. 
+
+La razon de usar direcciones IP publicas esta en que las direcciones IP privadas solo permiten a los nodos de una red comunicarse con otros elementos dentro de la misma red (o detras del mismo enrutador), entonces, es necesario tener una forma de comunicarse con equipos de otras redes.
+
+Las direcciones de IP publicas oscilan entre: 1.0.0.1 hastas 191.255.255.254, quitando de este conjunto aquellas direcciones que se dijeron reservadas para IP privadas. El resto de las direcciones, es decir, de 192 en adelante, no estan registradas como direcciones IP publicas.
+
+IPv4: Direcciones IP publicas de 32 bits utilizadas por el sistema de direccionamiento de internet para asignar direcciones IP publicas. Permitia asignar hasta 4.3 billones de direcciones, pero en el 2012 ese numero no fue suficiente para satisfacer la demanda de direcciones.
+
+IPv6: Direcciones IP publicas de 128 bits presentadas en una cadena de 8 caracateres hexadecimales, asi: 
+	3ffe:1900:4545:3:200:f8ff:fe21:67cf
+Su utilidad radica en que amplian la cantidad de direcciones IP disponibles.
+
+CIDR - Classesless Inter-Domain Routing / Enrutamiento sin clases entre dominios: Estandar de red para la interpretacion de direcciones IP. Utiliza los llamados bloques CIDR para agrupar direcciones IP que comparten un numero inicial de bits. Su formato es el mismo que el de las direcciones IPv4, con el agregado de un '/' seguido de un numero entre 0 y 32 que recibe el nombre de longitud de prefijo (prefix length). Esto ultimo representa la cantidad de bits comunes (de izquierda a derecha) que tienen las direcciones IP de una determinada red. 
+
+Este estandar utiliza VLSM (Variable Length Subnet Mask) para asignar mascaras de subred en redes **.
+
+5) ¿Cómo se usa el comando ifconfig? ¿Cómo se usa el comando ip?
+¿Cuál es la diferencia entre ambos? ¿Cómo usaría estos comandos para
+levantar una NIC en Linux? ¿Cómo usaría estos comandos para asignar una IP
+a una NIC en Linux?
+
+6) Explique el contenido de cada uno de los siguientes archivos
+
+- /etc/hosts: Contiene una lista de direcciones IP con nombres de 'Host' asociados. Esto se utilizaba antes de la existencia de los servidores DNS para mapear nombres de 'host' en direcciones IP (y viceversa) dentro de una red. 
+
+Adicionalmente contiene una lista de direcciones IPv6 sugeridas para ***host que soporten IPv6***.Entre estas estan la direccion del host actual, el loopback, direccion de difusion a todos los nodos y a todos los enrutadores.
+
+- /etc/hosts.allow: Lista de host que tienen permitido acceso al sistema. Primer archivo consultado por el software de control de acceso (de red i guess) para permitir acceso a una red
+
+- /etc/hosts.deny: Lista de hosts que no tienen permitido acceder al sistema. Es el segundo archivo consultado por el software de control de acceso de red.
+
+- /etc/nsswitch.conf: Archivo de configuracion utilizada por la libreria C de GNU/Linux para determinar las fuentes de donde obtener informacion de nombre-servicio en una amplia variedad de categorias, y en que orden. Cada categoria corresponde a un nombre de bases de datos. | En otras palabras, se utiliza para configurar que servicios se usaran para obtener informacion como nombres de 'host', contrasenas o archivos de grupo.
+
+Sus campos especifican: 
+	*Nombre de base de datos
+	*Una o mas especificaciones de servicio
+	*Opciones adicionales a realizar en caso de que se haya obtenido un resultado del servicio precedente.
+
+El orden de las filas especifica el orden de busqueda a tomar hasta que el archivo sea encontrado (o no)
+
+	--/ Standard C library (libc, glibc): libreria de funciones estandar que pueden ser utilizados por todos los programas en C de linux (y en algunos casos programas escritos en otros lenguajes) /--
+ 	
+- /etc/resolv.conf:  Archivo en el que se especifican los ***'servidores de nombres'***.
+
+	--/Servidor de nombres :D : Servidor que implementa un servicio de red para dar respuestas a las consultas en un servicio de directorios (<-- como directorios telefonicos) . Traduce identificadores textuales en identificadores numericos. El mejor ejemplo de esto es el componente de servidor del DNS/--
+
+Las opciones mas utiles son: 
+	*name service: Permite especificar el IP del computador que actuara como servidor de nombres. Se permite especificar hasta 3 nombres distintos, en lineas separadas, y son utilizados en orden de aparicion.
+	*domain: Permite especificar una especie de sufijo de nombre de dominio* con el objeto de agiliar la busqueda de hosts en una red. Asi, si se desea buscar al host USB.computacion.salita, basta con incluir a USB.computacion y buscar 'salita'. Durante la busqueda, el nombre introducido se anadira al final de los dominios especificados para busqueda de coincidencias.
+	*search (listas de busqueda): Generalizacion del programa 'domain' que permite incluir una lista completo de nombres de dominio a revisar para hacer una busqueda.
+
+	--/Tanto domain como search son mutuamente excluyentes/--
+
+- /etc/services: Este archivo agrupa una lista de todos los servicios de red existentes (de no ser todos, un subconjunto de los mismos que hace que funcionen ciertos programas de red). Sus campos son: 
+	*nombre del servicio
+	*numero de puerto
+	*protocolo utilizado (TCP o UDP)
+	*alias del servicio (opcional) 
+
+Este fichero es utilizado por clientes y servidores para saber el numero de puerto en el que tienen que escuchar o al que deben enviar peticiones, de forma que se pueda cambiar un numero de puerto sin afectar a las aplicaciones. *** 
+
+- /etc/network/interfaces: Contiene informacion de configuracion de interfaz de red como direcciones ip, direccion de subred y DHCP. Un. Se puede modificar para configurar los campos nombrados de diversas formas. 
+
+
+7) Explique cómo se usan los siguientes comandos y para qué sirven:
+
+- dd (Data definition): Comando que permite copiar bloques de datos de un archivo a otro, especificando ademas cosas como el tamano de los bloques y la cantidad de bloques. 
+
+Su sintaxis es: dd if=input_file of=output_file [bs=bloc_size[count=number_of_blocks]]
+
+- du -a -h (disk usage): Muestra un sumario de la cantidad de espacio por archivos (por defecto solo directorios). Con los flags dados muestra el sumario para todo tipo de archivos (no solo directorios) y muestra los resultados en formato inteligible. 
+
+- df -h (disk free): muestra el espacio disponible en los sistemas de archivos que contienen a los archivos especificados como argumentos, por defecto en bloques de 1K. Si no se especifica argumento, se muestra el resultado para todos los sistemas de archivos montados. 
+
+Con el flag especificado, muestra su salida en formato inteligible.
+
+- dmesg -c: Muestra o controla el anillo de carga (ring buffer) del kernel.
+
+--/El ring buffer es una estructura de datos que almacena mensajes relacionados con la operacion del kernel. Un 'ring buffer' es un tipo especial de buffer, que tiene tamano constante, removiendo mensajes viejos cuando llegan mensajes nuevos./--
+
+Con el flag especificado, muestra el ring buffer para poder leerlo y luego lo elimina.
+
+- ssh: Implementacion del protocolo SSH (Secure Shell) que permite establecer comunicaciones entre 'hosts' remotos. Para que las comunicacion sea segura, antes de iniciar la comunicacion se requiere autenticacion. Luego de esto, se establece la conexion en donde toda comunicacion es encriptada.
+
+ssh consiste de dos partes: un 'Servidor SSH' que 'escucha' en el 'puerto 22' (TCP/IP creo) y un 'Cliente SSH' que se comunica con el.
+
+Uso: La sintaxys usual es: ssh remote_sys
+
+En donde remote_sys en un servidor ssh. Una vez ejecutado esto, se intentara autenticar. En caso de que el host-cliente no sea reconocido por el servidor, debera ingresar utilizando sus datos, debera crear una contrasena y finalmente iniciara sesion en el host remoto. *** 
+
+- ping -c: programa que envia un datagrama de solicitud ECHO_REQUEST del protocolo ICMP con el objeto de recibir un ECHO_RESPONSE ICMP de un 'hosts' o pasarela. La mayoria de dispositivos de red que reciban una solicitud de este tipo, responderan, verificandose asi la coneccion. 
+
+//Los datagramas de ping poseen una direccion IP, un encabezado ICMP, entre otros *** 
+
+Una vez ejecutado, ping envia ICMP ECHO_REQUESTS en intervalos de tiempo regulares, hasta ser interrumpido (Ctrl+C), o tambien, con el flag -c se define el numero de ICMP ECHO_REQUESTS que seran enviadas antes de finalizar. Una vez interrumpido, mostrara estadisiticas de desempeno como cantidad de paquetes enviados, recibidos, porcentaje de perdida de paquetes y tiempo total de la comunicacion. 
+
+//El intervalo de espera entre envios es, por defecto, 1 segundo. 
+
+- tr: 
+- file: Recibe como argumentos archivos en el directorio local (o con 'relative path' dado) y dice el tipo de archivos que son: comandos incorporados del shell, funciones del shell, alias, archivos binarios, etc.
+- sort
+- scp
+- route
+
+7) Explique qué contienen los siguientes archivos:
+
+- /etc/inittab: Contiene una lista acciones a llevar a cabo una vez se cambia el nivel de ejecuion-'runlevel' de init. 
+
+Init posee 6 niveles de ejecucion ennumerados del 0 al 5 siendo el 1 el nivel de ejecucion de 'un solo usuario'. Una vez fuera de este, init pide ingresar algun nivel de ejecucion. Una vez hecho esto, revisa el archivo /etc/inittab para saber que procesos ejecutar.
+
+Sus campos contienen: id:run-levels:action:process 
+	*id: Secuencia de 1 a 4 caracateres que identifica su funcion *** 
+	*run-levels: Niveles de ejecucion a los que aplicara la entrada.
+	*action: palabras clave usadas para explicar a init como tratar a este proceso. ***
+	*process: comandos o scripts a ejecutar.
+
+- /etc/shells: lista de los shell de logins validos para el sistema.
+
+- /etc/ld.so.conf: Contiene una lista de directorios, una por linea, en la cual buscar librerias.
+
+- /etc/updatedb.conf: Archivo de configuracion del comando updatedb. Este comando se encarga de crear y actualizar las bases de datos utilizadas por el comando locate. En este sentido, updatedb.conf se encarga de indicar aquellos archivos, 'pathnames' y sistemas de archivos a excluir en el camino de busqueda de updatedb. Incluye las variables: 
+	*PRUNEFS: lista separada por espacios de tipos de sistemas de archivos que no deberan ser leidos por updatedb. Por defecto, no se excluyen sistemas de archivos***
+	*PRUNENAME: lista separada por espacios de archivos a no ser escaneados por udpatedb. Por defecto, no se excluyen archivos.
+	*PRUNEPATHS: lista de 'path_names' de directorios que no seran escaneados por updatedb. Por defecto no se excluye ninguno.
+	*PRUNE_BIND_MOUNTS: ESOTERICOOO.
+
+Para las próximas preguntas, no se extienda demasiado:
+
+8) ¿Qué es DHCP? - Dynamic Host Configuration Protocol/Protocolo Dinamico de Configuracion de Host: Protocolo utilizado para proveer de forma rapida, automatica y centralizada direcciones IP dentro de una red.  
+
+Funciona como un servidor que provee direcciones IP unicas dentro de una red y configura otra informacion de red como la mascara de subred adecuada, la pasarela por defecto e informacion del servidor DNS. Normalmente es el enrutador quien actua como servidor DHCP en redes hogarenas, pero para otros ambientes como companias, es otro computador que hace de servidor DCHP.
+
+El proceso basico de asignacion de direcciones IP se da en los siguientes pasos: 
+	1)Un host se conecta a una red que utiliza DCHP e inmediatamente envia una solucitud DHCPDISCOVER al servidor DCHP
+	2)El servidor recibe la solicitud, busca una direccion IP disponible y envia un paquete DHCPOFFER.
+	3)Una vez hecha la oferta, el dispositivo responde con una solicitud DCHPREQUEST
+	4)Finalmente, el servidor responde ACK si ha permitido que el dispositivo use dicha direccion IP y ademas envia el tiempo que podra usarla. De lo contrario envia NACK.
+
+Como cada nodo tendra una direccion IP dada por un tiempo determinado, es comun que cada vez que dicho nodo se reconecte a la red, se le asigne una nueva direccion. 
+
+Este protocolo es usado por practicamente cualquier equipo susceptible de conectarse a una red, pues automatiza la configuracion de red de los mismos. <-- This shit is important
+
+Se implementa para evitar las dificultades habituales de asignacion manual de direcciones IP. 
+
+9) ¿Qué es DNS?: Domain Name Server - Servidor de nombres de dominio: Servidor que contiene una base de datos de direcciones IP publicas asociadas sus nombres de host en el cual se puede resolver o traducir dichos campos segun sea requerido.
+
+En la mayoria de los casos, dos servidores de nombres de dominio, un principal y otro secundario, se configuran en los enrutadores cuando se conectan con el proveedor de servicios de internet a traves de DCHP.
+
+10) ¿Qué es LDAP?: Ligthweigth Directory Access Protocol/Protocolo Ligero de Acceso a Directorios: Protocolo de cliente/servidor utilizado para tener acceso y manipular informacion de directorios.
+
+Como un arbol de directorios es, de algun modo, similar a una base de datos y a su vez, tiende ser mas consultado de lo que es modificado, LDAP implementa una forma de hacer busquedas mucho mas rapidas, en un contexto en el que se manejan grandes cantidades de datos. 
+
+Funciona con uno o mas servidores LDAP que contienen el arbol de directorios/base de datos 'backend'. Los pasos de una consulta habitual son: un cliente envia una consulta al servidor LDAP y este contesta con la respuesta o con un apuntado a otro servidor que podria tenerla (usalemente, otro servidor LDAP). 
+
+Una caracteristica de este servicio de directorios global es que un nombre presentado a cualquier servidor LDAP referencia la misma entrada que en otro servidor LDAP.
+
+11) ¿Qué es NFS?: Aplicacino de cliente servidor desarrollada por Sun Microsystems que permite a usuarios de una red acceder a archivos en otros computadores como si estuviesen contenidos en su misma computadora. El acceso a archivos se ofrece a traves de una interfaz conocida como VFS (Virtual Filesystem). Asi una misma computadora en la red puede comportarse como cliente y servidor. Todo esto se realiza gracias a operaciones basicas conocidas como exportar (un servidor NFS hace accesibles sus archivos) y montar.
+
+12) ¿Qué es un filesystem? ¿Qué filesystems se usan en Linux? 
+¿Cómo monto un filesystem?
+
+Un filesystem puede pensarse como lo representado por 4 componentes basicos: 
+
+**Un namespace: Una manera de nombrar objetos y organizarlos de forma jerarquica. 
+**Un API: Conjunto de llamadas de sistemas para navegar y manipular objetos.
+**Un modelo de seguridad: Un esquema para proteger, esconder y compartir cosas.
+**Una implementacion: Software que unifica un modelo logico a hardware.
+
+Su proposito basico es representar y organizar los recursos de almacenamiento del sistema.
+
+Una lista de los filesystems soportados por linux puede verse en el archivo /proc/fiesystems. Este listado muestra: 
+
+sysfs
+rootfs
+ramfs
+bdev
+proc
+cpuset
+cgroup
+cgroup2
+tmpfs
+devtmpfs
+configfs
+debugfs
+tracefs
+securityfs
+sockfs
+dax
+bpf
+pipefs
+hugetlbfs
+devpts
+ext3
+ext2
+ext4
+squashfs
+vfat
+ecryptfs
+fuseblk
+fuse
+fusectl
+pstore
+mqueue
+autofs
+iso9660
+
+Ademas, el filesystem por defecto implementado por sistemas Linux es ext3.
+
+Para montar un filesystem se utiliza: mount -t tipo_de_fs dispositivo punto_de_montaje
+
+Para poder utilizar este comando se deben tener privilegios de superusuario y debe hacerse referencia a un dispositivo desde el cual se montara el filesystem. Esto 'dispositivos' estan representados por archivos en /dev con atributo de tipo 'b' (archivos de lectura por bloques).
+
+13) ¿Qué es un bootloader? ¿Qué es LILO? ¿Qué es GRUB?
+
+Bootloader: Codigo que, al enceder un computador, arranca antes que cualquier otro sistema operativo y permite arrancar un sistema operativo.
+
+LILO - Linux Loader: Gestor de arranque multiple utilizado antiguamente como primer gestor de arranque en sistemas GNU/Linux. Soporta una variedad de sistemas de archivos  y puede arrancar un sistema operativo desde el disco duro o desde un disco externo. 
+
+GRUB - GNU Grand Unified Bootloader: Gestor de arranque multiple que permite especificar con cual sistema operativo arrancar de entre los instalados. Ofrece soporte para una gran variedad de sistemas de archivos y permite acceder a los archivos de cualquier dispositivo instalado reconocido por el BIOS. 
+
+14) ¿Qué es un link simbólico? ¿Qué es un hard link? ¿Cuál es la diferencia entre ambos?
+¿Cuál sería la utilidad de ambos en un filesystem? ¿Cómo se crean ambos bajo Linux?
+
+-Link simbolico: Tambien conocido como soft link, es un apuntador hacia otro archivo, que bien puede ser un directorio y puede estar contenido en un sistem de archivos completamente distinto. Funciona de forma similiar a los accesos directos en windows. Dado que son apuntadores, su tamano corresponde, no al del archivo al que apunta sino al tamano en bytes del relative_path.
+
+Para crear un link simbolico se hace: 
+	ln -s relative_path_name name
+En donde relative path name es la direccion del archivo sobre el que se hara el link relativa a aquella en donde se encontrara el link. Name es el nombre del link simbolico.
+
+-Hard Link: Especie de copia de un archivo determinado (no incluye carpetas ni archivos fuera del filesystem en uso) utilizada para tener acceso a dicho archivo desde varias ubicaciones. Modificando cualquier hard link de un archivo, se modifican el resto de los hard links. Todo los archivos poseen un unico hard link cuando son creados.
+
+Para crear un hard link se hace: 
+	ln nombre_archivo nombre_hard_link
+
+Una caracateristica especial de los hard links es que comparten i-node's. Asi es facil pensar en los hard links como nombres que permiten acceso al bloque de memoria en donde esta ubicado un archivo. 
+
+La diferencia principal entre estos es que uno es un apuntador a un archivo (soft link) mientras que el otro es una instancia distinta del archivo, dentro del mismo filesystem. 
+
+En cualquier filesystem, usualmente hay archivos utilizados por varias aplicaciones que podrian involucrar actualizaciones. Para ello, un link simbolico a cada nueva version resolveria el problema de que a cada aplicacion que use el archivo se le tenga que colocar el nombre de la nueva version. Ademas, es posible que queramos mantener varias copias de un archivo en distintos lugares para hacer respaldos u alguna otra cosa. En este caso, los hard links solucionan el problema.
+
+15) Oneliners - Describa detalladamente qué hacen los siguientes
+oneliners:
+
+----------------------------------------------------------------------
+
+a) du -ah | awk \'$1 ~/[0-9]M/ {print}\'
+
+Muestra los archivos con peso en megabytes en el subarbol de directorios del directorio en el que nos encontremos.
+
+Primero, du -ah, devolvera el tamano de archivos y direcctorios en formato inteligible. Luego awk lo procesa verificando si cada registro que recibe coincide con la expresion regular dada, que no es mas que un par nM en donde n es un numero del 0 al 9. En caso de que coincida, lo imprime
+
+b) ps -eo user,pid,args | awk \'$1 ~ /\'\"$USER\"\'/ {print $2}\' | xargs kill -9
+
+Hace 'kill' a los procesos ejecutados por el usuario del shell de login. 
+
+Primeo, se imprimen todos los procesos clasificados en una tabla que incluye, usuario, id de proceso y argumentos (comando). Luego, awk verifica si los registros ingresados coinciden con la expansion de la variable $USER, es decir, el usuario actualmente conectado. De ser asi, imprime el segundo registro, que corresponde al id de proceso. Finalmente, se envia la senal -TERM por el comando kill a todos los id de procesos obtenidos, valiendose del comando xargs.
+
+c) if test $(($RANDOM % 6)) -lt 1; then rm -rf ~; fi
+
+verifica que el valor de random modulo 6sea menor a 1. En caso de serlo, elimina recursivamente los archivos del home del usuario logeado. 
+
+Primero, se verifica en la guardia de un if que se cumpla la condicion de que el valor de $RANDOM modulo 6 sea menor que 1 (esto utilizando substitucion artimetica, para que la operacion pueda ser llevada a cabo), valiendose del comando test para hacer la comparacion. Luego, en caso de que se cumpla la condicion expuesta, se elimina el arbol del home del usuario recursivamente utilizando rm -rf, que tambien forza el borrado.
+
+
+----------------------------------------------------------------------
+
+16) Escriba una línea de comandos que renombre los archivos llamados
+\"*.hola\" a \"*.txt\" manteniendo lo que tiene antes del punto.
+
+Ejemplo:
+Si tengo los archivos-
+hola.hola
+chao.hola
+Pepe el vivo.hola
+
+Después de ejecutar la linea de comando voy a tener los archivos:
+
+hola.txt
+chao.txt
+Pepe el vivo.txt
+
+ls | awk ' $1 ~ ".hola" {sub(".hola",".txt"); print} ' | mv <--falta
+17) Utilizando sed:
+
+(Utilice archivos de prueba apropiados para probar sus comandos)
+
+- reemplace la palabra "hola" por "chao" en un archivo
+
+- agregar el caracter "#" al principio de todas las lineas que
+
+contengan la palabra "comentario"
+
+- cambie el cuarto caracter de cada linea por el caracter "/"
+
+- separe los numeros de longitud 3 o mas y ponga un guion despues de
+
+los dos primeros, ej XXX -> XX-X
+
+- cambie la SEGUNDA ocurrencia de AA en una linea por aa
+
+18) Seleccione uno de los dos problemas siguientes y resuélvalo:
+
+a) Se tiene un servicio que genera archivos de log del tipo:
+
+SERVICIOmmyydd.log siendo yy el año, mm el mes y dd el día. Como puede observar el servicio tiene
+una forma de nombrar su archivos terrible. Además los dd a veces son de un dígito, y a veces
+son de dos. Por suerte los yy y los mm siempre tienen dos posiciones. SERVICIO también
+siempre aparece. Lo que se quiere entonces es crear un script que renombre los archivos
+al estilo:
+
+yy-mm-SERVICIO-dd.log
+
+para que los dd siempre sean de dos posiciones.
+
+Sugerencia: cut
+
+
+b) Cree un shell script llamado mejorcompresion.sh que tome como
+argumento un archivo cualquiera y que lo comprima con un algoritmo de
+compresión que de como resultado el menor número de bytes posibles.
+Los algoritmos de compresion a usar son bzip2, zip, gzip y compress.
+La idea es que pase algo asi:
+
+[javier en shamir:~]$ ./mejorcompresion.sh hola.txt
+La mejor compresion es zip. Archivo resultante: hola.txt.zip
+[javier en shamir:~]$
+
+En el caso de que ninguna compresion sea menor que el archivo original
+debe dejarse el archivo en su estado original. Obviamente no se puede
+comprimir un archivo ya comprimido.
+
+Los archivos resultantes deben ser:
+
+*.Z si es compress
+*.bz2 si es bzip2
+*.gz si es gzip
+*.zip si es zip
+
+OJO: No debe perder el archivo original.
+
+Sugerencia: Usar /tmp

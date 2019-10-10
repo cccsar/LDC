@@ -1,0 +1,402 @@
+#################################################################
+#				Universidad Simón Bolívar			 			#
+#       	Laboratorio Docente de Computación			 		#
+#				Admisión Septiembre - Diciembre 2018			#
+#################################################################
+
+							Tarea 2
+
+Fecha tope: Martes Semana 9 (20/11/18)
+
+##################################################################
+
+1. Describa la jerarquia del filesystem de Linux. ¿Que es la raiz (/)?
+¿Qué archivos hay en los siguientes directorios?
+
+Jerarquia del filesystem de linux: Consiste de un directorio principal, conocido como root: '/', dentro del cual se encuentran todos los archivos presentes en el sistema, contenidos en subarboles de directorios aun cuando se encuentren en distintos dispositivos fisicos. Los subarboles de directorios son un conjunto de directorios comunes a sistemas Linux que sigan el LFHS o estandar de jerarquia de sistemas de archivo de Linux. Estos directorios son:  /bin, /boot, /dev, /etc, /home, /lib, /media, /mnt, /opt, /proc, /root, /sbin, /srv, /sys, /tmp, /usr y /var.
+
+raiz: Directorio bajo el cual se ubican todos los subdirectorios en los sistemas Linux.
+
+    /etc: Sistema nervioso central del sistema. Contiene todos los archivos de configuracion relacionados con el sistema. // Un archivo de configuracion se define como un archivo local utilizado para controlar el funcionamiento de un programa. Debe ser estatico y no puede ser un archivo binario ejecutable.
+    /bin: Contiene comandos para el uso de administradores y usuarios no privilegiados. En el tambien se encuentran los shells del sistema. Los archivos aqui contenidos se consideran esenciales.
+    /sbin: comandos/archivos ejecutables utilizados para mantenimiento o tareas administrativas. 
+    /usr: Arbol de directorios mas grande en un sistema linux. Contiene programas y archivos de soporte utilizados por usuarios regulares.
+    /lib: Contienen librerias compartidas utilizadas por los programas principales del sistema.
+    /dev: Contiene una lista de los dispositivos que el kernel entiende. Los archivos aqui referencian terminales o dispositivos montados en el sistema como el disco duro, memorias usb o CD's.  
+    /var: Arbol de directorios en el que se almacena informacion suceptible de cambiar. 
+    /var/log: Contiene archivos de registro, algunos de los cuales deben monitorearse con frecuencia. Entre los mas importantes esta (ubuntu) /var/log/sys.log
+    /usr/share: Contiene todos los archivos compartidos utilizados por programas en /usr/bin. Esto incluye cosas como archivos de configuracion por defecto, iconos, fondos de pantalla, archivos de sonido, entre otros. 
+    /usr/man: Antiguamente este directorio contenia las paginas de 'man', pero ha sido movido ha /usr/share/man.
+    /tmp: Tiene como proposito almacenar archivos temporale creados por varios programas. En algunas configuarciones este directorio es vaciado cada vez que se reinicia o apaga el sistema.
+    /home: Contiene el arbol de directorios de tal vez todos los usuarios de un sistema linux.
+    /proc: sistema de archivos virtual mantenido por el kernel de linux. Los archivos que contiene son de lectural y contienen informacion en tiempo real del sistema (memoria, dispositivos montados, configuracion de hardware, entre otros). Por todo lo mencionado, puede considerarsele un centro de control e informacion para el kernel
+    /export: Raiz para directorios NFS compartidos en sistemas basados en Unix que no siguen el LFHS.
+	
+2) ¿Qué es un filesystem? ¿Qué filesystems se usan en Linux? 
+¿Cómo monto un filesystem? ¿Qué es una quota en un filesystem? 
+¿Cómo le asigno una quota a un usuario?
+
+Un filesystem puede pensarse como lo representado por 4 componentes basicos: 
+
+**Un namespace: Una manera de nombrar objetos y organizarlos de forma jerarquica. 
+**Un API: Conjunto de llamadas de sistemas para navegar y manipular objetos.
+**Un modelo de seguridad: Un esquema para proteger, esconder y compartir cosas.
+**Una implementacion: Software que unifica un modelo logico a hardware.
+
+Su proposito basico es representar y organizar los recursos de almacenamiento del sistema.
+
+Una lista de los filesystems soportados por linux puede verse en el archivo /proc/fiesystems. Este listado muestra: 
+
+sysfs
+rootfs
+ramfs
+bdev
+proc
+cpuset
+cgroup
+cgroup2
+tmpfs
+devtmpfs
+configfs
+debugfs
+tracefs
+securityfs
+sockfs
+dax
+bpf
+pipefs
+hugetlbfs
+devpts
+ext3
+ext2
+ext4
+squashfs
+vfat
+ecryptfs
+fuseblk
+fuse
+fusectl
+pstore
+mqueue
+autofs
+iso9660
+
+Ademas, el filesystem por defecto implementado por sistemas Linux es ext3.
+
+Para montar un filesystem se utiliza: mount -t tipo_de_fs dispositivo punto_de_montaje
+
+Para poder utilizar este comando se deben tener privilegios de superusuario y debe hacerse referencia a un dispositivo desde el cual se montara el filesystem. Esto 'dispositivos' estan representados por archivos en /dev con atributo de tipo 'b' (archivos de lectura por bloques).
+
+Una quota representa la cantidad maxima de espacio en disco que un usuario o grupo pueden utilizar en un sistema Linux. 
+Antes de explicar la asignacion de quotas se presentaran ciertas definiciones: 
+	Bloque: Unidad que refiere a los bloques del disco. 1 bloque es equivalente a 1kb.
+	inodo: Apuntador a los bloques de un archivo. 
+	hard limit: limite absoluto de espacio que una quota puede ocupar. 
+	soft limit: limite a partir del cual se empieza a avisar al usuario que el limite hard esta siendo alcanzado.
+
+Como asignar una quota (instalar quota-tool es recomendado): 
+
+--1> Verificar si la quota para usuarios o grupos está activa. Para ello vamos a etc/fstab y lo editamos para habilitar el soporte para quotas en el filesystem donde queremos habilitarlo, esto se hace en el cuarto campo, agregando "usrquota" para quotas de usuario o "grpquota" para quotas de grupo. Si ya está agregado, no es necesario añadir nada más.
+        
+--2> Para activar el soporte será necesario reiniciar el equipo o hacer remount al filesystem a quien le activamos el sistema de quotas. Para remontar usamos el comando:  
+ 	mount -o remount /montaje 
+donde "remount" es el argumento de o y /montaje es el punto de montaje del dispositivo que queremos remontar. Es útil usar también -v (verbose) para tener una mejor visión de lo que se está haciendo.
+
+  Una vez hecho esto, en la raíz del filesystem al que se le activó el soporte de quotas veremos un archivo llamado "aquota.user" o "aquota.group" dependiendo de si activamos para usuario, grupo o ambas.
+        
+--2.1> Podemos revisar los filesystem que soportan quotas, para esto usamos el comando "quotacheck"
+
+--3> Lo siguiente es activar el sistema de quotas, esto se hace con el comando:
+	  quotaon -ug /filesystem
+*-u es para activar quotas de usuarios.
+*-g es para quotas de grupo
+*/filesystem es para especificar la ubicación del filesystem.
+(nótese que no es necesario poner tanto g como u. Ponemos la que queramos configurar en particular)
+            
+(Para desactivar las quotas usamos el comando: quotaoff)
+        
+--3>Activamos el control de cuotas por usuario, pues pese a estar ya activadas, estos por defecto no traen configuración de quota. Para asignarles quotas usamos el siguiente comando que permite editar las configuraciones de quota:
+	  edquota -u usuario1 -f filesystem    
+  (nota: la flag -u es para cambiar a un cierto usuario, si queremos cambiar a un grupo usamos -g y el nombre del grupo. Además, también podemos cambiar a todos los filesystem si no especificamos la opción -f ni su argumento)
+            
+ Esto abrirá el archivo de configuración de quotas, y solo editamos los campos "HARD" y "SOFT" de inodos y de bloques segun como queramos delimitar el uso de memoria.
+        
+ Para cambiar el tiempo de gracia se usa el comando edquota con la flag -t para cambiarlo globalmente, o -T junto con -u para cambiarlo personalmente. Se usa un número seguido sin espacios por la unidad de tiempo para definir el tiempo de gracia; por ejemplo: "7days", "12hours". Para dejarlo sin efecto se escribe "unset"
+        
+ Para ver el estado de las quotas personalmente (por usuario) usamos "quota -u usuario".
+        
+ Si queremos ver un reporte global del estado de todas las quotas, usamos "repquota". En ambos casos podemos usar la flag -s para mostrar los tamaños en un formato más cómodo de ver (megabytes)
+
+3) ¿Qué son las variables de ambiente? ¿Para qué sirven estos dentro de un shell?
+¿Como veo el contenido de una variable? ¿Qué almacenan las siguientes variables de ambiente?
+
+Variables de ambiente: Variables que contienen informacion relacionada con datos o preferencias de un determinado usuario. Varian de un usuario a otro y pueden ser modificadas para hacer mas comodo el 'ambiente' de un usuario. Por convencion, las variables de ambiente estan definidas en mayusculas.
+
+Dado que en estas variables se encuentra informacion que define al usuario, el shell utiliza esta informacion para modificar su comportamiento. Esto sucede porque cuando se inicia una sesion de login de shell, se carga el 'ambiente' del usuario. Asi, el shell sabe cual es el nombre del usuario, en que directorio se encuentra, cual es su home, entre otras cosas.
+
+Para ver el contenido de una variable se puede utilizar: 
+	echo $NOMBRE_VARIABLE
+	printenv NOMBRE_VARIABLE <- solo si la variable es de ambiente.
+
+	- -HOME: Contiene el nombre de la carpeta 'home' del usuario.
+	- -PWD: Contiene el nombre del directorio actual en el que esta posicionado el usuario.
+	- -HOSTNAME: Contiene el nombre del host del sistema.
+	- -PATH: Contiene un lista separada por ':' de donde el shell busca comandos para ejecutar.
+	- -MANPATH: Contiene una lista de directorios en donde se encuentran las paginas del manual.
+	- -MAIL: - -USER: Contiene el nombre del usuario actual.
+        - -PRINTER: Contiene el nombre de la impresora predeterminada.
+	- -SHELL: Contiene el nombre del shell de login. 
+	- -TERM: Contiene el nombre del tipo de terminal. Dado que los sistemas UNIX manejan varios protocolos de terminal, esta variable establece el protocolo a ser utilizado. 
+	- -TMOUT: Si se le asigna un entero positivo, este representara el tiempo antes del cual se cerrara la terminal si no se escribe ningun comando
+
+4) ¿Para qué sirven los siguientes comandos? Describa detalladamente cada comando
+con sus respectivos flags (mínimo 2, máximo 6). Indicar la sintaxis del comando
+con un ejemplo.
+
+	- - ps: muestra una tabla de los procesos que actualmente corren en el sistema. Adicionalmente, los presenta en una tabla ordenada en donde se muestran atributos como el ID del proceso, el nombre del comando que lo ejecuta y la terminal que lo controla.: Muestra una tabla que enlista los siguientes campos sobre procesos de un sistema: PID (identificador de un proceso), terminal controladora (hace referencia a la terminal desde la cual se ejecuto el proceso; en caso de observar '?' debe entenderse que el proceso no es controlado por una terminal), tiempo del CPU que toma el proceso y finalmente nombre del comando que evoco al proceso.
+
+**flags: 
+	*-C comando: Solo mostrara los campos para el comando espeficado como argumento. 
+	*-o encabezado=nombre : muestra solo el campo solicitado como encabezado, y permite modificar su nombre al asignarlo con '='.
+	*-t : Selecciona unicamente procesos asociados con la terminal actual y adicionalmente, muestra el estatus de los procesos.
+
+kill: Comando que envia senales a procesos. Entre sus usos mas comunes estan finalizar la ejecucion de un proceso o hacer que continue. Adicionalmente, es posible indicar a que proceso se envia una senal utilizando su PID (identificador unico de los procesos de sistemas Unix) o un jobspec (identificador de trabajos iniciados desde la terminal). A su vez, es posible indicar que senal se enviara, por el nombre de la senal o el numero de la senal. 
+
+**flags: 
+	*-l: Muestra una lista ordenada de las senales.
+	*-L: Enlista las senales en una tabla ordenada.
+	*-s SENAL: permite enviar la senal especificada 
+  
+- - - jobs: Imprime los trabajos iniciados por la terminal usada con los siguientes campos: jobspec, estado del proceso, nombre del comando que lo llamo.
+
+**flags: 
+	*-l : Enlista adicionalmente el id del proceso a la tabla que se genera normalmente como salida. 
+	*-r: Muestra solo los procesos que estan activados. 
+	*-s: Muestra solo a los procesos detenidos. 
+	*-p: Enlista solo a los id de los procesos.
+
+- - - top: Imprime una tabla con una descripcion en tiempo real de los procesos llevados a cabo por el sistema. La tabla se actualiza en intervalos regulares de tiempo. 
+	*-n numero: Permite establecer el numero de iteraciones o actualizaciones que hara la salida de top, antes de que se detenga
+	*-d tiempo: Permite establecer el tiempo en segundos de los intervalos de cada iteracion. 
+	*-o campo: Permite modificar el orden en el que se mostraran los filas en base a la salida del campo especificado. Si se anade un '+' antes del campo, lo hace en orden decreciente, lo contrario sucede si se anade '-'.
+
+	- - mount: Sirve para montar sistemas de archivos. Funciona especificando (opcionalmente) el tipo de sistema de archivos, el dispositivo en el que se montara el s.a. (por lo general algun archivo de tipo 'b' en el directorio /dev) y el punto de montaje, que es un directorio en cualquier lugar del arbol de archivos de linux. Si el directorio sobre el que se monta el s.a. esta ocupado, el sistema se monta de todas formas y el contenido del directorio no sera visible hasta que se 'desmonte' el s.a. Cuando no se especifican argumentos, se muestra un listado de los s.a. montados en el sistema - este listado es igual al contenido del archivo /etc/mtab. Para poder usarlo se requieren privilegios de superusuario. 
+
+**flags: 
+	-t: permite especificar el tipo de sistema de archivos que se montara. 
+	--target: utilizado cuando solo se desea especificar el punto de montaje; se buscara un dispositivo sobre el que montar el s.a. 
+	--source: utilizado cuando solo se desea especificar el dispositivo a montar; se buscara un punto de montaje para el s.a.
+ 	-a: Monta todos los sistemas de archivos especificados en /etc/fstab.
+	-o: Permite especificar las opciones del sistema de archivos. 
+	-o loop: permite el montaje de una imagen iso en un fichero como si fuese un dispositivo de bloques.
+	 
+	- - umount: Sirve para desmontar sistemas de archivos. Al igual que con mount, se puede especificar por dispositivo o por punto de montaje. 
+
+**flags: 
+ 	-a: Desmonta todos los sistemas de archivos actualmente montados, a excepcion de 'procs'.
+	-A --all-target: Desmonta todos los sistemas de archivos especificados. Si se utiliza junto con --recursive, se desmontaran todos los subsitemas de archivos.  
+	-d --detach-loop: Cuando el dispositivo montado es un 'dispositivo de loop', tambien libera al dispositivo de loop.
+	-n --no-mat: Desmonta el dispositivo sin registrar en mtab. 
+
+	- - export: Hace a una o mas variables disponibles para subprocesos del shell actual. Es un 'built-in' de bash.
+
+**flags: 
+	-p: Muestra una lista de todas las variables exportadas.
+	-f: Hace referencia a funciones del shell. 
+	-n: elimina el atributo export de las variables especificadas haciendo que ya no esten disponibles para subprocesos.
+
+	- - history: Muestra el historial de comandos de bash. 
+**flags: 
+	-c: Elimina el historial de comandos. 
+	-a: Anade el historial de la sesion actual de shell al archivo ~/.bash_history.
+	-w: Escribe el archivo de historial con la sesion actual de shell. 
+
+	- - xargs: Permite ejecutar un mismo comando una o mas veces con argumentos iniciales dados, mas argumentos colocados desde la entradas estandar. 
+**flags: 
+	-a archivo: lee los argumentos desde el archivo en vez de la entrada estandar.
+	-E EOF: permite definir un final de linea 'EOF', de modo que, una vez ingresado en la entrada estandar, finalice la ejecucion de xargs.
+	-p: Muestra un mensaje antes de correr los comandos.
+
+	- - echo: Sirve para imprimir mensajes en la consola y tambien permite mostrar el valor de variables. Para imprimir mensajes, el texto debe estar entre comillas simples '' o comillas dobles "", igualmente, para imprimir valores de variables es necesario colocar antes del nombre de la variable el simbolo $, asi $varname.
+**flags: 
+	-n: Una vez impreso el argumento, no hacer salto de linea.
+	-e: Activa la interpretacion de caracteres \
+	-E: Desactiva la interpretacino de caracteres \ (por defecto)
+	
+5) ¿Qué es un proceso? En Unix, describa los siguientes atributos de
+los procesos: PID, PPID, UID, EUID, GID, EGID, NICE.
+
+Los procesos son la forma en la que linux organiza a los diferentes programas que esperan por su turno en el CPU. Un proceso puede ser de tres tipos basicos: 
+	interactivo: ejecutados de forma interactiva por un usuario.
+	batch: enviados por una cola de procesos - no asociados con usuarios.
+	daemon: procesos que son hijos inmediatos de root *** 
+
+PID: ID del proceso, numero que lo identifica de forma unica. Estos ID's son asignado de forma creciente a medida que se crean procesos.
+PPID - Parent Process ID: Dado que para que se cree un nuevo proceso, un proceso existente debe clonarse se hace una distincion entre proceso padre (original) y el hijo (copia). De este modo, se asigna un ID al proceso padre de un proceso dado.
+UID: ID del usuario que creo al proceso, o mas especificamente, copia del UID del proceso padre para un proceso dado. Usualmente solo el creador/dueno de un proceso y el superusuario pueden manipular un proceso.
+EUID: ID efectivo de usuario, identificador usado para determinar a que archivos y recursos tiene permiso de acceder un proceso. Se utiliza esto con el fin de mantener una distincion entre 'identidad' y 'permisos'.
+GID: identificador del grupo de un proceso. 
+EGID: atributo de proceso relacionado con GID del mismo modo que EUID se relaciona con UID, es decir, se utiliza para determinar los permisos que tiene un proceso. 
+NICE: Atributo de un procesos que lo clasifica segun el tiempo de CPU que toma. Mientras menos tiempo de CPU consuma un proceso mas 'agradable' sera el proceso. 
+
+6) Explique ¿Qué es una señal? ¿Cómo le mando una señal a un
+proceso? ¿Cuál es el propósito de una señal?
+
+Una senal es una solicitud de interrupcion de un proceso. Son usadas de muchas maneras: 
+	Sirven como comunicacion entre procesos.
+	Pueden ser enviadas desde la terminar para matar, interrumpir o suspender procesos. 
+
+Una vez recibida la senal, si el proceso tiene establecida una rutina de 'handler' para esa senala especifica, entonces esta es llamada. De lo contrario, el kernel actua de forma predeterminada sobre el proceso. 
+
+Para enviar una senal a un proceso se utiliza: 
+	kill senal PID
+la senal puede ser identificada de varias formas: 
+	por nombre: kill -NAME PID
+	por numero: kill n PID
+
+7) ¿Qué es un proceso zombie? ¿Qué hace que un proceso sea zombie? 
+Cómo se elimina un proceso zombie? ¿Cómo se evita un proceso zombie?
+
+Proceso zombie: Proceso que ha finalizado pero no ha sido limpiado por su proceso padre, es decir, aun aparece en la tabla de procesos. Esto ocurre porque el proceso padre debe leer el estatus de salida de su proceso hijo. Para que esto suceda se debe producir una llamada wait del sistema. Una llamada de este tipo espera por cambios en el estado de proceso de los hijos del proceso dado. Un cambio de estado puede ser: el hijo termino, el hijo se detuvo o el hijo reanudo ejecucion. 
+
+Para eliminar un proceso zombie se utiliza: wait()
+
+8) ¿Qué es un demonio o deamon? ¿Qué función cumplen en el sistema?
+
+Es un servicio que se ejecuta en segundo plano, sin posibilidad de recibir interacion de usuario ya que no poseen interfaz grafica y que espera por la ocurrencia de un evento especifico o condicion. Son implementados como procesos que tienen como padre a root: PID=1 
+
+Generalmente los daemons se inician durante el arranque del sistema. Entre sus funciones estan ofrecer servicios a otros programas, ya sea respondiendo a peticiones que llegan a traves de la red o atendiendo a procesos que se ejecutan en el sistema.
+
+9) ¿Qué significa que un programa corra en foreground o en
+background?  ¿Cuál es la diferencia? ¿Cómo hago para pasar un programa a
+background y a foreground?
+
+Foreground - primer plano: El programa es ejecutado desde la terminal y la ocupa hasta que finalice o sea detenido. Esto ocurre cuando se ejecutan comandos de lectura de archivos, o que tengan una interfaz grafica interactiva. 
+
+Background - segundo plano: El programa es ejecutado desde la terminal pero corre en un subshell, permitiendo mantener el control de la terminal. 
+
+La principal distincion es que cuando un programa corre en el foreground, utiliza el shell de la terminal y lo controla, mientras que cuando corre desde el background, corre en un subshell del shell actual.
+
+Para ejecutar un programa y enviarlo al background se usa:  
+	bg nombre_programa
+	nombre_programa & 
+En cambio, si el programa ya esta en el foreground y se desea enviar al background se puede usar: 
+	CTRL+Z: Esto envia al programa una senal (-STOP o 19) haciendo que se detenga, pero no se cierra.
+
+Para ejecutar en el foreground, basta con escribirlo seguido de ENTER. Pero si el programa esta detenido, se usa: 
+	fg nombre_programa
+	
+10) ¿Qué son la entrada estandar (STDIN), la salida estandar (STOUT)
+y la salida de error (STDERR)? ¿Qué significan y cómo se usan los
+simbolos < , > , >> , << , | , ` , . , * en el shell?
+
+Entrada estandar: Caracateristica del shell que permite enviar mensajes hacia la terminal. Por defecto esta asociada al teclado. 
+
+Salida estandar: Caracteristica del shell por la cual los comandos ejecutados muestran un resultado en la terminal. Representa la salida de un programa ejecutado y por defecto se encuentra asociada a la pantalla.
+
+Error estandar: Mensajes que indican un problema con el funcionamiento normal de un programa emitido desde la terminal. Igual que la salida estandar, esta asociado por defecto a la pantalla.
+
+//Tanto el error estandar como la salida estandar pueden producirse como resultado de la ejecucion de un comando. 
+
+Operadores de redireccionamiento:
+
+	'comando' > 'archivo' -  Operador de sobreescritura: La sintaxis utilizada es impositiva. Funciona tomando por defecto la 'salida estandar' de un comando y enviandola a un archivo; si el archivo tiene contenido, este se sobreescribira por la salida del comando. Adicionalmente, puede modificarse el tipo de salida utilizando 'descriptores de archivo': 'a' 0> 'b' - error estandar , 'a' 1> 'b' - entrada estandar (por defecto) , 'a' 2> 'b' - salida estandar. Tambien es posible redireccionar tanto la entrada estandar como el error estandar utilizando 'a' &> 'b'.
+
+	'comando' < 'archivo': Toma el contenido de un archivo y lo envia como entrada estandar al comando. 
+
+	'comando' >> 'archivo' - Operador de 'append': Toma la salida estandar de un comando y la anade al archivo. 
+
+	'comando' << 'token' : Permita ingresar texto a la entrada estandar hasta que se escriba 'token' seguido de ENTER. Despues de esto se ejecutara el comando a la izquierda 
+
+'comando_1' | 'comando_2' - 'Pipeline' : Envia la salida estandar del 'comando_1' como entrada del 'comando_2'. Se pueden utilizar secuencia de estas 'tuberias'. Adicionalmente, si se utilizan con algun operador de redireccionamiento, se ejecuta primero la instruccion de la tuberia y luego el redireccionamiento. Otra forma de utilizarlo es 'comando_1' |& 'comando_2', en la cual tambien se envia el error estandar del comando 1 al comando 2.
+
+`comandos ` - Substitucion de comandos: Permite utilizar la lista de comandos dentro de `` como una expansion, es decir, la salida del comando es interpretada como una lista de palabras separadas por espacios en vez de un string completo de texto. 
+
+.nombre_de_directorio: al anteponer un punto al nombre de un directorio hace que este sea invisible desde la GUI del escritorio e incluso en listados usuales desde la terminal. Para poder ver directorios ocultos se utiliza ls -a.
+
+patron_opc1*patron_opc2 - globbing/expansion_de_nombre_de_destino: Este simbolo es una especie de 'indicador universal' con el cual se especifican todos los archivos en un directorio, o todos aquellos archivos en un directorio que empiecen o finalicen con el patron dado. Asi, se puede especificar a un comando como parametro, varios archivos a la vez. 
+
+
+11) Explique detalladamente la información de cada campo del
+siguiente output del comando. Lo importante son los campos (una linea), no tanto los
+archivos.
+
+[jairo@misato:/etc]$ ls -l
+total 18
+--rw-r--r-- 1 root root 3436 2006-08-09 10:28 DIR_COLORS
+--rw-r--r-- 1 root root 20 2006-10-07 21:28 HOSTNAME
+drwxr-xr-x 17 root root 1024 2006-10-08 18:28 X11/
+drwxr-xr-x 3 root root 1024 2005-01-06 18:12 acpi/
+--rw-r--r-- 1 root root 46 2006-10-12 09:54 adjtime
+--rw-r--r-- 1 root root 224 2006-03-04 09:39 anthy-conf
+drwxr-xr-x 7 root root 1024 2006-10-07 21:15 apache/
+--rw-r--r-- 1 root root 8073 2006-10-12 00:35 asound.state
+--rw-r----- 1 root daemon 144 2006-08-03 08:08 at.deny
+--rw-r--r-- 1 root root 152 2006-10-09 05:21 blkid.tab
+--rw-r--r-- 1 root root 76 2006-10-08 02:29 blkid.tab.old
+--rw-r--r-- 1 root root 1229 2006-08-11 17:56 bootptab
+drwxr-xr-x 2 root root 1024 2002-04-15 23:09 cron.daily/
+drwxr-xr-x 2 root root 1024 2006-09-18 06:17 cron.hourly/
+drwxr-xr-x 2 root root 1024 2002-04-15 22:00 cron.monthly/
+drwxr-xr-x 2 root root 1024 2002-04-15 22:00 cron.weekly/
+--rw-r--r-- 1 root root 1829 2006-09-26 00:36 csh.login
+drwxr-xr-x 5 root root 1024 2005-01-12 08:21 cups/
+
+Campos del ls -l, de izquierda a derecha: 
+
+Tipo de archivo: Indica si el archivo es un archivo regular '-' o si es un directorio 'd'. Tambien existen otros caracateres que describen archivos especiales (l: links simbolicos, b: archivoso especiales de bloque, c: archivos especiales de datos) 
+
+Bits modales: secuencia de 9 bits agrupados en grupos de 3 que representan, respectivamente, los permisos que tiene sobre un archivo el dueno del archivo, el grupo de pertenencia del archivo y el resto de los usuario. Cada secuencia puede tomar uno de los valores '-','r','w','x'.
+
+Numero de 'hard links' del archivo: Muestra la cantidad de 'hard links' o instancias del mismo archivo presentes en el sistema. 
+
+Dueno del archivo: Muestra al usuario que es dueno del archivo.  
+
+Grupo de pertenencia del archivo: Muestra al grupo al que pertenece el archivo. 
+
+Peso del archivo en bytes. 
+
+Fecha y hora de ultima modificacion del archivo: 
+
+Nombre del archivo.  
+
+
+
+12) ¿Qué es exactamente un archivo tar? ¿Como creo un archivo tar?
+¿Como desempaqueto un archivo tar? ¿En qué se diferencia de un archivo zip?
+
+Es un archivo con un formato particular que le permite almacenar otros archivos y directorios. Un archivo tar sirve simplemente para archivar cosas.
+
+Para crear un archivo tar utilizamos: 
+tar -cf nombre_archivo.tar archivos_a_empaquetar
+
+Los flags c,f son impositivos y significan respectivamente, 'create' y 'file' 
+
+Para desempaquetar un archivo tar se usa: 
+tar -f nombre_archivo.tar -x
+
+La diferencia escencial entre un archivo zip y uno tar es que si bien ambos archivan, solo zip sirve para comprimir. 
+
+13) Teniendo un archivo tar.gz o tar.bz2, ¿cuáles son los pasos para
+desempaquetar la información contenida? Mencione dos formas de
+hacerlo.
+
+para tar.gz: 
+gunzip tar.gz
+gzip -d tar.gz
+
+para tar.bz2
+bunzip2 tar.gz
+bzip2 -d tar.gz
+
+14) Dentro del shell de bash, ¿para qué sirven los siguientes archivos?
+¿Cuándo es que se utiliza cada archivo? Explique su estructura 
+básica.
+
+Cada uno de estos archivos contiene scripts de configuracion en tiempo de logeo, de modo que son leidos (la mayoria de ellos) cuando un usuario ingresa al sistema. El codigo esta en su mayoria documentado.
+
+- - .bashrc: Archivo de ambiente. En este se definen algunas variables de ambiente, atributos como la vista que tendra el prompt del shell e incluye por defecto una serie de alias definidos. Incluye tambien codigo comentado que puede ser habilitado para usarse, tambien, si se quiere, se pueden definir alias a comandos aqui. Se utiliza cada vez que el usuario se logea, pues es aqui de donde se carga su 'ambiente'. 
+- - .bash_logout: En este archivo se encuentran comandos a ejecutarse cuando se cierra una sesion de login de shell.
+- - .bash_profile: Archivo que define el ambiente particular de cada usuario del sistema. Sus comandos son ejecutados cuando un usuario inicia una sesion de login de shell. En caso de que no exista, se busca al archivo .bash_login y por ultimo .profile.
+- - .inputrc: Archivo de arranque de la libreria readline. Esta libreria se encarga de lidiar con entradas de texto cuando se utiliza un shell intercativo.
+- - /etc/profile: Archivo de arranque cuyos comandos son ejecutados cada vez que un usuario se logea en el sistema. Define el ambiente por defecto para cada usuario del sistema. 

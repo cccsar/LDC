@@ -1,0 +1,16 @@
+#######################################   Tarea - Logwatch y correo        ## Laboratorio Docente de Computacion ## Ultima Modificacion: 15/08/2016    #######################################1) ¿Qué es logwatch?2) ¿Dónde se guardan normalmente los logs en una computadora? ¿Qué logs se
+guardan en messages, dmesg, Xorg.0.log, daemon, maillog o mail.log? ¿Para
+qué pueden ser útiles?
+3)Mencione 3 cosas que debe estar muy pendiente a la hora de revisar unlogwatch. En el caso de encontrar algo, ¿qué debe hacer?
+4)Que significa el error de: **Unmatched Entries** nss_ldap: reconnectingto LDAP server... nss_ldap: reconnected to LDAP server after 1 attempt(s)
+5)Para qué sirve el archivo .forward ?
+6)Como funciona el procmail?
+7)Que es IMAP? Que son directorios suscritos al IMAP?
+8)Cuando nos referimos a correo que es un mbox y que es maildir?9)Que diferencia hay cuando uso el procmail para que los correos lleguen aun mbox y a un maildir?
+10)Como hago que pine liste los directorios que poseo suscritos en el IMAP?
+11)Como puedo usar el procmailrc para clasificar automaticamente mi correoen carpetas, en particular una como "logwatchs".
+12)Como hago para mantener una copia en mi buzon de un mail mientras loredirijo a otra direccion de correo como gmail, por ejemplo.
+13)Indique una alternativa al procmail.
+14)Filtre los logwatch que llegan a su cuenta y direcciones los mailsprovenientes de las maquinas que les tocaron para una carpeta en el mailque se llame "logs" en un directorio en arrakis y que los mails que provengan delas maquinas que NO les tocaron sean descartados.
+15)Que hacen las variables $ORGMAIL $MAILDIR
+16)Como hacer para que procmail entienda que es MAILDIR y no MBOX?

@@ -1,0 +1,106 @@
+#############################################
+# LDC - Laboratorio Docente de Computacion  #
+#					    #
+#        [Cuentas - Tarea de LDAP]          #
+#					    #
+# Fecha : 17 / 01 / 2012         	    #
+# Modificada por : Krysler Pinto            #
+# 					    #
+# Fecha: 5/10/2012			    #
+# Modificada por Michelle Fernandez	    #   
+#					    #
+# Fecha: 07/08/2014			    #
+# Modificada por Adolfo Parra		    #
+#############################################
+
+1) Que es LDAP? Que usos tiene?
+
+2) Que diferencia al LDAP de una base de datos?
+
+
+*************************************
+ Estructura y Organizacion del LDAP
+*************************************
+
+3) Que son los modelos del ldap? Que define cada uno?
+
+4) Como se organiza la informacion en el LDAP?
+
+5) Que elementos componen una entrada en un LDAP?
+
+5.1) Que distingue a una entrada de otra en un LDAP? Pueden haber dos entradas iguales?
+
+5.2) Que es un dn? Explique cada elemento que lo compone.
+
+5.3) Que es un rdn? En que se diferencia del dn?
+
+5.4) ¿Qué es un cn?
+
+5.5) ¿Qué es un ou?
+
+
+**************************
+ Interaccion con el LDAP
+**************************
+
+6) Que es un LDIF? ¿Cómo es el formato para escribir un ldif?¿Es necesario un ldif para realizar operaciones sobre un servidor ldap?
+
+7) Que es un atributo del LDAP?
+
+7.1) Explique cada atributo de su entrada en el LDAP del LDC.
+
+8) Para que sirven los objectClass? Mencione la importancia de definir uno y además la importancia del atributo objectClass. Dé ejemplos.
+
+9) Que es un schema? ¿Cómo se define un schema?
+
+10) Mencione y describa brevemente las distintas formas de autenticacion que existen con LDAP.
+
+11) Explique que es NIS. ¿Qué es un nisgroup? ¿Que tiene que ver con la forma en la que las maquinas del ldc exportan su /ldc al resto?
+
+12) Que es @maq-ldc?
+
+13) Mencione los comandos basicos de ldap y sus flags mas importantes.
+
+14) Donde esta el LDAP del LDC?
+
+15) Si realizando un ldapsearch obtengo el siguiente error: ldap_sasl_interactive_bind_s: Can't contact LDAP server (-1) y el servidor esta activo, que puede estar pasando?
+
+16) Como aseguraria que todo esta en orden antes de agregar/modificar una entrada en un LDAP?
+
+17) Explique como cambiar la clave de un usuario mediante LDIF.
+
+
+************
+ Busquedas
+************
+
+(OJO: Para cada una de las siguientes búsquedas debe incluir y explicar la linea que uso, ademas del resultado de la consulta)
+
+18) Realice la busqueda de: 
+
+	18.1) Su entrada.
+	18.2) Los ou's del LDC.
+	18.3) Todos los miembros del LDC.
+	18.4) Las tripletas de NIS del LDC.
+	18.5) Cualquier estudiante que no sea LDCista.
+
+
+******************************
+ Instalacion y Configuracion
+******************************
+
+19) Como se llama el demonio del ldap?
+
+20) Cual es el puerto del LDAP?
+
+21) Mencione los archivos que se deben modificar para configurar un servidor LDAP en Debian y Solaris.
+
+22) Existe alguna manera de verificar que la configuracion se haya realizado correctamente antes de levantar el servicio?
+
+23) Mencione los archivos que se deben modificar para lograr que una maquina autentique mediante LDAP. (En Debian)
+
+24) Cuando una maquina autentica mediante LDAP, que librerias usa?
+
+25) Como se reinicia el servicio en Debian y en Solaris?
+
+26) Que otra informacion se puede guardar en un LDAP aparte de la informacion de autenticacion? (Pista: NFS)

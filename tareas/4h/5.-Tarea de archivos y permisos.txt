@@ -1,0 +1,49 @@
+#################################################
+#          TAREA ARCHIVOS Y PERMISOS            #
+#           Modificacion: 15/08/2016     	#
+#	    Autor: Gustavo Elkoury		#
+#################################################
+
+0. Â¿QuÃ© Es Un Archivo?: 
+
+1. Describe Los 7 Tipos de Archivo Que Existen En Unix. Enuncie con QuÃ© Comando Se Crea Cada Uno Y Con QuÃ© Comando Se Destruye: 
+
+2. Explique Lo Que Significa La Permisologia rwx En Un Archivo Y En Un Directorio. Haga La Relacion Entre Ellos En Letras, Octal Y Binario.
+
+3. Â¿QuÃ© Es el Sticky Bit? Â¿Para QuÃ© Sirve? Â¿DeberÃ­a Utilizarse En el LDC?
+
+4. Â¿QuÃ© significan los permisos SetUID y SetGUID? Â¿CÃ³mo se relaciona esto con el sticky bit y la representaciÃ²n en binario de los permisos, visto en la pregunta 2?
+
+5. De los comandos en Linux, Â¿cÃºal de ellos utiliza constantemente la funciÃ³n de SUID?
+
+6. Â¿Para QuÃ© Sirven Los Siguientes Comandos?:
+
+	$ chmod g+x algo
+
+	$ chmod ug=o algo
+
+	$ chmod a+w algo
+
+	$ chmod u+s algo
+
+	$ chmod u=g,o=u-w algo
+
+7. Â¿CuÃ¡les son las principales ventajas y desventajas entre el sistema de permisos de Windows y el de Linux? (Pista: Windows tiene un sistema pobre de permisos, pero investiguen ACL)
+
+8. Â¿QuÃ© puedo hacer para distribuir permisos de manera intependiente para cada usuario en Linux?
+
+9. Â¿QuÃ© Es umask??:  
+	a) Â¿CÃ©mo Se Utiliza?: 
+	b) Â¿QuÃ© RelaciÃ³n Tiene Con chmod?: 
+	c) Â¿umask Se Mantiene Para Siempre O Para Un Shell EspecÃ­fico?: 
+	d) Â¿umask Es Para Un Directorio EspecÃ­fico O Es Recursivo?? CÃ³mo Funciona?: 
+	e) Â¿QuÃ© Hacen Los Siguientes Comandos?:
+
+		$ umask: 
+		$ umask a=rx,ug+w: 
+		$ umask 002: 
+		$ umask -S: 
+		$ umask --w
+
+	f) Â¿Es Necesario O Ãºtil En el LDC??: 
+

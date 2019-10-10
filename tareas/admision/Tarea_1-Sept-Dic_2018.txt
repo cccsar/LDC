@@ -1,0 +1,354 @@
+#################################################################
+#				Universidad Simón Bolívar			 			#
+#       	Laboratorio Docente de Computación			 		#
+#				Admisión Septiembre - Diciembre 2018			#
+#################################################################
+
+							Tarea 1
+
+Fecha tope: Viernes Semana 7 (09/11/18)
+
+##################################################################
+
+1) ¿Qué es un sistema de operacion? ¿Qué es el kernel? ¿Qué son dispositivos de almacenamiento?
+¿Qué es la memoria RAM? ¿Qué es la memoria ROM?
+
+ S.0.: Programa que administra el hardware de una computadora, tambien proporciona las bases para los programas de aplicacion y actua como intermediario entre el usuario y el hardware de la computadora. El mismo provee una interfaz de usuario facil de manejar que evita que el mismo tenga que encargarse de tareas de bajo nivel. Además el sistema de operación administra en forma eficiente los recursos entre los usuarios que los solicitan, asignando los recursos disponibles de forma justa y eficiente.
+
+  Kernel: En un sistema operativo, componentes principales del programa que residen en la memoria y llevan a cabo las principales tareas del sistema operativo, como la gestion de la comunicación entre el software y el hardware (incluyendo placa base, procesador, memoria, unidades de almacenamiento y dispositivos periféricos),  y el manejo de memoria interna.
+
+  Dispositivos de almacenamiento: Cualquier dispositivo utilizado para almacenar informacion permanente o temporalmente. El dispositivo puede ser externo a la computadora, o venir incorporado con ella. De manera basica y general, estos dispositivos se clasifican en:
+	primarios: Permiten almacenar poca cantidad de informacion, y estan disenado para que esta se mantenga por periodos de tiempo cortos. Un ejemplo de esto es la memoria RAM. 
+	secundarios: Tienen una mayor capacidad para almacenar informacion y lo hacen de manera permanente. Estos pueden, o no, estar incorporados al CPU. Ejemplos son: unidades USB, discos duros, entre otros.
+
+  Memoria de Acceso Aleatorio o Memoria de Lectura/Escritura: es la memoria principal de una computadora, en la cual se guardan instrucciones y datos de programa para que el CPU pueda acceder a ellas . La mayoría de los programas destinan RAM como espacio de trabajo temporal para guardar datos, lo que permite hacer las modificaciones necesarias a la información hasta que esta esté lista para guardarse en un medio de almacenamiento secundario (Por lo general el disco duro). 
+La RAM no retiene su contenido una vez que el usuario apaga la computadora.
+
+  Memoria de sólo lectura: parte del almacenamiento principal de una computadora que no pierde su contenido cuando se corta el flujo de energía eléctrica. Contiene programas escenciales que ni el usuario ni la computadora pueden borrar. Como la memoria interna está en blanco al encender la computadora, no puede ejecutar ninguna función a menos que se le indiquen las instrucciones de arranque, que están contenidas en la ROM.
+
+Explique los siguientes términos de la definición de un sistema de operación:
+
+    - multitarea
+    - monotarea
+    - multiusuario
+    - monousuario
+
+    - multitarea: Sistemas en los que el CPU ejecuta multiples procesos cambiando constantemente entre ellos. Dado que esto ocurre con mucha frecuencia, el usuario puede interactuar con cada programa mientras es ejecutado.
+    - monotarea: Sistema operativo que permite la ejecución exclusiva de una tarea a la vez. Ejemplo de esto es el antiguo MS-DOS. 
+    - multiusuario: Sistema que puede ser usado por varias personas para tener acceso a programas e información al mismo tiempo.  La idea de esto es compartir recursos de almacenamiento, procesamiento y perifericos varios.
+    - monousuario: Sistemas que solo permiten atender a un usuario a la vez independientemente de la cantidad de procesadores o el numero de procesos que se puedan ejecutar en un mismo instante de tiempo. Dentro de esta clasificacion recaen las computadoras personales.
+
+2) Describa brevemente en qué consiste la arquitectura de un computador. Explique brevemente las arquitecturas:
+Alpha, x86, x86_64, SPARC, MIPS, POWER, ARM.
+
+Arquitectura del computador: Diseño conceptual (Desktop, MainFrame, Laptop, Teléfono, ect) y estructura operacional fundamental de un sistema de de computadoras. Esto último hace referencia a una descripción funcional de los requerimientos e implementaciones de diseño para varias partes de una computadora,con especial interés en cómo el CPU trabaja internamente y accede a direcciones de memoria.  
+*x86: Familia de procesadores de Intel que agrupa a aquellos compatibles con las instrucciones de Intel 8086
+*x86_64: Versión de 64 bits de la familia de procesadores x86.
+*SPARC: Arquitectura de tipo RISC (Conjunto de instrucciones reducidas) desarrollada por Sun Microsystems en 1985.
+*MIPS: Familia de procesadores de tipo RISC desarrollada por MIPS Technologies.
+*POWER: Arquitectura de tipo RISC desarrollada por IBM. En inglés su nomre es un acrónimo que quiere decir: 'Optimización de desempeño con RISC mejorado'.
+*ARM: Arquitectura de tipo RISC desarrollada por ARM holdings.
+
+3) ¿Qué es Unix? ¿Quién lo desarrolló? ¿Cuáles son las variantes más conocidas y de dónde provienen?
+
+	Unix: Sistema operativo no libre para una amplia variedad de computadoras, desde mainframes hasta computadoras personales, que soporta multitareas y resulta especialmente apropiado para aplicaciones multiusuario. Fue desarrollado por un grupo de empleados de laboratorios Bell.
+
+	Entre las variantes más conocidas actualmente están: Oracle Solaris, originalmente conocido como opensolaris y desarrollado por Sun Microsystems, adquirió su nuevo nombre cuando la compañía fue comprada por Oracle. FreeBSD, proyecto desarrollado por el Computer System Resarch Group de la universidad de Berkeley.  Finalmente, AIX variación de UNIX para las máquinas de IBM basado en BSD 3 (proyecto derivado de UNIX desarrollado por la universidad de Berkeley)
+
+4) ¿Qué es GNU/Linux? ¿Cómo encaja GNU/Linux con Unix? Nombre tres distribuciones de GNU/Linux
+
+Es un sistema operativo libre de tipo UNIX caracterizado por ser multiplataforma, multiusuario y multitarea. Se relaciona con Unix por ser el resultado de un proceso largo de creación. En 1984 Richard Stallman crea el Proyecto GNU y en 1985 crea la Free Software Foundation, con el objetivo de conseguir colaboradores para su proyecto. Tiempo después, en 1991 Linus Torvalds crea el núcleo Linux y este se integra con el progreso de ese momento del proyecto GNU para concebir lo que hoy en día conocemos como GNU/Linux (y de forma incorrecta linux).  Entre sus distribuciones más populares están Arch linux, debian y ubuntu.
+
+5) ¿Qué es software libre? ¿Qué es Open Source? ¿Qué es Copyleft?
+
+  Software Libre: Software que respeta las cuatro libertades establecidas por la Free Software Foundation, la libertad de que todos los usuarios que adquirieron el producto puedan usarlo, copiarlo, estudiarlo, modificarlo y redistribuirlo libremente de varias formas. Si bien es una concepción que promueve libertades, esto no hace al programa necesariamente gratuito, es decir, puede ser distribuido comercialmente.
+
+  Open Source: Expresión con la que se conoce al software desarrollado y distribuido libremente. Este movimiento se enfoca más en los beneficios prácticos como acceso a código fuente. Su premisa es que al compartir el código, el software obtenido tiende a tener una calidad superior al software propietario. 
+
+  Copyleft: Practica legal que consiste en el ejercicio del derecho de autor con el objetivo de propiciar el libre uso y distribución de una obra, exigiendo que los concesionarios preserven las mismas libertades al distribuir las copias y sus derivados.
+
+5) ¿Qué es un shell? ¿Cuáles son los shell más comunes? ¿Cómo se que shell estoy usando en una máquina?
+
+  Shell: Interfaz de usuario para acceder a los servicios de un sistema operativo. En general se utiliza o un shell de linea de comando o un shell de interfaz gráfica dependiendo del rol de una computadora en una determinada operación. Se llama así por que es la capa más externa alrededor del kernel del sistema operativo.
+ 
+  Entre los shell más comunes se encuentran csh, shell con una sintaxis similar a la del lenguaje de programación c, MS-DOS shell de windows y finalmente bash, shell de linux.
+
+  Para saber que shell se está usando en distribuciones de GNU/Linux simplemente se coloca en la terminal echo $SHELL. 
+
+6) ¿Qué es un intérprete de comandos (CLI)? ¿Qué es un comando? ¿Qué es un flag?
+
+  CLI: Shell de sistema operativo que utiliza caracteres alfanuméricos escritos en el teclado para dar instrucciones y datos al sistema operativo de forma interactiva.
+
+  Comando: Programa informático interpretable por el shell que cumple instrucciones preestablecidas en base a entradas de argumentos y opciones.
+
+  flag: Parámetro opcional que al ser ingresado modifica el comportamiento de un comando.
+
+7) ¿Qué hace el comando man? ¿Cómo puedo encontrar todas las páginas que contienen una palabra clave usando man?
+	
+	Permite buscar documentacion organizada sobre comandos que son ingresados como argumentos. Muestra informacion como comandos asociados, la sintaxis del comando, funcionamiento y funcionamiento de sus opciones. Todos esto lo hace conla vista de una pagina continua que se extiende hasta el final del documento. 
+
+Para hallar todas las paginas de man que contienen una palabra clave se puede usar: apropos keyword o man -k keyword. Ambos comandos mostraran una lista de comandos junto con una pequena descripcion de los mismos.
+
+8) Explique cuál es la utilidad de los siguientes comandos, asi como de sus flags (mínimo 2):
+
+- - - cd: Comando incorporado en el shell que permite cambiar entre directorios.Recibe como argumentos la direccion del directorio destino considerada desde el directorio actual, o la direccion del directorio destino desde el root.
+
+**flags: 
+	*-: Regresa al ultimo directorio en el que se estuvo.
+	*..: Se dirige al directorio que se encuentra un nodo por debajo del actual.
+
+- - - ls: Enlista los archivos presentes en el directorio actual.
+
+**flags: 
+	*-l: Enlista los siguientes campos: tipo de archivo, permisologia del archivo, numero de links simbolicos del archivo, nombre del usuario que es dueno del archivo, nombre del grupo que es dueno del archivo, tamano del archivo en kilobites, fecha de ultima modificacion del archivo, hora de la ultima modificaciondel archivo y nombre del archivo.
+	*-a: Muestra todos los archivos, incluyendo los que estan ocultos (aquellos cuyo nombre empieza por '.').
+	*-F: Clasifica a los archivos enlistados en archivos ordinarios y direcctorios, anadiendole al final de cada directorio el simbolo '/'.
+	*-d argumento: Junto con el flag '-l' muestra la descripcion en formato largo de solo el archivo especificado como argumento.
+	*-r: Enlista los archivos en orden inverso (el orden convencional de listado es creciente).
+	*-t: Enlista a los archivos por fecha y hora de ultima modificacion.
+
+- - - pwd: Muestra el direcctorio actual.
+ 
+**flags: 
+	*-L: Imprime el valor de la variable $PWD si esta nombra al directorio actual.
+	*-P: Imprime el nombre del directorio fisico, sin links simbolicos. 
+
+- - - mkdir: Permite crear directorios.
+
+**flags: 
+	*-m modebits name: Permite crear el archivo y adicionalmente asignarle la permisologia, es decir, indicar utilizando notacion octal quienes tienen permisos (lectura, escritura, ejecucion) sobre el archivo y que tipo de permisos.
+	*--verbose: Imprime un mensaje por cada directorio creado.
+
+- - - rm: Permite eliminar archivos y directorios.
+
+**flags 
+	*-r directory_name: elimina cada elemento presente en el directorio dado como argumento. Este flag es necesario para eliminar cualquier directorio.
+	*-i : Consulta al usuario antes de eliminar cada directorio. 
+	*-d empty_directory: Permite eliminar directorios vacios.
+
+
+- - - cp: Sirve para copiar directorios o archivos.
+
+**flags: 
+	*-r directory_name: Copia de manera recursiva el contenido de un directorio.
+	*-i: Solicita confirmacion para copiar los archivos seleccionados.
+	*-v: Imprime un mensaje cada vez que copia un archivo.
+	*-u: Copia solo aquellos archivos que no se encuentra en el directorio destino. 
+
+- - - mv: Permite mover archivos de un directorio a otro asi como renombrar archivos. 
+
+**flags: 
+
+- - - tail: Regresa las ultimas 10 lineas de un archivo de texto. De recibir varios argumentos, cada uno debe llevar un encazado por el que sera identificado una vez sea ejecutado el comando. 
+
+**flags: 
+	*-n numero: Permite ajustar el numero de lineas que seran devueltas por el comando. 	
+	*--follow=[name]: Sigue el crecimiento de un archivo mostrando las lineas nuevas a medida que el archivo crece. Para ello debe especificarse el nombre del archivo como 'name'
+	*-s numero: En combinacion con '--follow', permite modificar el tiempo de espera en segundos, entre cada actualizacion.
+	*-c numero: muestra el texto correspondiente a los ultimos n-bytes del archivo. 
+
+- - - head: Regresa las primeras 10 lineas de un archivo de texto.
+
+**flags: Exactamente los mismos que para el comando 'tail' con la diferencia de que se condisera el comienzo del archivo.
+
+- - - more: Programa antiguo que permite ver archivos como si fueran una unica pagina que se extiende sobre todo el archivo.
+
+**flags: 
+	*-number: Permite establecer el tamano de la pantalla.
+	*-c: Evita que, al desplazarse hacia abajo en la pantalla, no la desplaze si no la pinte de nuevo en cada caso.
+	*-u: elimina el subrayado.
+
+- - - less: Programar pager que permite ver a los archivos de texto como si fueran una unica pagina extendida sobre la longitud del archivo.
+
+**flags: 
+	*u: permite desplazar media pantalla hacia arriba. 
+	*d: permite desplazar media pantalla hacia abajo. 
+`	*w: permite desplazar una pantalla completa hacia arriba.
+	*ESPACIO: permite desplazar una pantalla completa hacia abajo. 
+	*h: permite ingresar a la ayuda de less para revisar las opciones disponibles.
+	*/termino: permite buscar el termino ingresado en el archivo. Adicionalmente, si se presiona 'n' mostrara la proxima incidencia del termino buscando. 
+
+- - - cat: Recibe archivos de texto como argumento e imprime a la salida estandar su contenido. En caso de no tener argumentos, lee desde la entrada estandar (teclado). Es util como complemento para secuencias de comandos en las que se usa redireccionamiento.
+
+**flags: 
+	*-n: Enumera las lineas de salida.
+	*-b: Enumera las lineas no vacias.
+	*-E: muestra el simbolo '$' al final de cada linea.
+
+- - - grep: Permite buscar 'regex' (expresiones regulares), especie de comodines que sirven como patron de busqueda. 
+
+**flags: 
+	*-w regex: Busca exactamente las palabras que coindicidan completamente con la regex dada.
+	*-i : Ignora la distincion entre mayusculas y minusculas. 
+	*-v : Invierte el criterio de busqueda, de manera que se buscaran aquellas lineas que no coincidan con el patron buscado.
+
+- - - ps: Muestra una tabla que enlista los siguientes campos sobre procesos de un sistema: PID (identificador de un proceso), terminal controladora (hace referencia a la terminal desde la cual se ejecuto el proceso; en caso de observar '?' debe entenderse que el proceso no es controlado por una terminal), tiempo del CPU que toma el proceso y finalmente nombre del comando que evoco al proceso.
+
+**flags: 
+	*-C comando: Solo mostrara los campos para el comando espeficado como argumento. 
+	*-o encabezado=nombre : muestra solo el campo solicitado como encabezado, y permite modificar su nombre al asignarlo con '='.
+	*-t : Selecciona unicamente procesos asociados con la terminal actual y adicionalmente, muestra el estatus de los procesos.
+
+- - - kill: Comando que envia senales a procesos. Entre sus usos mas comunes estan finalizar la ejecucion de un proceso o hacer que continue. Adicionalmente, es posible indicar a que proceso se envia una senal utilizando su PID (identificador unico de los procesos de sistemas Unix) o un jobspec (identificador de trabajos iniciados desde la terminal). A su vez, es posible indicar que senal se enviara, por el nombre de la senal o el numero de la senal. 
+
+**flags: 
+	*-l: Muestra una lista ordenada de las senales.
+	*-L: Enlista las senales en una tabla ordenada.
+	*-s SENAL: permite enviar la senal especificada 
+
+- - - chmod: Permite indicar los bit de modo de un archivo determinado. Esto es, permite indicar la permisologia que tendran los usuarios de un sistema sobre ese archivo. Acepta dos formas de indicar la permisologia: octal y simbolica. La notacion simbolica utiliza u,o,a para indicar los permisos del dueno del archivo, resto del 'mundo' (Usuarios distintos al actual y que no pertenecen a su grupo) y a todos respectivamente. 
+
+**flags: 
+	*-R: Cuando es aplicado sobre un directorio, modifica los bit modales de todos los subdirectorios y archivos presentes en el. Es decir, cada archivo que se encuentre en el directorio dado como argumento tendra su misma permisologia.
+	*-v: Muestra los cambios realizados, o un mensaje de error.
+
+- - - chown: Permite indicar el usuario y el grupo de pertenencia de un archivo determinado. Para ello se debe tener permiso de superusuario. Lo mencionado se realiza colocando el nombre de usuario o su UID seguido de ':' y el nombre de un grupo o GID. No todos estos campos son requeridos.
+	*-R: modifica la pertenencia de todas las subcarpetas de la carpeta especificada.
+	*-h: Afecta solo a los links simbolicos en vez de cualquier archivo referenciado.
+	*--from=dueno_actual:grupo_actual : Cambia el grupo y/o grupo del archivo especificado si y solo si pertenencen a dueno_actual y/o grupo_actual.
+
+- - - umask: A traves de notacion octal, permite modificar la mascara de bits por defecto de los archivos creados. Es decir mediante una descripcion en octal de algun tipo de permisologia, nos permite establecer los permisos que tendran pordefecto los archivos creados. 
+
+- - - bg: Permite mover un proceso de primer plano al segundo plano. Es decir, el estado del proceso pasa a ser detenido.
+
+- - - fg: Permite mover un proceso detenido al plano principal. Esto quiere decir que el estado del proceso cambia de detenido a activado. 
+
+- - - jobs: Imprime los trabajos iniciados por la terminal usada con los siguientes campos: jobspec, estado del proceso, nombre del comando que lo llamo.
+
+**flags: 
+	*-l : Enlista adicionalmente el id del proceso a la tabla que se genera normalmente como salida. 
+	*-r: Muestra solo los procesos que estan activados. 
+	*-s: Muestra solo a los procesos detenidos. 
+	*-p: Enlista solo a los id de los procesos.
+
+- - - top: Imprime una tabla con una descripcion en tiempo real de los procesos llevados a cabo por el sistema. La tabla se actualiza en intervalos regulares de tiempo. 
+	*-n numero: Permite establecer el numero de iteraciones o actualizaciones que hara la salida de top, antes de que se detenga
+	*-d tiempo: Permite establecer el tiempo en segundos de los intervalos de cada iteracion. 
+	*-o campo: Permite modificar el orden en el que se mostraran los filas en base a la salida del campo especificado. Si se anade un '+' antes del campo, lo hace en orden decreciente, lo contrario sucede si se anade '-'.
+
+
+9) ¿Qué contienen los archivos /etc/passwd y /etc/shadow? Explique todos sus campos.
+¿Cómo se editan estos archivos?
+
+/etc/passwd: Archivo que contiene los siguientes campos para cada usuario del sistema (y algunos pseudousuarios tambien): 
+
+**login/user name: Nombre que identificara al usuario, debe ser uno y no poseer mas de 32 caracteres. Adicionalmente, no puede contener espacios ni puntos.
+
+**Apuntador a la contrasena: Este campo contiene una referencia a su homologo en el archivo /etc/shadow. La razon de esto es que el archivo /etc/passwd es de solo lectura para todo usuario, asi, si se coloca un string encriptado de la contrasena en el, este seria visible y suceptible de crackeo. 
+
+Esta referencia esta dada por varios 'comodines': 
+	x: Simplemente apunta al campo de shadow.
+	*: Impide uso no autorizado de la cuenta hasta que la contrasena sea establecida.
+	!: 
+
+**UID: id del usuario, numero de 32 bits que identifica al usuario. Por defecto el root tiene el UID 0 mientras que bin tiene UID 1 y daemon tiene UID 2
+
+**GID: id del grupo por defecto al que pertenecera el usuario. Tambien es un entero de 32 bits
+
+**informacion del GECOS: Informacion adicional, comprende los campos: nombre, numero de oficina, extension, casa y telefono.
+
+**Home: Nombre del home del usuario. Por convencion se le asigna el mismo nombre del usuario.
+
+**Shell de inicio de sesion: Interprete de linea de comando como bash, de hecho, bash es el que esta establecido por defecto.
+
+/etc/shadow: Contiene los siguientes campos: 
+
+**login/user name: Exactamente igual que en /etc/passwd
+
+**contrasena encriptada: Contiene un string encriptado que corresponde a la contrasena del usuario, con algun anadido, pasada por un algoritmo de encriptamiento.
+
+**Fecha desde el ultimo cambio de contrasena: Corresponde al tiempo UNIX (numero de dias desde el 1 de Enero de 1970), y es llenado por el propio sistema desde el ultimo cambio de contrasena.
+
+**Minimo de dias de duracion de la contrasena: En este campo es recomendable colocar 0, para que el usuario pueda cambiar la contrasena cuando lo desee.
+
+**Maximo de dias de duracion de la contrasena: Corresponde al periodo de vida de la contrasena. En la mayoria de sistemas se establece por defecto a 99999.
+
+**Numero de dias antes de cambiar la contrasena para confirmar al usuario que debe cambiarla
+
+**Numero de dias luego de que la contrasena expira, para desactivar la cuenta. 
+
+**Fecha despues del periodo maximo de vida de la contrasena para desactivar la cuenta: De nuevo, este campo debe ser colocado en tiempo UNIX.
+
+**Campo adicional: Siempre se deja en blanco, y existe para anadir algun nuevo campo de ser necesario.
+ 
+10) ¿Qué es vim? ¿Cuales son los comandos basicos para usar vim? 
+¿Cómo transfiere datos entre vim y un comando? ¿Cómo copia en vim?
+
+Editor de texto modal, esto quiere decir que facilita varios modos de edicion de texto: modo normal, modo de linea de comandos, modo visual y modo de insercion (entre otros). 
+
+Comandos basicos: Todo comando en vim, para ser reconocido como tal, debe ser ejecutado anteponiendole ':', esto permite entrar en modo de linea de comandos.
+	*:w permite guardar el archivo de texto
+	*:q permite salir de vim. De no haber guardado cambios lo impide.
+	*:q! forza la salida de vim, sin anadir cambiso.
+	*:e permite agregar algun archivo adicional para editar
+	*:r permite anadir al archivo, el texto contenido en otro archivo especificado.
+
+Para transferir datos entre un commando y vim se hace: 
+	:r! commando argumentos
+De este modo, la salida del comando sera agregada en la posicion actual del cursor.
+
+Para copiar, se debe entrar a modo normal y escribir 'y' seguido del copiado deseado: 
+	$ si se desea copiar desde la posicion del cursor hasta el final de la linea
+	0 si se desea copiar desde la posicion del cursor hasta el comienzo de la linea
+	y si se desea copiar toda la linea
+
+11) ¿Que es una cuenta en Linux? ¿Qué es un grupo? ¿Cómo se encripta una cadena de texto? 
+
+Entidad informatica que asigna a los usuarios de un sistema acceso a las funciones del sistema operativo asi como la posibilidad de administrar, leer, modificar y ejecutar archivos a los que tiene acceso.
+
+Conjunto de usuarios que comparten privilegios en un determinado sistema informático.
+
+Para encriptar una cadena de texto se debe utilizar algun algoritmo de encriptamiento, por ejemplo, aquellos incluidos en el comando openssl. Un ejemplo de encriptamiento seria: openssl sha256 cadena_de_texto
+
+Por otro lado, para encriptar una contrasena, debe utilizarse alguna utilidad que se valga de los mismos algoritmos de encriptamiento mencionados antes y adicionalmente anada al string de la contrasena, de manera aleatoria, algo que la haga 'casi unica'. De lo contrario, como un algoritmo produce una salida unica para el string que recibe como argumento, la contrasena podira, de algun modo, ser deducida.
+
+Asi, para encriptar una contrasena, podemos utilizar un comando como mkpsswd así: mkpsswd contraseña y este regresara la cadena de texto encriptada.
+
+12) ¿Como creo una cuenta local en Linux sin el uso de los comandos useradd o adduser? 
+Indique los pasos con detalle, es decir, archivos a editar, comandos a usar y el orden que se debe seguir.
+
+Para lograr cada paso a mencionar, deben poseerse privilegios de superusuario.
+
+--Editar los archivos /etc/passwd, /etc/group y /etc/shadow: 
+
+Primero, debemos hacer: 'sudo vipw' lo que nos permitira acceder a una copia del archivo /etc/passwd y adicionalmente, evitara que cualquier otro usuario con los privilegios necesarios, lo modifique simultaneamente.Con esto podremos anadir los campos necesarios para la creacion de un nuevo usuario. Agregamos una linea como la siguiente: 
+
+nombre_login:*:1001:1001:nombre_login,,,:/home/nombre_login:/bin/bash
+
+Como convencion se asigna al primer campo del GECOS el mismo nombre del login igual que al nombre del home del usuario, pero hace falta aclarar que podrian ser distintos. 
+El motivo por el cual se utiliza el signo '*' en el campo que hace referencia a la contrasena, es para evitar uso no autorizado de la cuenta hasta que esta este creada por completo. 
+
+Luego, se modifican los campos en el archivo /etc/shadow, usando 'sudo vigr -s', haciendo enfasis en el uso de un algoritmo de encriptamiento para el campo de la contrasena encriptada, y en la asignacion adecuada de los campos que requieren tiempo UNIX. Ademas, es convencional establecer el campo de 'minimo de dias de duracion de la contrasena' a 0 y el de 'maximo de dias' a 99999. En el archivo /etc/shadow, anadimos lo siguiente: 
+
+nombre_login:sdfdsfsdfsdfdsf::0:99999:7:5:17777: 
+
+La cadena sdfsdfsdfsdfsdfsdf hace referencia a la contrasena encriptada, para anadirla desde vim utilamos, en modo comando: 
+:r! mkpasswd
+despues de lo cual ingresamos la respectiva contrasena. 
+
+Luego de esto, utilizamos 'sudo vigr' o 'sudo vipw -g' para anadir al grupo de pertenencia del usuario. La linea a ingresar sera del tipo: 
+
+nombre_login:x:1001: 
+
+Como es visible, asignamos al grupo el mismo nombre que al usuario y hacemos lo mismo con el GID. 
+
+En caso que se desee, se puede modificar la carpeta 'shadow' del grupo, para anadirle una contrasena. Para ello se usa el comando 'sudo vigr -s' y se anaden los campos respectivos
+
+--Crear el home del usuario, modificar su permisologia y mascara de bits por defecto, y traer los archivos de muestra: 
+
+Para esto hacemos: 'cd /home ; mkdir nombre_login ; chmod -R 774 nombre_login; chown -R nombre_login:nombrelogin nombre_login' 
+
+Como ya se dijo, se crea por convencion el home del usuario con el nombre del login, dado que por lo que fue puesto en el archivo /etc/passwd, este lo reconocera como tal. Asignamos los bitmodales del home del usuario y todas las subcarpetas que vayan a existir utilizando la opcion -R del comando chmod. Del mismo modo, hacemos al usuario dueno de su home, junto con todas sus subcarpetas utilizando la opcion -R del comando chown.
+
+Luego, para finalizar, nos dirigimos a /etc/skel para traer los archivos de arranque, haciendo: 
+'cd /etc/skel ; cp .* /home/nombre_login '
+
+--Verificar la cuenta: 
+
+Por ultimo y para verificar que todo haya ido bien, debemos iniciar sesion como el usuario para verificar que se hayan anadido todos los archivos traidos, asi como que los archivos nos pertenezcan. Para ello: 
+
+'su -l nombre_login ' .. ingresamos contrasena .. 'ls -l ' verificamos la permisologia y pertenencia y la presencia de los archivos de arranque. 
+
+13) Describa la estructura organizacional y laboral del LDC. Mencione las funciones de cada jerarquía y 
+grupo de trabajo, así como sus integrantes.
+

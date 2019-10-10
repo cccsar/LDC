@@ -1,0 +1,17 @@
+Introduccion sobre: 
+
+Presentacion(??)
+Sistemas operativos - kernel - dispositivos de almacenamiento (memoria ppal y secundaria) 
+Unix - GNU/linux - distros - software libre - open source 
+shell -  CLI - man y comandos 
+
+(cd - ls - pwd - mkdir - rm - cp - mv - tail - head - more - less - cat - grep - ps ) 
+Juego/Ejercicio(??)
+Por cada comando de la tarea 1 se les da una breve explicacion y se les deja manipularlo, revisar la documentacion de man, e incluso se dan ejemplos (muy basicos) de su uso.
+
+Luego, con un playground de directorios (ya creado) que estara en las pc's en las que se encuentren los aspirantes, se les pedira que busquen archivos ocultos en el mismo haciendo uso de los comandos dados. Esto es una imitacion de lo que se hizo en la bienvenida de los cohorte 17, con la diferencia de que cada archivo contiene pistas de usos sofisticados de otros comandos, con los que pueden encontrar con mayor facilidad los archivos siguientes, o cosas para despistarlos. Al final se quiere que no sean capaces de encontrar todos los archivos, porque la dificultad del ejercicio se los limita.
+
+La idea de esto es que vean por cuenta propia lo que son capaces de hacer con lo poquito que aprendieron, que sepan que existen aplicaciones mas complejas a lo que apenas estan empezando a ver y se familiaricen con ellas, y que empiecen a notar que no importa que tanto aprendan siempre podrian aprender mas.
+
+Modelo: 
+Se me ocurre, igual que en la bienvenida, crear un arbol de direcctorios con archivos, (tanto ocultos como visibles) y links simbolicos que se llamana recursivamente para despistar... 

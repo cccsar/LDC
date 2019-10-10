@@ -1,0 +1,68 @@
+################################################################################
+#                               Tarea de Backups                               #
+#                     Fecha de Entrega: Viernes 16-11-2012                     #
+#                  Tarea tradicional del LDC, modificada por:                  #
+#                                 Paul Baptista                                #
+################################################################################
+
+1. ¿Qué es dump? ¿Cómo se hace un dump remoto? ¿Qué significan los niveles de un
+dump?
+
+################################################################################
+
+2. ¿Qué es restore? Indique 4 flags importantes. Explique paso a paso cómo se 
+hace un restore de un backup ya hecho.
+
+################################################################################
+
+3. ¿Para qué sirve el comando mt? ¿cómo rebobino una cinta con mt? ¿Cómo puedo
+seleccionar la densidad que deseo usar ́para escribir en la cinta? Indique otros
+4 modificadores utiles de mt con sus respectivas explicaciones
+
+################################################################################
+
+4. ¿Qué es bacula? ¿Cuál es su utilidad? Explique brevemente los archivos de
+configuración y diga lo necesario de cada uno.
+
+################################################################################
+
+5. ¿Cómo está compuesto bacula? ¿Cuántos demonios son necesarios para hacer
+funcionar el servicio? Explique brevemente el rol de cada uno de ellos.
+
+################################################################################
+
+6. Explique brevemente ¿cómo hacer un restore en bacula?
+
+################################################################################
+
+7. ¿Que es amanda? Cuales son sus archivos de configuracion?
+
+################################################################################
+
+8. ¿Cuales son las ventajas y desventajas de utilizar Amanda en vez de Bacula?
+
+################################################################################
+
+9. ¿Que ventajas tiene utilizar bacula mediante ssh?
+
+################################################################################
+
+10. ¿Cómo se hace un backup de una base de datos Mysql o PostgreSQL?
+
+################################################################################
+
+11.	¿Cómo se restauraría una bases de datos respaldada con las utilidades que
+	usó para responder la pregunta anterior.
+
+################################################################################
+
+12.	¿Que sistema de backups se utiliza en el LDC?
+
+################################################################################
+
+13. Que dispositivos se usan para almacenar los backups, de los mismos mencione:
+			- su capacidad de almacenamiento
+			- velocidad de transferencia
+			- ventajas y desventajas sobre otros dispositivos de almacenamiento...
+
+################################################################################

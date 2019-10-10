@@ -1,0 +1,48 @@
+############################
+		Tarea de filtros
+		y expresiones regulares
+	Autor: Adolfo Parra
+	Fecha:	12/08/2014
+############################
+
+1) Busque y escriba 3 flags de los siguientes comandos:
+	a) cat
+	b) fmt
+	c) join
+	d) pr
+	e) split
+	f) unexpand
+	g) cut
+	h) head
+	i) nl
+	j) sed
+	k) tail
+	l) uniq
+	m) expand
+	n) od
+	o) paste
+	p) sort
+	q) tr
+	r) wc
+	
+2) ¿ Qué es el redireccionamiento de un comando ? ¿ Qué es stdin, stdout, 
+stderr y como se redireccionan ? 
+
+3) ¿ Qué es un pipe | ?
+
+4) ¿ Como enviara la salida de un comando a un archivo y al stdout ?
+
+5) ¿ Que es tee ?
+
+6) ¿Qué es una expresion regular ? ¿ Cuales son sus caracteres especiales y 
+cual es el significado de cada uno ?
+
+7) ¿ Cual es la diferencia entre grep y egrep ?
+
+8) Con sed como hago:
+	a) Sustituyo una palabra por otra
+	b) Sustituyo todas las palabras encontrada por otra
+	c) Como borro una linea en especifico
+	d) Como duplico una palabra
+	e) Como hago para cambiar apartir de la segunda ocurrencia
+	f) Como hago para cambiar todas a partirde la tercera ocurrencia

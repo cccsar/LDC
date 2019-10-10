@@ -1,0 +1,46 @@
+######################################
+#   		Tarea - Correo           #
+# Laboratorio Docente de Computacion #
+# Ultima Modificacion: 15/08/2016    #
+######################################
+
+
+##############################Preguntas###################################
+
+1) Cuales son los elementos de un sistema de correo? diga un ejemplo de cada uno.
+
+2) Como se almacenan los correos en el servidor? Cuantas maneras existen? digalas y expliquelas.
+
+3) Haga un peque??o cuadro de ventajas y desventajas de usar mailbox vs usar maildir. Que usamos en el ldc y porq?
+
+4) Que es SMTP? Que es postfix y como funciona? cuales son sus ventajas? cual es el puerto por defecto?
+
+5) Que es IMAP? Que es POP? Indique las ventajas y desventajas de usar uno sobre otro. Que usamos en el ldc?
+
+6) Que es Dovecot? Que es Courier? Cual usamos en el ldc?
+
+7) Como se configura Dovecot para que use imap o pop?
+
+8) Que es y como se define un alias de correo en postfix? en el ldc donde estan los aliases?
+
+9) Que funcion tiene el archivo ~/.forward
+
+10) Que son y como se definen las listas de correo?
+
+11) Que son y para que sirven procmail y maildrop? cual usamos en el ldc y porque?
+
+12) Que es open relay?
+
+13) En postfix como y donde se configuran los dominios a los cuales se les permite open relay?
+
+14) Como hago para que postfix vuelva a cargar el archivo de configuraci??n sin detener el servicio? que ventajas trae esto?
+
+15) Que son servidores virtuales? donde se configuran? cuales son los servidores virtuales del ldc?
+
+16) Que es Graylist?
+
+17) Que es spam assasin? Considera usted que seria adecuado implementarlo en el ldc? porq si o porq no?
+
+18) Explique la razon de porq si usted se encuentra fuera de la universidad no puede mandar correos mediante el servidor de correo del ldc (arrakis)
+
+19)Como hago para "comunicarme" con el postfix de arrakis y enviar correos con el campo FROM: que yo quiera?

@@ -1,0 +1,16 @@
+#######################################   		Tarea - VIM	             ## Laboratorio Docente de Computacion ## Ultima Modificacion: 15/08/2016    #######################################1. Qué es VIM?
+2. Cómo hago para insertar 30 veces el caracter #
+3. Cómo hago para buscar la cuarta ocurrencia de la letra "c"4. Cómo hago para desplazarme al principio y final de un archivo
+5. Cómo hago para encontrar todas las ocurrencias de la palabra sobre la que seencuentra el cursor.
+6. Cómo hago para insertar una nueva linea7. Luego de ejecutar un comando, para qué sirve utilizar .
+8. Para qué se utilizar ctrl-v. Diga un caso para el cual lo utilizaría.
+9. Cómo hago para deshacer los cambios en vim. Cómo hago para rehacer los cambios
+10. Cómo hago para abrir varios archivos en un mismo buffer. Qué ventajas presenta esto
+11. Qué significan los siguientes caracateres 
+12. Para qué funciona <C-p> y <C-n>13 Qué es un macro. Cree un macro que dado un archivo con el siguiente contenido
+0910047091004809100490910050091005109100520910053091005409100550910056le coloque el guion al carnet de tal forma que el resultado sea09-1004709-1004809-1004909-1005009-1005109-1005209-1005309-1005409-1005509-10056
+14. Cómo hago para sustituir todas las ocurrencias de una palabra.     Por ejemplo. Cambiar todas las palabras "hola" por "chao"15. Cuál es el archivo de configuración de vim
+16. Qué es vimball? Cómo instalo un plugin de vim?
+17. Cómo hago para ejecutar un comando desde vim y capturar la salida en vim. Por ejemplo obtener el resultado de ls
+
+
