@@ -1,0 +1,53 @@
+#####################################
+#   Tarea - Virtualizacion          #
+#     Gustavo El Khoury             #
+# Ultima Modificacion: 08/01/2014   #
+#####################################
+Seccion 1: Prolegomenos
+1) Defina virtualizacion. Explique el origen del termino.
+2) Que tipos de recursos pueden ser virtualizados? Comente sobre las ventajasy desventajas de virtualizar cada recurso
+3) Mencione como minimo 3 razones por las que cree que la virtualizaciÃ³n puedeser de utilidad en:	-)Un entorno de produccion (eg. servidores de una empresa)			.Multiples servicios en el mismo servidor	           .Eficiencia de acceso a datos al compartir recursos a traves de            maquinas	-)Un ambiente de desarrollo de aplicaciones/programas
+           .Simulacion de ambientes para testing de aplicaciones
+           .Flexibilidad en el manejo de datos
+	-)La estacion de trabajo de un LDCista
+           .Pruebas de servicios de poco riesgo usando maquina virtual
+           .Uso de recursos disponibles de una maquina cuando algun componente se haya dañado
+4) La virtualizacion se usa en el LDC? Mencione en que servidores se usa, y que herramienta se utiliza5) Cree usted que un entorno virtualizado puede reemplazar un entorno fisico? Explique
+6) Mencione tres avances en la computacion que han facilitado la virtualizacion
+Seccion 2: Virtualizacion de Hardware:
+7) Defina virtualizacion de Hardware. Explique su utilidad
+8) Nombre el primer sistema relacionado con virtualizacion que fue diseñado. Explique los hallazgos que se pudieron hacer al estudiar este equipo
+9) Indique la compañia precursora de la virtualizacion de procesadores x86. Explique el reto que se enfrenta al virtualizar el entorno x8610) Describa los cuatro tipos de virtualizacion de Hardware (tambien conocidacomo virtualizacion de plataforma): Virtualizacion Completa, Paravirtualizacion,asistida por Hardware y virtualizacion a nivel de SO.
+11) Compare los cuatro tipos de virtualizacion. En que escenarios destaca cada una?
+12) Describa los dos niveles en los que puede estar un hipervisor: Bare-metal (tipo 1) o Host-based (tipo 2)
+13) Que significa la tecnica de Binary Translation? Que problema resuelve?
+14) Que es QEMU? De los 4 tipo de virtualizacion, a cual corresponde?
+15) Describa Intel VT-x, Intel VT-d, AMD-V y AMD-NPT. En que ayudan al virtualizar?16) Que es KVM? En que se relaciona con las extensiones de Hardware indicadas anteriormente?
+Seccion 3: VirtualBox
+17) Que es VirtualBox? Que compañia lo desarrolla? Mencione los pasos para instalar VirtualBox en Debian
+18) A que tipo de virtualizacion corresponde VirtualBox? En que nivel se encuentra?
+19) En que sistemas operativos puede instalarse? Que sistemas operativos Guest permite correr?20) Que son las VirtualBox Guest Additions? Para que sirven? Pueden considerarse paravirtualizacion?
+21) Para que sirve el comando VBoxManage? Indique tres usos frecuentes del comando, sin incluir iniciar o detener VMs22) Que significa una VM "headless"? Indique como iniciar una VM en modo "headless"
+Seccion 4: Proxmox Virtualization Environment
+23) Que es Proxmox? Quien regula su desarrollo? Como se relaciona con Debian?
+24) A que nivel corresponde Proxmox? Que tipos de virtualizacion emplea?
+25) Como puedo instalar Proxmox? Compare la instalacion mediante imagen con la instalacion por paquetes.26) Que es OpenVZ? Que tipo de virtualizacion usa? 
+27) Como puedo crear un container de OpenVZ por consola?
+28) Muestre tres comandos de OpenVZ, con al menos dos ejemplos utiles cada uno
+29) Que ventajas puede traer la virtualizacion que ofrece OpenVZ? Y desventajas?
+30) Proxmox ofrece la opcion de crear VMs "completas". Que tipo de virtualizacion es esta? Que es necesario que tenga la maquina para este tipo de virtualizacion?
+31) Proxmox ofrece paravirtualizacion? En que forma?
+32) (Opcional) Que tipo de almacenamiento se puede usar para las VM de Proxmox?
+33) (Opcional) Como puedo hacer un respaldo de las VMs/Containers de Proxmox?
+Seccion 5: XenServer:
+34) Que es XenServer? Que tipos de virtualizacion ofrece? En que nivel se encuentra?
+35) Que tipo de licenciamiento tiene XenServer actualmente?
+36) Que es Xen? Cuando fue diseñado? Para que sirve? Que relacion guarda con XenServer?
+37) Para que sirve el comando xe en la consola de XenServer? Mencione tres usos practicos
+38) Como puedo configurar una VM para iniciar automaticamente cuando arranque el host?
+Seccion 6: Opcionales
+-) Que significa High Availability? Como se contrasta eso con hipervisores? Muestre un hipervisor de su preferencia que soporte HA
+-) Que es la virtualizacion de redes? Como se puede aprovechar en la virtualizacion de hardware?
+-) Que significa Live Migration? Que utilidad le encuentra?
+-) Si tuviera que elegir un tipo de tecnologia de virtualizacion de las 4 que se mencionaron anteriormente, cual eligiria?
+NOTA: Los LDCistas que deseen probar algun hipervisor de los que se mencionan en la tarea, puede consultar con los 5h u opr para tener acceso a alguno, y poder recibir un feedback practico.

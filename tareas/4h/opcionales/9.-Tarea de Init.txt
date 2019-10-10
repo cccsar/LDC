@@ -1,0 +1,55 @@
+##########################
+#      TAREA INIT        #
+# Modificada por:        #
+# LDC - Gustavo El Khoury#
+##########################
+
+1. Que es init? Para que sirve? Que particularidad tiene con 
+   respecto a otros procesos?
+
+2. Que pasa si me mata al proceso init? De que manera uno
+   puede "bypassear" el init provisto por el sistema operativo?
+   Que problemas de seguridad asociados hay?
+
+2 y medio.
+   COnsiderando lo que respondio en la pregunta anterior, vea que
+   un usuario malintencionado pudiera bypassear el init y hacer
+   desastres en el sistema. Como puede usted evitar esto?
+
+3. Que es el archivo /etc/inittab? Para que sirve? Como
+   se establece el runlevel por defecto en el que entra el sistema
+   operativo? Como configura el trap para las teclas?
+
+4. Que es una getty?
+
+5. Que pasos hay que seguir para definir un nuevo runlevel
+   custom? Es decir que linea agregar al /etc/inittab, y que
+   scripts son necesarios colocar (y en donde) para que el
+   runlevel funcione?
+
+6. Como se cambia de un runlevel a otro? Que ventajas puede
+   tener cambiar de modo multiusuario a monousuario?:
+
+7. Como verifico el runlevel actual?:
+
+8. Que es Service Management Facility? Cuales son sus principales
+   diferencias con respecto a init?
+
+9. Que es SystemStarter/launchd? Cuales son sus principales  diferencias 
+   con respecto a init?: 
+
+10. Que es Upstart? Cuales son sus principales  diferencias con 
+   respecto a init? 
+
+11. Que es systemd? Cuales son sus principales  diferencias con 
+   respecto a init? 
+
+12. Que es la carpeta /etc/init.d? Que es la carpeta /etc/rc.*?
+
+13. Haga una tabla donde indique cual es el sistema de arranque utilizado
+    por los siguientes sistemas operativos, cual es su runlevel por defecto
+    y la linea de ejemplo de como reiniciar el servicio de ssh
+    Debian 6, Ubuntu 11.04, Slackware, Solaris 8, Solaris 10 
+
+14. Cuales son los runlevel que utiliza el sistema para reiniciarse y
+    apagarse?

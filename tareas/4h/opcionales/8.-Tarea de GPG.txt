@@ -1,0 +1,84 @@
+################################################################################
+#                               //Tarea GPG\\                                  #
+#                                                                              #
+#                                  Original:                                   #
+#                               Javier Arguello                                #
+################################################################################
+
+
+1) 	¿Qué es criptografía de clave simétrica?
+
+################################################################################
+
+2)	¿Qué es criptografía de clave asimétrica?
+
+################################################################################
+
+
+3) ¿Qué son gpg y pgp?
+
+################################################################################
+
+
+4)	¿Qué es finger? ¿Para qué sirve? Cómo hago para hacer
+disponible información sobre mi persona a través de finger?
+
+################################################################################
+
+5)	¿Es seguro finger, por qué? ¿Por qué no se puede acceder al
+finger del LDC desde afuera de la USB?
+
+################################################################################
+
+
+6)  Cree su par de llaves (pública y privada), de la línea de
+comando utilizada y haga disponible su clave pública viejos no deben 
+hacer esto si ya tienen su par de llaves creadas y disponibles.
+
+################################################################################
+
+
+7) ¿Cómo cifro y descifro información con gpg?
+
+################################################################################
+
+
+8) 	¿Cómo agrego la llave pública de alguien a mi llavero?
+
+################################################################################
+
+9)	¿Cómo listo las claves que están en mi llavero?
+
+################################################################################
+
+
+10)	¿Qué es un certificado de revocación? Cómo se crea?
+
+
+################################################################################
+
+
+11) ¿Qué es y para que sirve la fingerprint de una clave pública?
+    ¿Cuál es la manera correcta de verificar que una clave pública pertenece
+    a alguien?
+
+################################################################################
+
+
+12) ¿Qué es una firma digital? ¿Cómo creo una firma digital para un archivo?
+    Si le hacen llegar un archivo y su firma digital, como verifica que todo
+    esté en orden?
+
+################################################################################
+
+
+13) ¿Qué es encfs? ¿Cómo puedo crear una caja de seguridad con encfs?
+
+################################################################################
+
+
+NOTA:
+
+Esta tarea debe ser enviada de manera cifrada a todos los 4h, 5h y opr. 
+NO son 3 archivos cifrados, uno para cada uno, ES UN SOLO archivo cifrado para
+todos los 4h, 5h y opr.

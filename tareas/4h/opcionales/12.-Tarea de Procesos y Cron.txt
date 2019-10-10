@@ -1,0 +1,71 @@
+############################
+		Tarea de Procesos y
+		Cron
+	Autor: Adolfo Parra
+	Fecha:	12/08/2014
+############################
+
+1) ¿ Qué es un proceso ?
+
+2) ¿ Qué es una señal ?
+
+3) Escriba 10 señales usuales y lo que hacen por defecto
+
+4) ¿ Qué sucede cuando un comando se ejecuta con un "&" al final ?
+
+5) ¿ Qué hacen los comandos kill y killall y en que se diferencian ?
+
+6) ¿ Que hacen los comandos jobs, fg y bg ?. Escriba la linea para enviar un 
+sigterm al job número 2.
+
+7) ¿ Qué permite hacer el comando nohup?. ¿ Qué hace el comando disown? 
+
+8) ¿ Que hacen los comandos top y ps ? Haga un oneliner para los siguientes
+casos:
+
+	a) Que muestre el comando, el porcentaje de memoria usada, el porcentaje
+	de cpu usado y el pid de todos los procesos de su usuario. Ordenelo de mayor
+	a menor segun la memoria.
+	
+	b) Que muestre el comando, el pid, el porcentaje de memoria usada y el rss
+	de todos los procesos del sistema. Ordenelo de menor a mayor segun el rss
+
+9) ¿ Qué es el niceness de un proceso ?
+
+10) ¿ Qué hace el comando nice y como se utiliza ?
+
+11) ¿ Qué hace el comando renice y como se utiliza ?
+
+12) ¿ Qué es cron ?
+
+13) ¿ Qué hace el comando crontab ?
+
+14) ¿ Cual es la diferencia entre /etc/crontab y los crontab de los usuarios ?.
+Y por que se recomienda el uso de estos ultimos.
+
+15) Escriba la sintasix de /etc/crontab y escriba la linea para ejecutar el 
+scritp /home/pepe/pepito.sh como el usuario pepe en los siguientes casos:
+
+	a) Los sabados y los domingos a las 12:00 pm
+	b) Los 4 de febrero a las 4:15 am
+	c) Cada minuto del mes de febrero
+	d) A las 5 minutos de todas las horas del primero de enero
+	e) A las 8:00 pm los 14 de Julio y que sea jueves
+	
+16) ¿ Qué es at y como se utiliza ? 
+
+17) ¿ Qué hacen los comandos atrm y atq ?
+
+18)  Para que sirven y cual es la sintasix de los siguientes archivos :
+
+	a) at.allow y at.deny
+	b) cron.allow y cron.deny
+
+Diga como se modifica el comportamiento de los programas respectivos si:
+	
+	a) Existe uno y no el otro
+	b) El caso contrario al anterio
+	c) Existen ambos archivos
+
+19) ¿ Qué es anacron y como funciona? . ¿Cuál es su archivo de configuración 
+principal? y haga una comparacion con cron. 

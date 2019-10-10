@@ -1,0 +1,36 @@
+######################################
+#   		Tarea - PXE	             #
+# Laboratorio Docente de Computacion #
+# Ultima Modificacion: 15/08/2016    #
+######################################
+
+
+1.- Qué es PXE? Para qué sirve? Se ha usado en el ldc?
+
+2.- Qué es TFTP? Por qué puerto trabaja por default?
+
+3.- Qué tengo que tener para que una máquina bootee por red? (Cliente y
+servidor)?
+
+4.- Qué otros protocolos de transmision de archivos podemos utilizar como
+alternativa de TFTP y que sea compatible con PXE?
+
+5.- Por qué es necesario tener un servidor DHCP para que el boot por PXE
+funcione?
+
+6.- Qué es DNSMASQ? Qué es necesario añadir y configurar en un servidor dnsmasq
+para poder tener un servidor PXE funcional?
+
+7.- Puedo tener el servidor TFTP y el DHCP en máquinas distintas?
+
+8.- Qué parámetros del archivo de configuración de un servidor ISC-DHCP tienen
+que ver con PXE?
+
+8.- Cómo configuro un servidor DHCP para que reparta distintas imágenes de booteo
+dependiendo del tipo de computador?
+
+9.- Qué es SYSLINUX. Qué relación tiene con PXE? Se usa en el LDC?
+
+10.- Qué es FAI. Cómo funciona?
+
+11.- Qué es FOG. Cómo funciona?

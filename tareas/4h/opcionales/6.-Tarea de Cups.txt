@@ -1,0 +1,61 @@
+LDC - Laboratorio Docente de Computación 
+[TAREA] - CUPS
+
+Fecha: 14/02/2012                         
+Modificada por Michelle Fernández.
+
+
+1) Qué es IPP (Internet Printing Protocol)?
+
+2) Qué es CUPS? Para qué se usa?
+
+3) Cómo esta compuesto CUPS?
+
+4) Cuál es el daemon de CUPS?
+
+5) Cuál es el proceso que se lleva a cabo desde que un cliente realiza una 
+solicitud de impresión hasta que el trabajo es completado?
+
+6) Cuáles son y dónde están las impresoras que administra el LDC?
+
+7) Cuál es el servidor de impresión del LDC?
+
+8) En el LDC, quienes pueden eliminar los trabajos en la cola de impresión?
+
+9) Cómo se establecen los hosts que pueden imprimir y los que no?
+
+10) Para cada uno de los siguientes casos, explique brevemente el comando a usar,
+indique sus flags más importantes y dé un ejemplo:
+
+	> Visualizar la cola de impresión.
+
+	> Eliminar un trabajo de la cola de impresión.
+
+	> Eliminar todos los trabajos de la cola de impresión.
+
+	> Enviar un archivo a imprimir en una impresora en específico.
+
+	> Ver el estado de una impresora en específico.
+
+11) Suponga que tiene un archivo de formato pdf que son unas láminas de clase. 
+Diga la instrucción por la línea de comandos para imprimir este trabajo en la 
+cual hayan 4 páginas por hoja y se quieren 4 copias de este trabajo.
+
+12) Además de la linea de comandos, existe alguna otra interfaz de 
+administración del servicio de impresión?
+
+13) Cómo se accede a la interfaz web de cups? 
+
+
+***********************************
+ Configuración de un cliente CUPS
+***********************************
+
+14) Explique la configuración de una máquina cliente para que pueda imprimir 
+en una impresora bajo un servicio de CUPS en:
+
+	> Debian
+
+	> Windows
+
+	> MAC OS

@@ -1,0 +1,4 @@
+#######################################   		Tarea - Cables           ## Laboratorio Docente de Computacion ## Ultima Modificacion: 15/08/2016    #######################################
+1- ¿Qué es 10Base2, 10Base5, 10Base-T, 100Base-T y 1000Base-T? ¿Cuáles tenemos en el LDC?
+2.- ¿Qué significa que una comunicación sea half-duplex y full-duplex?3.- ¿Qué diferencias hay entre un cable cruzado y uno directo?4.- ¿Cómo se realiza un cable cruzado y cómo se realiza uno directo?5.- ¿Qué diferencias hay entre los standars 568-A and 568-B?6.- ¿Qué son RJ-45 y BNC?
+7.- ¿Qué es un hub?8.- Mecione características de la fibra óptica y los cables coaxiales? ¿Quéventajas o desventajas  tienen sobre ethernet?

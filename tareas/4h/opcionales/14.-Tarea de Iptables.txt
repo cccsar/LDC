@@ -1,0 +1,66 @@
+Tarea: Iptables
+Realizada por: Javier Arguello
+Modificada por: Paul Baptista
+Modificada por: Adolfo Parra
+
+Preguntas:
+
+1) ¿Qué es un firewall?
+
+2) ¿Qué es iptables y cómo funciona?
+
+3) ¿Qué es Netfilter?
+
+4) Enumere y explique las tablas de iptables y sus respectivas cadenas
+
+5) ¿Qué son los targets?
+
+6) ¿Qué es State machine? Explique los distintos estados.
+
+7) ¿Cómo se define una regla en Iptables?
+
+8) ¿Cómo listo las reglas definidas?
+
+9) ¿Cómo borro (flush) las reglas?
+
+
+10) ¿Cómo guardo las reglas de iptables para que se mantengan luego de
+reiniciar
+la máquina?
+
+11) ¿Cómo creo una nueva cadena (chain)?
+
+12) ¿Qué es NAT? ¿Para qué es útil? ¿Dónde se hace NAT en el ldc?
+
+13) Cómo hago un NAT con iptables?
+
+14) ¿Cómo hago ssh a una máquina que está dentro de un NAT?
+
+
+15) ¿En otros sistemas operativos (Windows, OSX, Solaris, FreeBSD) cuales
+serían
+los equivalentes a iptables?
+
+Ejercicios
+1) Cree un script que contenga las reglas necesarias para los siguiente:
+- El host debe poder accesar a todas sus aplicaciones (localhost)
+- El host debe aceptar conexiones SSH de cualquier parte
+- Solo la ip 159.90.11.205 debe poder acceder al sevidor web.
+- El host debe aceptar conexiones SMTP solo de la red 159.90.10.X
+- El resto del tráfico TCP y UDP debe ser bloqueado
+
+
+2) Suponga que el host posee dos interfaces de red eth0 y eth1. Cree un script
+con las reglas de iptables necesarias para crear un NAT.
+
+3) Propoga un caso donde usaría iptables. Escriba la(s) regla(s) que
+utilizaría
+explicando detalladamente.
+
+4) Para hacer un firewall de la red WiFi LDC. Haría en ??? (ademas del NAT ya
+hecho):
+
+5) Qué debo hacer si quiero que las computadoras de los LDCistas al conectarse
+a
+la red LDC estén exentas del firewall de la misma?
+(independientemente de la ip que estas reciban del dhcp).

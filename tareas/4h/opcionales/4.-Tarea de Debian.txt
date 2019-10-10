@@ -1,0 +1,21 @@
+############################
+		Tarea de Debian
+	Modificada por Adolfo Parra
+	Fecha:	12/08/2014
+############################
+1) En el contexto de Debian, ¿qué diferencias hay entre las distribuciones
+oldstable, stable, testing? ¿Cuáles son sus instancia actuales? ¿Qué es sid?
+2) La version reciente de Debian utiliza Gnome 3. Supongamos que deseo tenergnome 2. Que solucion propone?3) Explique el formato de una línea del archivo /etc/apt/sources.list. ¿Cómo es el archivo que está en las máquinas del LDC? ¿Qué diferencia hay entre una línea que comienza con ‘deb’ y una con ‘deb-src’?
+4) ¿Para qué sirven apt-get source y apt-get build-dep?
+5) ¿Para qué sirve debuild?6) En base a lo que respondió en las preguntas 4 y 5, ¿cómo resuelve ahorala pregunta 2? De las líneas de comando, explicando exactamente que estáhaciendo.7) Como puedo desempaquetar un archivo .deb?8) Que es pinning en apt?9) Que son los backports de debian?
+10) Que mecanimos ofrece APT para validar los paquetes que se descargan? Como puedo agregar una llave de APT a mi maquina?11) Supongamos que a mi sistema le falta el archivo libxml2.so (que es una libreria de XML). Como puedo buscar los paquetes contienen/instalan dicho archivo?
+12) Cual es la diferencia entre los modos dist-upgrade y upgrade de apt?
+13) PAra que sirven los modos clean, autoclean, autoremove
+14) Que es aptitude? Como se relaciona con apt y apt-get?
+15) ¿Qué es apt-build ?
+16) ¿Qué es dpkg? Diga :
+	a) Como instalar un .deb
+	b) Como desinstalar un .deb
+	c) Como listar los .deb instalados
+	d) Para que sirve dpkg-reconfigure
+17) ¿Qué es apt-cache ? Escriba un ejemplo de su uso.

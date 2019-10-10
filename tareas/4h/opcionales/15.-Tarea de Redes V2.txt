@@ -1,0 +1,79 @@
+Tarea: Redes 2.0
+Autor: Javier Arguello
+
+Preguntas:
+
+1. El direccionamiento de paquetes por la red es realizado utilizando una
+combinación de esquemas de direccionamiento que incluyen:
+    - MAC (media access control)
+    - Protocolo IP (v4 o v6)
+    - Hostnames
+
+Explique cada uno de estos esquemas y diga en qué capa del protocolo TCP/IP
+tienen lugar.
+
+2. ¿Para qué se utilizan los puertos de red?
+
+3. ¿Por qué un programa servidor no puede hacer bind de un puerto por debajo del
+1024 sin ser root?
+
+4. ¿Qué es una clase Ipv4? ¿Cómo identifico si una ip es de clase A, B o C?
+
+5. ¿Cuáles redes se encuentran reservadas para uso privado?
+
+6. ¿Qué es una máscara de red? ¿Cuáles son sus posibles notaciones?
+
+7. ¿Qué es CIDR? 
+
+8. ¿Por qué se dice que CIDR simplifica la información de ruteo e impone una
+jeraquía en el proceso de ruteo?
+
+9. Suponga que a una institución se le entrega un bloque de 8 clases C, donde la
+direcciones van desde 192.140.0.0 a 192.140.7.0. Responda lo siguiente:
+
+a) ¿Cómo se expresa ese rango de Ip en notación CIDR, es decir,
+    xxx.xxx.xxx.xxx/xx.
+    
+b) Suponga que se realiza la siguiente distribución:
+        - 1 red /21
+        - 8 redes /24
+        - 16 redes /25
+        - 32 redes /26
+
+        Diga cual es la máscara de cada uno y el número de hosts que contienen.
+
+c) Si las computadoras se comunican por Internet haciendo uso de las
+    máscaras de red. Es necesario para el caso de la pregunta anterior tener una
+    entrada para cada una de las subredes en la tabla de ruteo?
+
+11. ¿Qué es NAT?
+
+12. ¿Qué es un NAT 1:1? ¿Para qué sirve?
+
+13. ¿Cómo realizo un NAT? ¿Es necesario tener dos interfaces físicas para
+realizar un NAT?
+
+14. ¿Qué es una interfaz virtual? ¿Cómo creo una interfaz virtual?
+
+15. Suponga que un host A quiere enviar un paquete a un host B. Explique para
+qué y como interviene el protocolo ARP. Considere el caso en que ambos host se
+encuentrar en la misma red y el caso en que se encuentran en redes distintas.
+
+16. ¿Qué es DHCP?
+
+17. ¿Qué comando ejecuto si quiero que una interfaz de red reciba su
+configuración de un servidor DHCP? Explique todo el proceso que ocurre desde que
+se realiza la petición hasta obtener la configuración.
+
+18. ¿Cómo hago para que una interfaz de red se configure mediante dhcp al
+iniciar la máquina?
+
+19. ¿Cómo hago para que una interfaz de red se configure mediante dhcp en
+Solaris? ¿Cómo se establece para que use dhcp al iniciar la máquina en Solaris?
+
+-----------------------------------------
+Ejercicio practico
+
+Cree un archivo de configuración para un servidor DHCP que asigne direcciones en
+el rango 128.138.192.[1-55] y se asegure que el host con la dirección MAC
+08:00:27:47:32:1e reciba siempre la ip 128.138.192.55.

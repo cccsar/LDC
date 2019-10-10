@@ -1,0 +1,27 @@
+######################################
+#   		Tarea - X Server         #
+# Laboratorio Docente de Computacion #
+# Ultima Modificacion: 15/08/2016    #
+######################################
+
+1. Que Es Una TTY? Como Hago Para Recorrer Las Diferentes ttys 
+(En Linux)? Es Posible Hacer Algo Asi en Windows? Y en Solaris?
+
+2. Que Son Los Servidores X?
+
+3. Que es Xorg? Que es Xhost, Xinit, Xserver y Xauth?
+
+4. Como Reinicia el Servidor de Las X (Hot-Keys)? Y Si Me Quiero Pasar 
+de Gnome A Kde (O Viceversa) Desde Linea de Comandos?
+
+5. Para Que Sirve el Comando startx? Suponiendo Que La Interfaz Grafica 
+Se Encuentra en tty7 "F7", Como Hace Para Abrir Su Sesion Grafica en La 
+"F9"? Que Significa Cada Parte del Comando?
+
+6. Suponga Que Dejo Su Sesion Abierta en glossu y Ahora Esta en Su Casa.
+Existe Alguna Forma de Cerrar Esa Sesion Que Dejo Abierta Desde Su Casa?
+Si es Asi Diga: Como Lo Haria?
+
+7. Existe Una Aplicacion Que Me Permita Ejecutar Una Tarea y Que A Pesar 
+de Que Me Deslogueo Mi Programa Sigue Corriendo? Si es Asi Diga Cual es 
+el Comando (Solo Diga Cual es y Para Que Sirve).

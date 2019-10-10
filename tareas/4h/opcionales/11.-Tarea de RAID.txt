@@ -1,0 +1,68 @@
+############################################
+# LDC - Laboratorio Docente de Computacion #
+#                                          #
+#            [Tarea] - RAID                #
+#   Redundant Array of Independent Disks   #
+#                                          #
+# Fecha: 01/10/2013                        #
+# Realizada por Michelle Fernandez         #
+############################################
+
+0. Que es un arreglo de discos?
+
+1. Que es RAID?
+
+2. Por que es util, que ventajas tiene?
+
+3. En terminos de RAID, que es:
+
+	> Mirroring:
+
+	> Striping: 
+
+	> Parity: 
+
+4. Para cada una de las siguientes versiones de RAID, indique:
+
+	1. La distribucion de datos entre los discos (mirroring, striping, parity)
+
+	2. Cantidad minima de discos necesaria.
+
+	3. Capacidad de almacenamiento con respecto a la capacidad total de todos los discos en conjunto.
+
+	4. Ventajas y desventajas en cuanto a la velocidad y proteccion de datos.
+
+	5. Alguna otra cosa interesante que haya por ahi :)
+
+		> RAID 0: 
+		
+		> RAID 5: R
+		
+		> RAID 6: 
+		
+		> RAID 10: 
+
+5. Explique el funcionamiento de RAID.
+
+6. Si se tiene implementado un RAID y se se llegara a danar algun disco, se perderian los datos por completo? Explique para cada version de RAID antes mencionada, que ocurriria en dicho caso. Cuantos discos danados se permiten en cada version sin sufrir perdida de datos?
+
+  0: 
+  1: 
+  5: 
+  6: 
+  10: 
+
+7. Por que no se pierden los datos de un disco danado en un RAID? (pista: parity).
+
+
+*****************
+ RAID en el LDC
+*****************
+
+8. Para que seria util una implementacion de RAID en el LDC?
+
+9. DÃ³nde se usa RAID en el LDC?
+
+9. Que niveles de RAID se usan en LDC?
+
+10. Realice un diagrama que indique donde esta ubicado el arreglo de discos del LDC.

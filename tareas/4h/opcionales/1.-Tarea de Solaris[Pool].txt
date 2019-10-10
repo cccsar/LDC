@@ -1,0 +1,87 @@
+############################
+		Tarea de Solaris
+		
+	Modificada por Adolfo Parra
+	Fecha:	13/08/2014
+############################
+
+1) Que es SPARC ?
+
+2) Que es el OpenBoot Firmware de Solaris e indique y describa los pasos en el
+proceso de booteo?
+
+3) Que es Volmgt y que comando uso para chequear nuevo medios?
+
+4) Con que teclas puedo simpre volver al openboot en una Sparc?
+
+5) Como booteo en single-user desde el OpenBoot?
+
+6) Que es un Cluster y un paquete de Solaris?
+
+7) Para que sirven los comandos pkgadd, pkgcheck, pkginfo. Como puedo instalar 
+un paquete de software en solaris? cual es el administrador de paquetes de
+solaris y como lo uso?
+
+8) Como se organizan las particiones logicas de un disco duro en el Solaris?
+
+9) Cual es la diferencia entre /dev y /devices?
+
+10) Cual es la diferencia entre dsk y rdsk? que significa /dev/dsk/c1t0d0s1 y 
+/dev/rdsk/c1t0d0s0?
+
+11) Que significa el parametro "loggin" en el archivo vfstab de Solaris?
+
+12) Como se usan los comandos "format", "devfsadm"?
+
+13) Como le cambio el hostname a una maquina con solaris?
+
+14) Como hago para montar ZFS en una particion o en un disco en solaris?
+
+15) Como hago para saber si una interfaz de red esta por DHCP ?
+
+16) Como utilizo para ufsdump para hacer un backup ??
+
+17) Como hago un paquete en Solaris ??
+
+18) Como hago para apagar una computadora con solaris ?? Y si quiero que en 
+vez de apagarse se baje el sistema de operacion y quede en el OpenBoot ?
+
+19) Que es Role-Based Access Control (RBAC) ? Como lo utilizo ??
+
+20) Que es Solaris Management Console (SMC) ? Como lo utilizo ?? De 3 ejemplos.
+
+21) Como puedo ver los servicios que estan corriendo en una maquia solaris?
+
+22) Como inicio, reinicio o paro un servicio en solaris 10?
+
+23) Cual es el "path" donde corren los servicios de ssh, nfs, ldap, cups,
+postfix?
+
+24) Que tiene que ver nfs en el booteo de una maquina solaris? que pasa si 
+tengo configurada una maquina solaris a que monte una particion exportada 
+por nfs y el servicio nfs esta caido?
+
+25) Indique como configurar una interfaz de red a mano en solaris? como puedo 
+ver las tablas de routeo?
+
+26) Indique como iniciar el servicio de Oracle en una maquina solaris.
+
+27) Explique las ventajas que tiene ZFS sobre los otros filesystems que existen.
+
+28) Que es un zpool? Como creo uno? Como lo monto? Puedo tener un zpool de 
+varios discos duros diferentes? Que ventajas tiene esta facilidad que
+ofrece zfs?
+
+29) Explique la funcionalidad de hacer "rollback" en zfs
+
+30) Que es un snapshot? Como creo uno? Que contiene un snapshot? Explique las 
+ventajas de tener esta facilidad.
+
+31) Segun su opinion es fiable realizar backups a punta de snapshots? 
+Porque si, porq no?
+
+32) ¿Que es Image Packaging System? ¿Como instalo un paquete con pkg?
+
+33) ¿Como listo los paquetes instalados, como obtengo informacion de un paquete?
+
+34) ¿Que es un zona en Solaris? ¿Como creo una?
