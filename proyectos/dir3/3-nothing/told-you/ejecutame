@@ -1,0 +1,5 @@
+#bin/bash
+toilet -t --metal 'WELCOME TO THE MATRIX'
+sleep 3
+cmatrix -b
+exit 0

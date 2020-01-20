@@ -1,0 +1,277 @@
+# Nmap 7.70 scan initiated Mon Jan 20 15:37:44 2020 as: nmap -PS -iL ldc_hosts.txt -oN test_ldc_hosts.nmp
+Failed to resolve "atenea2.ldc.usb.ve".
+Failed to resolve "annehelen.ldc.usb.ve".
+Failed to resolve "gnat.ldc.usb.ve".
+Failed to resolve "loki.ldc.usb.ve".
+Failed to resolve "sagarzazu.ldc.usb.ve".
+Failed to resolve "taurus1.ldc.usb.ve".
+Failed to resolve "abadmota.ldc.usb.ve".
+Failed to resolve "abaranya.ldc.usb.ve".
+Failed to resolve "jtcadenas.ldc.usb.ve".
+Failed to resolve "alacruz.ldc.usb.ve".
+Nmap scan report for sam.ldc.usb.ve (159.90.11.29)
+Host is up (0.00078s latency).
+Not shown: 996 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+111/tcp open  rpcbind
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+Nmap scan report for esmar.ldc.usb.ve (159.90.10.118)
+Host is up (0.00059s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for geidi.ldc.usb.ve (159.90.10.106)
+Host is up (0.0010s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for harq.ldc.usb.ve (159.90.10.180)
+Host is up (0.00090s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for iakin.ldc.usb.ve (159.90.10.50)
+Host is up (0.00079s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for kindjal.ldc.usb.ve (159.90.10.144)
+Host is up (0.00062s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for nayla.ldc.usb.ve (159.90.10.104)
+Host is up (0.00085s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for rabban.ldc.usb.ve (127.0.0.1)
+Host is up (0.00065s latency).
+rDNS record for 127.0.0.1: localhost
+Not shown: 995 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+631/tcp  open  ipp
+3306/tcp open  mysql
+
+Nmap scan report for shadout.ldc.usb.ve (159.90.10.48)
+Host is up (0.00072s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for sheeana.ldc.usb.ve (159.90.10.113)
+Host is up (0.00098s latency).
+Not shown: 996 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+25/tcp   open  smtp
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for taraza.ldc.usb.ve (159.90.10.218)
+Host is up (0.00081s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for tuek.ldc.usb.ve (159.90.10.52)
+Host is up (0.00077s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for usul.ldc.usb.ve (159.90.10.155)
+Host is up (0.00066s latency).
+Not shown: 995 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+5666/tcp open  nrpe
+
+Nmap scan report for irulan.ldc.usb.ve (159.90.10.38)
+Host is up (0.0029s latency).
+Not shown: 996 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+3551/tcp open  apcupsd
+9090/tcp open  zeus-admin
+
+Nmap scan report for ishmael.ldc.usb.ve (159.90.10.147)
+Host is up (0.0010s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for amtal.ldc.usb.ve (159.90.10.55)
+Host is up (0.00060s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+Nmap scan report for atreides.ldc.usb.ve (159.90.10.157)
+Host is up (0.00073s latency).
+Not shown: 994 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+3260/tcp open  iscsi
+3551/tcp open  apcupsd
+9103/tcp open  jetdirect
+
+Nmap scan report for auliya.ldc.usb.ve (159.90.10.56)
+Host is up (0.00080s latency).
+Not shown: 995 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+111/tcp open  rpcbind
+514/tcp open  shell
+631/tcp open  ipp
+873/tcp open  rsync
+
+Nmap scan report for bainne.ldc.usb.ve (159.90.10.77)
+Host is up (0.00060s latency).
+Not shown: 995 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+111/tcp  open  rpcbind
+3306/tcp open  mysql
+3551/tcp open  apcupsd
+
+Nmap scan report for omnius.ldc.usb.ve (159.90.10.14)
+Host is up (0.00039s latency).
+Not shown: 996 filtered ports
+PORT    STATE  SERVICE
+22/tcp  open   ssh
+80/tcp  open   http
+443/tcp open   https
+631/tcp closed ipp
+
+Nmap scan report for shaddam.ldc.usb.ve (159.90.10.10)
+Host is up (0.00067s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+111/tcp  open  rpcbind
+389/tcp  open  ldap
+636/tcp  open  ldapssl
+3306/tcp open  mysql
+3551/tcp open  apcupsd
+
+Nmap scan report for stilgar.ldc.usb.ve (159.90.10.37)
+Host is up (0.00045s latency).
+Not shown: 996 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+3551/tcp open  apcupsd
+9090/tcp open  zeus-admin
+
+Nmap scan report for uxtal.ldc.usb.ve (159.90.10.9)
+Host is up (0.00071s latency).
+Not shown: 990 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+443/tcp  open  https
+631/tcp  open  ipp
+1007/tcp open  unknown
+3306/tcp open  mysql
+3551/tcp open  apcupsd
+5432/tcp open  postgresql
+5900/tcp open  vnc
+
+Nmap scan report for bakka.ldc.usb.ve (159.90.10.70)
+Host is up (0.00061s latency).
+Not shown: 998 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+111/tcp open  rpcbind
+
+Nmap scan report for baraka.ldc.usb.ve (159.90.10.68)
+Host is up (0.00100s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for cielago.ldc.usb.ve (159.90.10.72)
+Host is up (0.0011s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for duncan.ldc.usb.ve (159.90.10.42)
+Host is up (0.00067s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for gridex.ldc.usb.ve (159.90.10.94)
+Host is up (0.00054s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for hagal.ldc.usb.ve (159.90.10.95)
+Host is up (0.00058s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+Nmap scan report for qirtaiba.ldc.usb.ve (159.90.10.100)
+Host is up (0.00063s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+
+# Nmap done at Mon Jan 20 15:37:54 2020 -- 117 IP addresses (30 hosts up) scanned in 9.86 seconds

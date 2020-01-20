@@ -1,0 +1,8 @@
+# Nmap 7.70 scan initiated Mon Jan 20 15:36:53 2020 as: nmap -PS -iL ldc_internet.txt -oN test_ldc_internet.nmp
+Nmap scan report for amtal.ldc.usb.ve (159.90.10.55)
+Host is up (0.00020s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+# Nmap done at Mon Jan 20 15:36:53 2020 -- 8 IP addresses (1 host up) scanned in 0.31 seconds

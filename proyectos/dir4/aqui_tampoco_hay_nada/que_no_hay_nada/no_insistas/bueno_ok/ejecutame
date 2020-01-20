@@ -1,0 +1,43 @@
+#bin/bash
+mkdir ~/dir3/4-here/Esto\ no\ estaba\ aqui/
+echo "#bin/bash
+echo 'Are you sure? This action could harm your computer.'
+read -p 'continue? (y/n)' choice
+case \"\$choice\" in
+	y|Y ) toilet --gay GANASTE!!!;;
+	n|N ) echo 'Oki :)';;
+	* ) echo ' No sabes escribir una letra?';; 
+esac
+cd ..
+rm -R Esto\ no\ estaba\ aqui/
+cd ~" > ~/dir3/4-here/Esto\ no\ estaba\ aqui/DO_NOT_EXECUTE
+chmod -R +x ~/dir3/4-here/Esto\ no\ estaba\ aqui/ 
+clear
+eject
+echo 'Told you'
+echo Told you | festival --tts
+echo 'Nothing here'
+echo Nothing here | festival --tts
+COUNTER=0
+while [ $COUNTER -lt 3 ];
+do
+	echo Ha
+	echo ha | festival --tts
+	echo ha
+	echo ha | festival --tts
+	echo ha
+	echo ha | festival --tts
+	let COUNTER=COUNTER+1 
+done
+eject -t
+echo 'bye'
+echo bye | festival --tts
+echo ' '
+COUNTER=0
+while [ $COUNTER -lt 10000 ];
+do
+	echo '3'
+	let COUNTER=COUNTER+1
+done
+clear
+exit 0

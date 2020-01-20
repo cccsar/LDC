@@ -1,0 +1,78 @@
+# Nmap 7.70 scan initiated Mon Jan 20 15:31:19 2020 as: nmap -PS -iL ldc_serv.txt -oN test_ldc.nmp
+Nmap scan report for atreides.ldc.usb.ve (159.90.10.157)
+Host is up (0.00054s latency).
+Not shown: 994 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+2049/tcp open  nfs
+3260/tcp open  iscsi
+3551/tcp open  apcupsd
+9103/tcp open  jetdirect
+
+Nmap scan report for auliya.ldc.usb.ve (159.90.10.56)
+Host is up (0.00067s latency).
+Not shown: 995 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+111/tcp open  rpcbind
+514/tcp open  shell
+631/tcp open  ipp
+873/tcp open  rsync
+
+Nmap scan report for bainne.ldc.usb.ve (159.90.10.77)
+Host is up (0.00030s latency).
+Not shown: 995 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+111/tcp  open  rpcbind
+3306/tcp open  mysql
+3551/tcp open  apcupsd
+
+Nmap scan report for omnius.ldc.usb.ve (159.90.10.14)
+Host is up (0.00030s latency).
+Not shown: 996 filtered ports
+PORT    STATE  SERVICE
+22/tcp  open   ssh
+80/tcp  open   http
+443/tcp open   https
+631/tcp closed ipp
+
+Nmap scan report for shaddam.ldc.usb.ve (159.90.10.10)
+Host is up (0.00032s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+111/tcp  open  rpcbind
+389/tcp  open  ldap
+636/tcp  open  ldapssl
+3306/tcp open  mysql
+3551/tcp open  apcupsd
+
+Nmap scan report for stilgar.ldc.usb.ve (159.90.10.37)
+Host is up (0.00048s latency).
+Not shown: 996 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+3551/tcp open  apcupsd
+9090/tcp open  zeus-admin
+
+Nmap scan report for uxtal.ldc.usb.ve (159.90.10.9)
+Host is up (0.00042s latency).
+Not shown: 990 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+443/tcp  open  https
+631/tcp  open  ipp
+1007/tcp open  unknown
+3306/tcp open  mysql
+3551/tcp open  apcupsd
+5432/tcp open  postgresql
+5900/tcp open  vnc
+
+# Nmap done at Mon Jan 20 15:31:39 2020 -- 24 IP addresses (7 hosts up) scanned in 19.27 seconds

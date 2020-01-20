@@ -1,0 +1,5 @@
+#!/bin/bash
+clear
+cowsay -f head-in 'Lo leiste jijiijijijijijijijijijij'
+toilet --gay MARICO
+

@@ -1,0 +1,13 @@
+#bin/bash
+clear
+toilet -t --gay 'Bienvenido'
+toilet -t --gay '  al LDC  '
+echo 'Este no es el archivo que buscas... Pero son las instrucciones. Dentro de este directorio deberas encontrar un archivo ejecutable que terminara con el reto.'
+echo 'Para navegar en los directorios puedes usar los siguientes comandos:'
+echo 'para cambiar de directorio:		cd carpeta'
+echo 'para ver el contenido de un directorio:	ls'
+echo 'para ejecutar un archivo:		./archivo'
+echo 'para cerrar la ejecucion de un archivo: Ctrl+c'
+echo ' '
+echo 'Buena Suerte...'
+exit 0

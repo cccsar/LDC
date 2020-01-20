@@ -1,0 +1,16 @@
+#bin/bash
+clear
+echo 'Escriba su carnet, por ejemplo 12-10001'
+read carnet
+name=$(ldapsearch -x -h ldap.usb.ve -b dc=usb,dc=ve uid=$carnet |  grep gecos* | cut -d ":" -f 2 | sed 's/,,---//')
+echo  "Hello" $name
+echo  "Hello" $name | festival --tts
+echo "My name is LDCito 2.1.4.42.3.1 beta and I want to suck your brain, because I love you" 
+echo "My name is L D C ito 2 point 1 point 4 point 42 point 3 point 1 beta, and I want to suck your brain, because I love you" | festival --tts
+echo "This is not the directory you're looking for"
+echo "This is not the directory you're looking for" | festival --tts
+for i in {1..100};
+do echo for | festival --tts;
+done
+exit 0
+
