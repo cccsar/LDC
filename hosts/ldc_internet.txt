@@ -1,0 +1,8 @@
+amtal.ldc.usb.ve
+elacca.ldc.usb.ve
+faykan.ldc.usb.ve
+garon.ldc.usb.ve
+glossu.ldc.usb.ve
+lingar.ldc.usb.ve
+shamir.ldc.usb.ve
+titan.ldc.usb.ve

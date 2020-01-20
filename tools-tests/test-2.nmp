@@ -1,0 +1,2 @@
+# Nmap 7.01 scan initiated Sat Jan 18 19:02:58 2020 as: nmap -iL ldc_serv.txt -oG test-2.nmp
+# Nmap done at Sat Jan 18 19:07:24 2020 -- 0 IP addresses (0 hosts up) scanned in 266.20 seconds

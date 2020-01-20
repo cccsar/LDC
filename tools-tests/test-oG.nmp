@@ -1,0 +1,4 @@
+# Nmap 7.01 scan initiated Sun Jan 19 09:28:35 2020 as: nmap -T 4 -p 1-1024 -oG test-3.nmp scanme.nmap.org
+Host: 45.33.32.156 (scanme.nmap.org)	Status: Up
+Host: 45.33.32.156 (scanme.nmap.org)	Ports: 22/open/tcp//ssh///, 25/filtered/tcp//smtp///, 80/open/tcp//http///	Ignored State: closed (1021)
+# Nmap done at Sun Jan 19 09:28:53 2020 -- 1 IP address (1 host up) scanned in 17.81 seconds
