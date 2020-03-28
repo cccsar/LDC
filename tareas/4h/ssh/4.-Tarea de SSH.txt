@@ -1,5 +1,17 @@
 separator: ---------------------------
 
+syntax:
+	### : further investigation
+	# .* # : concept investigation
+	* .* * : important
+	( [[:digit:]] ) : ennumeration (first indent) 
+	[[:alpha:]] ) : ennumeration (second indent) 
+	--------------------------- : sub question separator
+	[ | | | .. ] : references ( at the end of each answer ) 
+
+offer grep lookups: 
+
+
 ################################ Sartenejas, 29 de Noviembre de 2012 Universidad Simon Bolivar                      
 ## Laboratorio DOcente de Computacion              #
 # Secure SHell (SSH)                   			  #
@@ -31,7 +43,7 @@ separator: ---------------------------
 
 	Usually a cipher's output depens on the presence of a 'key' or *'criptovariable'*.
 	This cause the ciphertext for a message varies depending on the key being used
-	, this as a consequence of the key on the step of the cipher algorithm. The whole
+	, this as a consequence of the key on some steps of the cipher algorithm. The whole
 	point of using keys is that it makes obtaining the plaintext from the ciphertext
 	extremely difficult. 
 	
@@ -72,7 +84,14 @@ separator: ---------------------------
 	alternatively, it is possible to list available ciphers using: 
 		ssh -Q cipher
 
+	Ciphers are enable by modifying configuration file: 
+		/etc/ssh/ssh_config 
+
+	And adding an entry for keyword Cipher such as: 
+		Ciphers +3des-cbc
+
 	### check aes, cbc, ctr, gcm ###
+
 
 	[man ssh_config , https://en.wikipedia.org/wiki/Cipher ]
 
@@ -90,21 +109,21 @@ separator: ---------------------------
 
 	( 1.- ) Server authentication: The server provides it's public host key, which the 
 	user can use to check authenticy, first within its configuration files 
-	( ~/.ssh/known_hosts ) , and if not found, they key can be search online
+	( ~/.ssh/known_hosts ) , and if not found, the key can be searched online
 	and compared. 
 
 	( 2.- ) Encryption negotiation: Here, bot client and server negotiate a session key
-	using a version of the #Diffie-Hellman algorithm#. The session key will remain 
-	through the whole session and it differs from public/private keys used for
-	authentication.
+	using a version of the # Diffie-Hellman algorithm #. The session key will remain 
+	through the whole session and * it differs from public/private keys used for
+	authentication *.
 
 	The procedure goes like this: 	
 		a ) both parts agree on a large prime number. 
 
 		b ) both parts agree on an # encription generator # , such as (AES).
 
-		c ) each part produces a secret prime number, *which is used as a
-		private key for this interaction* (different from the secret key
+		c ) each part produces a secret prime number, * which is used as a
+		private key for this interaction * (different from the secret key
 		used for authentication). 
 
 		d ) The private key, the encryption generator and public prime number 
@@ -120,9 +139,9 @@ separator: ---------------------------
 		session
 
 	All of this trouble to make a shared key for whose creation each host interveined
-	equally. 
+	equally.  <- why is this so important? ###
 
-	3.- User authentication: At this steps are different options depending on what
+	3.- User authentication: At this steps there are different options depending on what
 	the server accepts. 
 
 	First, user can authenticate using password for the requesting account, and 
@@ -156,18 +175,95 @@ separator: ---------------------------
 
 	After this process is conclude the session is finally stablished and secure comms
 	can be interexchanged.
-	
-		
-					---------------------------
+
 
 	[https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process#how-does-ssh-work]
 
 04. Que Son Las Llaves SSH? Como Funcionan? Para Que Sirven? Donde Se Almacenan 
 	Las Llaves SSH de Un Usuario?
 
+	SSH keys are a pair of public/private keys that ssh client applications use 
+	to authenticate to servers. As described in answer 03. , the client sends
+	its public key to the server, who sends back a verification message.  Since 
+	only the holder of the private key associated with a public key can decrypt
+	messages, the client decodes the message with its private key and sends a 
+	verification answer and finally, gets authenticated. 
+	
+	This pair of keys is also stored on servers if a control rule is set.  #c# 
+
+	A differentiation to be made is that * identity keys * are used to identify
+	users whilst * hots keys * identify computers. 
+
+					---------------------------
+
+	They are used as a more secure alternative for passwords over encrypted channels.
+	Besides, something closely related to ssh keys are passphrase, which increase
+	the level of security, this time in the client side.
+
+
+	*Passphrases* are secrets used to protect encryption keys. How so? well the 
+	private key is encrypted using the passphrase, thus making the keyfile useless
+	to an attacker without the passphrase. Additionally, and as a consequence 
+	of the mentioned encryption, the passphrase is needed to use the private
+	key.
+
+					---------------------------
+	
+	The creation dialog of ssh-keygen allows to choose the destination directory 
+	of identity keys keyfiles. Default : 
+		~/.ssh/ 	
+	and format is: 
+		id_algorithm[.pub] -- where pub is for the public key --
+
+	On the other hand, location of host keys goes in: 
+		/etc/ssh
+	and format is: 
+		ssh_host_algorithm[.pub]
+
+
+	[https://www.ssh.com/ssh/passphrase | https://www.ssh.com/ssh/identity-key ]
+
 05. Como Se Crean Las Llaves SSH de Un Usuario? Debe Crear Sus Llaves SSH.
 
+	Using the command *ssh-keygen* makes the trick. Relevant flags are: 
+
+		-t: type of key to create (among dsa, ecdsa, ed255219, rsa).
+		 -- other available algorithms can be queried in man ssh_config 
+		in the HostKeyAlgorithm keyword section. --
+		-b: number of bits in the key to create.
+		-f: name of the keyfile.
+
+	e.g.: 
+	ssh-keygen -t rsa -b 4096 
+
+		-- a dialog starts requesting path confirmation and passphrase: --
+		
+	Enter file in which to save the key (/home/shinji/.ssh/id_rsa): 
+	Enter passphrase (empty for no passphrase): 
+	Enter same passphrase again: 
+
+		-- finally, creation is confirmed -- 
+
+	Your identification has been saved in id_rsa-new.
+	Your public key has been saved in id_rsa-new.pub.
+
+
+	[ man ssh-keygen | https://help.github.com/es/github/authenticating-to-github/checking-for-existing-ssh-keys ]
+
 06. Indique Una Posible Situacion En La Que Sea Muy Util Tener Las Llaves SSH.
+
+	Using shared sistems, where the secrecy of personal files is not necessarily
+	guaranteed. As stated in 04. , keys are not appart from passphrases which 
+	are used to encrypt them, thus preventing anyone with enough permissions 
+	to read our communications. 
+
+	Connecting on unstrusted networks, such as public wifi or simply places 
+	whose security is unknown. 
+
+	GET CREATIVE!!!!! ###
+
+
+	[ my brain ]
 
 07. Si Usted Fuera Operador del LDC, Utilizaria Llaves SSH En La Pecera Para Los 
 	Servidores? Explique Su Respuesta.
@@ -176,6 +272,21 @@ separator: ---------------------------
 	Es Un Riesgo Que Esta Maquina este Configurada de Esta Manera?
 
 09. Que Es ssh-agent? Para Que Sirve el Comando ssh-add?
+
+	ssh-agent keeps track of private keys used for public key authentication 
+	primarily so a users doesn't has to give a password or passphrase 
+	repeatedly. It is an implementation of # Single sign-on #. It works like
+	a keyring since identity keys can be added to it useng ssh-add, or by
+	means of a configuration file. 
+
+	It usually starts in the beggining of a X11 session or a logging session
+	and other windows or programs are clients to the ssh-client program.  By 
+	using ** environment variables ** the agent is found and automatically
+	used for authentication.  <- why does it need to be found ? ### 
+	
+				---------------------------
+
+
 
 10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
 
