@@ -1,0 +1,86 @@
+Script started on 2020-03-27 20:40:41-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="158" LINES="44"]
+[1;32mtato-00 20:40[1;37m:[1;34m~/Desktop/repos/LDC/tareas/4h/ssh[1;37m$ [0;37mssh -v cesarlocal@159.90.10.204
+OpenSSH_7.9p1 Debian-10+deb10u2, OpenSSL 1.1.1d  10 Sep 2019
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: Applying options for *
+debug1: Connecting to 159.90.10.204 [159.90.10.204] port 22.
+debug1: Connection established.
+debug1: identity file /home/shinji/.ssh/id_rsa type 0
+debug1: identity file /home/shinji/.ssh/id_rsa-cert type -1
+debug1: identity file /home/shinji/.ssh/id_dsa type -1
+debug1: identity file /home/shinji/.ssh/id_dsa-cert type -1
+debug1: identity file /home/shinji/.ssh/id_ecdsa type -1
+debug1: identity file /home/shinji/.ssh/id_ecdsa-cert type -1
+debug1: identity file /home/shinji/.ssh/id_ed25519 type -1
+debug1: identity file /home/shinji/.ssh/id_ed25519-cert type -1
+debug1: identity file /home/shinji/.ssh/id_xmss type -1
+debug1: identity file /home/shinji/.ssh/id_xmss-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_7.9p1 Debian-10+deb10u2
+debug1: Remote protocol version 2.0, remote software version OpenSSH_7.9p1 Debian-10+deb10u2
+debug1: match: OpenSSH_7.9p1 Debian-10+deb10u2 pat OpenSSH* compat 0x04000000
+debug1: Authenticating to 159.90.10.204:22 as 'cesarlocal'
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: ecdsa-sha2-nistp256
+debug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ecdsa-sha2-nistp256 SHA256:jx/h5WL0wd+qD4e4wLI4rYxo/oIfhSejFmgUeOngN2s
+debug1: Host '159.90.10.204' is known and matches the ECDSA host key.
+debug1: Found key in /home/shinji/.ssh/known_hosts:1
+debug1: rekey after 134217728 blocks
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: rekey after 134217728 blocks
+debug1: Will attempt key: /home/shinji/.ssh/id_rsa RSA SHA256:fxIRt27f8Eao4N27FQ28nhzCI8HefEnOJgDIkbj/eec agent
+debug1: Will attempt key: /home/shinji/.ssh/id_dsa 
+debug1: Will attempt key: /home/shinji/.ssh/id_ecdsa 
+debug1: Will attempt key: /home/shinji/.ssh/id_ed25519 
+debug1: Will attempt key: /home/shinji/.ssh/id_xmss 
+debug1: SSH2_MSG_EXT_INFO received
+debug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521>
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                         %
+%   Este sistema es solo para uso del personal del LDC. Cualquier         %
+%   uso nocivo para la estabilidad de este sistema sera sancionado        %
+%   severamente.                                                          %
+%                                                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+debug1: Authentications that can continue: publickey,password
+debug1: Next authentication method: publickey
+debug1: Offering public key: /home/shinji/.ssh/id_rsa RSA SHA256:fxIRt27f8Eao4N27FQ28nhzCI8HefEnOJgDIkbj/eec agent
+debug1: Authentications that can continue: publickey,password
+debug1: Trying private key: /home/shinji/.ssh/id_dsa
+debug1: Trying private key: /home/shinji/.ssh/id_ecdsa
+debug1: Trying private key: /home/shinji/.ssh/id_ed25519
+debug1: Trying private key: /home/shinji/.ssh/id_xmss
+debug1: Next authentication method: password
+cesarlocal@159.90.10.204's password: 
+debug1: Authentication succeeded (password).
+Authenticated to 159.90.10.204 ([159.90.10.204]:22).
+debug1: channel 0: new [client-session]
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug1: pledge: network
+debug1: client_input_global_request: rtype hostkeys-00@openssh.com want_reply 0
+debug1: Sending environment.
+debug1: Sending env LANG = en_GB.UTF-8
+Linux rabban 4.19.0-8-amd64 #1 SMP Debian 4.19.98-1 (2020-01-26) x86_64
+Last login: Fri Mar  6 10:57:31 2020 from 159.90.10.54
+Cannot open display "default display"
+[cesarlocal@rabban ~ 08:41 ]$ exit
+cerrar sesión
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: client_input_channel_req: channel 0 rtype eow@openssh.com reply 0
+debug1: channel 0: free: client-session, nchannels 1
+Connection to 159.90.10.204 closed.
+Transferred: sent 2680, received 3640 bytes, in 2.1 seconds
+Bytes per second: sent 1279.0, received 1737.1
+debug1: Exit status 0
+[1;32mtato-00 20:41[1;37m:[1;34m~/Desktop/repos/LDC/tareas/4h/ssh[1;37m$ [0;37mexit
+exit
+
+Script done on 2020-03-27 20:41:03-04:00 [COMMAND_EXIT_CODE="0"]

@@ -1,26 +1,262 @@
-#################################################### Sartenejas, 29 de Noviembre de 2012             ## Universidad Simon Bolivar                       ## Laboratorio DOcente de Computacion              ## Secure SHell (SSH)                   			  ## Autor: Jose Luis Lo Huang             		  ####################################################
-00. Que Es SSH?, Por Que Fue Creado?01. Que Es un Algoritmo de Cifrado, Cuales Son Los Que Utiliza SSH?
-02. En Windows, Que Son Putty, Poderosa Y PowerSHELL? Que Es MSYSGit?
-03. Explique Lo Que Sucede Desde Que Hacemos SSH A Una Maquina Desde el Terminal Hasta Que Finalmente Ya Estamos Autenticados.
-04. Que Son Las Llaves SSH? Como Funcionan? Para Que Sirven?Donde Se Almacenan Las Llaves SSH de Un Usuario?
-05. Como Se Crean Las Llaves SSH de Un Usuario? Debe Crear Sus Llaves SSH.
-06. Indique Una Posible Situacion En La Que Sea Muy Util Tener Las Llaves SSH.
-07. Si Usted Fuera Operador del LDC, Utilizaria Llaves SSH En La Pecera Para Los Servidores? Explique Su Respuesta.08. Explique Por Que Shamir Es Una Maquina Importante En el LDC?Es Un Riesgo Que Esta Maquina este Configurada de Esta Manera?
-09. Que Es ssh-agent? Para Que Sirve el Comando ssh-add?
-10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
-11. Que Es rsh, rcp y ftp? Cuales Son Las Versiones Seguras de Estos Comandos.
-12. Como Hago Para Conectarme A Una Maquina Y Ejecutar Un Comando Y Que Luego de Esto Se Cierre La Conexion.
-13. Que Es Un Tunel SSH? Cree Un Tunel SSH Desde Afuera de La Universidad Hacia Una de Las Maquinas del LDC Por el Puerto 20000.
-14. Si Tengo Un Servidor Dentro de Un NAT, Como Hago Para Conectarme Al Mismo?15. Donde Se Encuentran Los Logs del SSH? Que Es DenyHost, Cual Es Su Relacion Con SSH?
-16. Como Exporto Las X Mediante SSH?17. Que Es el Archivo known_hosts? Para Que Sirve? Que Pasa Si Se Borra?
-18. Que Es rsync? Como Es La Sintaxis?
-19. Si Necesita Copiar Una Gran Cantidad de Archivos, Que Utilizaria Entre scp y rsync? Por Que?
-20. Que Es ClusterSSH?21. Indique Para Que Sirve el Archivo ~/.ssh/config. De Un Ejemplo de Su Uso.
-22. Que Es SSHFS? Podria Usarse En el LDC?23. Que Es autossh? Como Mantienes Una Sesion Abierta Para Siempre?
-24. Indique Que Significa Cada Uno de Los Siguientes Avisos Y Como Resolver el Problema.
-a) 
-The authenticity of host 'arrakis (159.90.10.114)' can't be established.RSA key fingerprint is 6a:37:74:c3:a7:d2:51:1f:93:cb:5a:e6:b0:3e:7f:76.Are you sure you want to continue connecting (yes/no)? b) @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!Someone could be eavesdropping on you right now (man-in-the-middleattack)!It is also possible that the RSA host key has just been changed.The fingerprint for the RSA key sent by the remote host is69:0c:bb:24:74:89:1a:fc:55:cf:4e:f2:d1:b2:b5:cc.Please contact your system administrator.Add correct host key in /home/edward/.ssh/known_hosts to get rid of thismessage.Offending key in /etc/ssh/ssh_known_hosts:4RSA host key for titan has changed and you have requested strictchecking.Host key verification failed.c)
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@The RSA host key for dhcp has changed,and the key for the corresponding IP address 159.90.10.9is unchanged. This could either mean thatDNS SPOOFING is happening or the IP address for the hostand its host key have changed at the same time.Offending key for IP in /home/jose/.ssh/known_hosts:26
-d) 
-Warning: the RSA host key for 'taraza' differs from the key for the IP address '159.90.10.218'Offending key for IP in /etc/ssh/ssh_known_hosts:222Matching host key in /home/jose/.ssh/known_hosts:45Are you sure you want to continue connecting (yes/no)? 
-25. Problema: La Profesora Marlene Goncalves Tiene En Su Casa Una Red. En Esa Red Tiene Una Computadora (Host Inalcanzable). Desde La Computadora Donde Estoy No Puedo Acceder A La Computadora Que Ella Tiene En Su Casa, Pero Desde La Computadora Que Esta En Su Cubiculo Si Puedo (Host Alcanzable). Indique Como Puedo Conectarme A La Computadora Que Se Encuentra En Su Casa Desde Mi Computadora Con Una Sola Linea de Comando Y Sin Usar el Caracter ; En Su Super Linea. Alcanzar Un Host Inalcanzable Mediante Un Host Alcanzable.
+separator: ---------------------------
+
+################################ Sartenejas, 29 de Noviembre de 2012 Universidad Simon Bolivar                      
+## Laboratorio DOcente de Computacion              #
+# Secure SHell (SSH)                   			  #
+# Autor: Jose Luis Lo Huang             		  #
+###################################################
+
+00. Que Es SSH?, Por Que Fue Creado?
+
+	On UNIX Systems early days, it was common to use programs such as rlogin or telnet.
+	 The problem was that this programs transmitted comunications on cleartext 
+	(including password and login names). 
+		
+				---------------------------
+
+	This led to the creation of the SSH protocol ( RFC 4250 .. 4819 ) that besides
+	providing remote login and executing commands on a remote machine that solves
+	two problems: it *authenticates the identity* of the remote host and *encrypts
+	all comunications* between the local and remote host. Additionally it provides 
+	X11 connections, arbitrary TCP ports and UNIX domain sockets. 
+
+	[ man ssh | TLC William E. Shotts Jr ] 
+
+01. Que Es un Algoritmo de Cifrado, Cuales Son Los Que Utiliza SSH?
+
+	Algorithm that allows 'encripting' and 'decrypting', which are processes that
+	allow to transform information/messages to code and vice versa.  Usually, ciphers
+	substitude input to output of the same length whilst coding/decoding involves
+	substution of different size strings of characters.
+
+	Usually a cipher's output depens on the presence of a 'key' or *'criptovariable'*.
+	This cause the ciphertext for a message varies depending on the key being used
+	, this as a consequence of the key on the step of the cipher algorithm. The whole
+	point of using keys is that it makes obtaining the plaintext from the ciphertext
+	extremely difficult. 
+	
+	Modern ciphers are classified by: 
+		@ wether they work on blocks of symbols of fixed size (#blockciphers#) 	
+		or on a contiguous stream of characters (#streamciphers#)
+		@ wether the same key is used both in encription and decription
+		(*simmetric key algorithm*) or not, (*asymmetric key algorithm*).If the
+		enciphering is asymmetric, the enciphering key is different but 	
+		related to the deciphering key. If the keys are not related at all	
+		then the algorithm admits public/private pair of keys without
+		compromising *confidentiality*. 
+
+				---------------------------
+
+	By quering ssh_config (5), and checking the *keyword* Ciphers we get : 
+	"" 
+	 The supported ciphers are:
+
+                   3des-cbc
+                   aes128-cbc
+                   aes192-cbc
+                   aes256-cbc
+                   aes128-ctr
+                   aes192-ctr
+                   aes256-ctr
+                   aes128-gcm@openssh.com
+                   aes256-gcm@openssh.com
+                   chacha20-poly1305@openssh.com
+
+             The default is:
+
+                   chacha20-poly1305@openssh.com,
+                   aes128-ctr,aes192-ctr,aes256-ctr,
+                   aes128-gcm@openssh.com,aes256-gcm@openssh.com
+								""
+	
+	alternatively, it is possible to list available ciphers using: 
+		ssh -Q cipher
+
+	### check aes, cbc, ctr, gcm ###
+
+	[man ssh_config , https://en.wikipedia.org/wiki/Cipher ]
+
+02. En Windows, Que Son Putty, Poderosa Y PowerSHELL? Que Es MSYSGit?
+
+03. Explique Lo Que Sucede Desde Que Hacemos SSH A Una Maquina Desde el Terminal 
+	Hasta Que Finalmente Ya Estamos Autenticados.
+
+	The process of a client connecting to a server using the ssh protocol takes 
+	the follwing steps: 
+
+	( 0.5 ) - Version verification: When a TCP connection is made by a client the
+	server responds with the version of SSH it supports. If version on extremes 
+	are compatible, the process continues.  <- otherwise ###
+
+	( 1.- ) Server authentication: The server provides it's public host key, which the 
+	user can use to check authenticy, first within its configuration files 
+	( ~/.ssh/known_hosts ) , and if not found, they key can be search online
+	and compared. 
+
+	( 2.- ) Encryption negotiation: Here, bot client and server negotiate a session key
+	using a version of the #Diffie-Hellman algorithm#. The session key will remain 
+	through the whole session and it differs from public/private keys used for
+	authentication.
+
+	The procedure goes like this: 	
+		a ) both parts agree on a large prime number. 
+
+		b ) both parts agree on an # encription generator # , such as (AES).
+
+		c ) each part produces a secret prime number, *which is used as a
+		private key for this interaction* (different from the secret key
+		used for authentication). 
+
+		d ) The private key, the encryption generator and public prime number 
+		are used to generate a public key for each host (which is shareable).
+
+		e ) each host uses the public key, private key and original prime 	
+		number to computed a shared secret key (simmetric). Which despite
+
+		of being calculated using some host-dependet values, is the same
+		for both hosts. 
+
+		f ) the shared secret is used to encrypt communications along the 
+		session
+
+	All of this trouble to make a shared key for whose creation each host interveined
+	equally. 
+
+	3.- User authentication: At this steps are different options depending on what
+	the server accepts. 
+
+	First, user can authenticate using password for the requesting account, and 
+	it will be secured through the already encrypted channel. 
+
+	The alternative is the use of SSH key pairs: assimetric public/private keys.
+	
+	The process for keys goes as follows: 
+
+		a ) The client sends an ID for the key pair it would like to 
+		authenticate. 
+
+		b ) The server checks the *authorized_keys* file, for the account
+		requesting authentication. 
+
+		c ) if a public key is found associated to the ID, the server generates
+		a random number and uses the public key to encrypt the message.
+
+		d ) The server sends the message. 
+		
+		e ) If the client actually has the associated key, it will decrypt 
+		the message and get the number. 
+
+		f ) The client combines the number with the shared session key and 
+		computes the MD5 sum for that. <- why the MD5 sum and not simply the number? ###
+
+		g ) The client answer to the server with the computed hash. 
+
+		h ) The server goes to the same process and then compares hashes.
+		If they match, it is proven that the client is who it says it is.
+
+	After this process is conclude the session is finally stablished and secure comms
+	can be interexchanged.
+	
+		
+					---------------------------
+
+	[https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process#how-does-ssh-work]
+
+04. Que Son Las Llaves SSH? Como Funcionan? Para Que Sirven? Donde Se Almacenan 
+	Las Llaves SSH de Un Usuario?
+
+05. Como Se Crean Las Llaves SSH de Un Usuario? Debe Crear Sus Llaves SSH.
+
+06. Indique Una Posible Situacion En La Que Sea Muy Util Tener Las Llaves SSH.
+
+07. Si Usted Fuera Operador del LDC, Utilizaria Llaves SSH En La Pecera Para Los 
+	Servidores? Explique Su Respuesta.
+
+08. Explique Por Que Shamir Es Una Maquina Importante En el LDC?
+	Es Un Riesgo Que Esta Maquina este Configurada de Esta Manera?
+
+09. Que Es ssh-agent? Para Que Sirve el Comando ssh-add?
+
+10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
+
+	ssh -vvv ### 
+
+11. Que Es rsh, rcp y ftp? Cuales Son Las Versiones Seguras de Estos Comandos.
+
+12. Como Hago Para Conectarme A Una Maquina Y Ejecutar Un Comando Y Que Luego
+	 de Esto Se Cierre La Conexion.
+
+13. Que Es Un Tunel SSH? Cree Un Tunel SSH Desde Afuera de La Universidad 
+	Hacia Una de Las Maquinas del LDC Por el Puerto 20000.
+
+14. Si Tengo Un Servidor Dentro de Un NAT, Como Hago Para Conectarme Al Mismo?
+
+15. Donde Se Encuentran Los Logs del SSH? Que Es DenyHost, Cual Es Su Relacion Con SSH?
+
+16. Como Exporto Las X Mediante SSH?
+
+17. Que Es el Archivo known_hosts? Para Que Sirve? Que Pasa Si Se Borra?
+
+18. Que Es rsync? Como Es La Sintaxis?
+
+19. Si Necesita Copiar Una Gran Cantidad de Archivos, Que Utilizaria Entre 
+	scp y rsync? Por Que?
+
+20. Que Es ClusterSSH?
+
+21. Indique Para Que Sirve el Archivo ~/.ssh/config. De Un Ejemplo de Su Uso.
+
+22. Que Es SSHFS? Podria Usarse En el LDC?
+
+23. Que Es autossh? Como Mantienes Una Sesion Abierta Para Siempre?
+
+24. Indique Que Significa Cada Uno de Los Siguientes Avisos Y Como Resolver 
+	el Problema.
+
+	a) The authenticity of host 'arrakis (159.90.10.114)' can't be established.
+	RSA key fingerprint is 6a:37:74:c3:a7:d2:51:1f:93:cb:5a:e6:b0:3e:7f:76.
+	Are you sure you want to continue connecting (yes/no)? 
+
+	b)
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+	Someone could be eavesdropping on you right now (man-in-the-middle
+	attack)!
+	It is also possible that the RSA host key has just been changed.
+	The fingerprint for the RSA key sent by the remote host is
+	69:0c:bb:24:74:89:1a:fc:55:cf:4e:f2:d1:b2:b5:cc.
+	Please contact your system administrator.
+	Add correct host key in /home/edward/.ssh/known_hosts to get rid of this
+	message.
+	Offending key in /etc/ssh/ssh_known_hosts:4
+	RSA host key for titan has changed and you have requested strict
+	checking.
+	Host key verification failed.
+
+	c)
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	@       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	The RSA host key for dhcp has changed,
+	and the key for the corresponding IP address 159.90.10.9
+	is unchanged. This could either mean that
+	DNS SPOOFING is happening or the IP address for the host
+	and its host key have changed at the same time.
+	
+	Offending key for IP in /home/jose/.ssh/known_hosts:26
+
+	d) 
+	Warning: the RSA host key for 'taraza' differs from the key for the IP address '159.90.10.218'
+	Offending key for IP in /etc/ssh/ssh_known_hosts:222
+	Matching host key in /home/jose/.ssh/known_hosts:45
+	Are you sure you want to continue connecting (yes/no)? 
+
+	25. Problema: La Profesora Marlene Goncalves Tiene En Su Casa Una Red. En 
+	Esa Red Tiene Una Computadora (Host Inalcanzable). Desde La Computadora Donde 
+	Estoy No Puedo Acceder A La Computadora Que Ella Tiene En Su Casa, Pero Desde 
+	La Computadora Que Esta En Su Cubiculo Si Puedo (Host Alcanzable). 
+	Indique Como Puedo Conectarme A La Computadora Que Se Encuentra En Su Casa 
+	Desde Mi Computadora Con Una Sola Linea de Comando Y Sin Usar el Caracter ; 
+	En Su Super Linea. Alcanzar Un Host Inalcanzable Mediante Un Host Alcanzable.
