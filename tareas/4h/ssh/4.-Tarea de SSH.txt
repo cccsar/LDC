@@ -1,22 +1,43 @@
 separator: ---------------------------
 
 syntax:
-	### : further investigation
-	# .* # : concept investigation
-	* .* * : important
+	### : further investigation 					grep -Eno " +### *" taskname.txt
+	# .* # : concept investigation					grep -Eno '# ([[:alnum:]]+ )+#' taskname.txt
+	* .* * : important						grep -Eno '\* ([[:alpha:]]+ )+\*' taskname.txt
 	( [[:digit:]] ) : ennumeration (first indent) 
 	[[:alpha:]] ) : ennumeration (second indent) 
 	--------------------------- : sub question separator
 	[ | | | .. ] : references ( at the end of each answer ) 
 
-offer grep lookups: 
-
 
 ################################ Sartenejas, 29 de Noviembre de 2012 Universidad Simon Bolivar                      
-## Laboratorio DOcente de Computacion              #
-# Secure SHell (SSH)                   			  #
+## Laboratorio Docente de Computacion              #
+# Secure Shell (SSH)                   			  #
 # Autor: Jose Luis Lo Huang             		  #
 ###################################################
+
+Syllabus: 
+
+	SSH
+	\- what is
+	\- ciphers
+	\- handshaking
+		\- version negotiation
+		\- server authentication
+		\- encryption negotiation
+		\- user authentication
+			\- password
+			\- keys
+	\- ssh-keys [ host, identities ] 
+		\- public, private
+		\- passphrase
+		\- creation process
+	\- ssh-agent [ only identities ]
+		\- single sign on	
+		\- ssh-add
+		\- single sign-on
+		\- agent forward 
+
 
 00. Que Es SSH?, Por Que Fue Creado?
 
@@ -172,7 +193,7 @@ offer grep lookups:
 	All of this trouble to make a shared key for whose creation each host interveined
 	equally.  <- why is this so important? ###
 
-	3.- User authentication: At this steps there are different options depending on what
+	( 3.- ) User authentication: At this steps there are different options depending on what
 	the server accepts. 
 
 	First, user can authenticate using password for the requesting account, and 
@@ -220,7 +241,7 @@ offer grep lookups:
 	messages, the client decodes the message with its private key and sends a 
 	verification answer and finally, gets authenticated. 
 	
-	This pair of keys is also stored on servers if a control rule is set.  #c# 
+	This pair of keys is also stored on servers if a control rule is set.  
 
 	A differentiation to be made is that * identity keys * are used to identify
 	users whilst * hots keys * identify computers. 
@@ -336,10 +357,7 @@ offer grep lookups:
 	must contain its socket for ssh-add to work. 
 
 
-	forward: reenviar
-
 	[ man ssh-agent | man ssh-add | https://www.ssh.com/ssh/agent ]
-
 
 10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
 
@@ -430,3 +448,7 @@ Notes:
 	@ sshd is the daemon process spawned by openssh-server to listen for incoming 
 	connections. One may think that daemons, for server software are the ones
 	always listening. 
+
+Glossary: 
+	@ forward: reenviar
+	@ display: monitor | exhibicion, despliegue, demostracion. 
