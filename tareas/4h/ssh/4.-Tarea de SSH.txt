@@ -27,12 +27,40 @@ offer grep lookups:
 				---------------------------
 
 	This led to the creation of the SSH protocol ( RFC 4250 .. 4819 ) that besides
-	providing remote login and executing commands on a remote machine that solves
-	two problems: it *authenticates the identity* of the remote host and *encrypts
+	providing remote login and executing commands on a remote machine, it solves
+	two problems: *authenticates the identity* of the remote host and *encrypts
 	all comunications* between the local and remote host. Additionally it provides 
-	X11 connections, arbitrary TCP ports and UNIX domain sockets. 
+	# X11 connections #, arbitrary TCP ports and # UNIX domain sockets #. 
 
+	
 	[ man ssh | TLC William E. Shotts Jr ] 
+
+	X11: Windowing system for bitmap displays. It is also a protocol used in its
+	eleventh version (hence the 11), which originated at the MIT and it is 
+	currently leaded by the X.org foundation. 
+
+	It is an architecture-independent system for remote graphic-user interface
+	and # input device capabilities # ( <- terminals? ). X provides a basic
+	framework, or primitives for creating GUIs : drawing and moving windows
+	on the display or interacting with a mouse, keyboard or touchscreen.
+
+	This protocol was designed in particular to work over network connection. 
+	The X server usually runs on a user computers while the clients are on some
+	remote computer, this is, X provides display and I/O services to applications
+	(remote or local) so it is a server; applications use this services, thus
+	they are clients. 
+
+	To use an X client application: 
+		@ open a terminal window. 
+		@ use ssh with the X forwarding argument	
+		@ request local display/input services (e.g: export DISPLAY=[hostname]:0) <-guat?
+
+	Its configuration files are located at : /etc/X11/ 
+	
+	-- This is to complicated -- 
+	
+
+	[ https://en.wikipedia.org/wiki/X_Window_System ]
 
 01. Que Es un Algoritmo de Cifrado, Cuales Son Los Que Utiliza SSH?
 
@@ -41,6 +69,9 @@ offer grep lookups:
 	substitude input to output of the same length whilst coding/decoding involves
 	substution of different size strings of characters.
 
+	The name of the unencrypted text is 'plaintext' and the decrypted text is known
+	as 'ciphertext'.
+
 	Usually a cipher's output depens on the presence of a 'key' or *'criptovariable'*.
 	This cause the ciphertext for a message varies depending on the key being used
 	, this as a consequence of the key on some steps of the cipher algorithm. The whole
@@ -48,10 +79,10 @@ offer grep lookups:
 	extremely difficult. 
 	
 	Modern ciphers are classified by: 
-		@ wether they work on blocks of symbols of fixed size (#blockciphers#) 	
-		or on a contiguous stream of characters (#streamciphers#)
+		@ wether they work on blocks of symbols of fixed size (# blockciphers #) 	
+		or on a contiguous stream of characters (# streamciphers #)
 		@ wether the same key is used both in encription and decription
-		(*simmetric key algorithm*) or not, (*asymmetric key algorithm*).If the
+		(* simmetric key algorithm *) or not, (* asymmetric key algorithm *).If the
 		enciphering is asymmetric, the enciphering key is different but 	
 		related to the deciphering key. If the keys are not related at all	
 		then the algorithm admits public/private pair of keys without
@@ -225,7 +256,7 @@ offer grep lookups:
 
 05. Como Se Crean Las Llaves SSH de Un Usuario? Debe Crear Sus Llaves SSH.
 
-	Using the command *ssh-keygen* makes the trick. Relevant flags are: 
+	Using the command * ssh-keygen * makes the trick. Relevant flags are: 
 
 		-t: type of key to create (among dsa, ecdsa, ed255219, rsa).
 		 -- other available algorithms can be queried in man ssh_config 
@@ -274,19 +305,40 @@ offer grep lookups:
 09. Que Es ssh-agent? Para Que Sirve el Comando ssh-add?
 
 	ssh-agent keeps track of private keys used for public key authentication 
-	primarily so a users doesn't has to give a password or passphrase 
+	primarily so a user doesn't has to give a password or passphrase 
 	repeatedly. It is an implementation of # Single sign-on #. It works like
 	a keyring since identity keys can be added to it useng ssh-add, or by
 	means of a configuration file. 
 
 	It usually starts in the beggining of a X11 session or a logging session
 	and other windows or programs are clients to the ssh-client program.  By 
-	using ** environment variables ** the agent is found and automatically
-	used for authentication.  <- why does it need to be found ? ### 
+	using ** environment variables ** (such as SSH_AGENT_SOCK ) the agent is
+	found and automatically used for authentication.  <- why does it need 
+	to be found ? ### 
+
+	-- In order to connect to a server using the agent, the server must allow
+	public key authentication. --
+
+	
+	Since SSH protocol implements * agent forwarding * 
 	
 				---------------------------
 
-	[ man ssh-agent | https://www.ssh.com/ssh/agent ]
+	ssh-add adds private keys identities to the authentication agent. If no file
+	is specified, it search by default in: 
+		~/.ssh/id_rsa
+		~/.ssh/id_ecdsa
+		~/.ssh/id_dsa
+		~/.ssh/id_ed25519
+	Alternative identity files can be given on the command line. 
+
+	The authentication agent must be running and the variable SSH_AGENT_SOCKET
+	must contain its socket for ssh-add to work. 
+
+
+	forward: reenviar
+
+	[ man ssh-agent | man ssh-add | https://www.ssh.com/ssh/agent ]
 
 
 10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
@@ -372,3 +424,9 @@ offer grep lookups:
 	Indique Como Puedo Conectarme A La Computadora Que Se Encuentra En Su Casa 
 	Desde Mi Computadora Con Una Sola Linea de Comando Y Sin Usar el Caracter ; 
 	En Su Super Linea. Alcanzar Un Host Inalcanzable Mediante Un Host Alcanzable.
+
+
+Notes: 
+	@ sshd is the daemon process spawned by openssh-server to listen for incoming 
+	connections. One may think that daemons, for server software are the ones
+	always listening. 
