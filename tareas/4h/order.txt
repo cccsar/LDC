@@ -1,0 +1,9 @@
+Orden: 	
+	ssh
+	opcionales/procesos y cron
+	logwatch
+	backup
+	dns | ldap
+	vim | regex
+	correo <- uwu
+	

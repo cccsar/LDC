@@ -1,0 +1,13 @@
+separator: ---------------------------
+
+syntax:
+	### : further investigation 					grep -Eno " +### *" taskname.txt
+	# .* # : concept investigation					grep -Eno '# ([[:alnum:]]+ )+#' taskname.txt
+	* .* * : important						grep -Eno '\* ([[:alpha:]]+ )+\*' taskname.txt
+	( [[:digit:]] ) : ennumeration (first indent) 
+	[[:alpha:]] ) : ennumeration (second indent) 
+	--------------------------- : sub question separator
+	[ | | | .. ] : references ( at the end of each answer ) 
+	-- .* -- : comments
+	" excerpt " : extracts from command execution
+	EXAMPLE: code
