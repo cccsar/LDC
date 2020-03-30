@@ -1,0 +1,138 @@
+
+#
+# ARIN WHOIS data and services are subject to the Terms of Use
+# available at: https://www.arin.net/resources/registry/whois/tou/
+#
+# If you see inaccuracies in the results, please report at
+# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/
+#
+# Copyright 1997-2020, American Registry for Internet Numbers, Ltd.
+#
+
+
+NetRange:       159.90.0.0 - 159.90.255.255
+CIDR:           159.90.0.0/16
+NetName:        LACNIC-ERX-159-90-0-0
+NetHandle:      NET-159-90-0-0-1
+Parent:         NET159 (NET-159-0-0-0-0)
+NetType:        Transferred to LACNIC
+OriginAS:       
+Organization:   Latin American and Caribbean IP address Regional Registry (LACNIC)
+RegDate:        2003-10-29
+Updated:        2007-12-17
+Comment:        This IP address range is under LACNIC responsibility
+Comment:        for further allocations to users in LACNIC region.
+Comment:        Please see http://www.lacnic.net/ for further details,
+Comment:        or check the WHOIS server located at http://whois.lacnic.net
+Ref:            https://rdap.arin.net/registry/ip/159.90.0.0
+
+ResourceLink:  http://lacnic.net/cgi-bin/lacnic/whois
+ResourceLink:  whois.lacnic.net
+
+
+OrgName:        Latin American and Caribbean IP address Regional Registry
+OrgId:          LACNIC
+Address:        Rambla Republica de Mexico 6125
+City:           Montevideo
+StateProv:      
+PostalCode:     11400
+Country:        UY
+RegDate:        2002-07-26
+Updated:        2018-03-15
+Ref:            https://rdap.arin.net/registry/entity/LACNIC
+
+ReferralServer:  whois://whois.lacnic.net
+ResourceLink:  http://lacnic.net/cgi-bin/lacnic/whois
+
+OrgTechHandle: LACNIC-ARIN
+OrgTechName:   LACNIC Whois Info
+OrgTechPhone:  +598-2604-2222 
+OrgTechEmail:  whois-contact@lacnic.net
+OrgTechRef:    https://rdap.arin.net/registry/entity/LACNIC-ARIN
+
+OrgAbuseHandle: LWI100-ARIN
+OrgAbuseName:   LACNIC Whois Info
+OrgAbusePhone:  +598-2604-2222 
+OrgAbuseEmail:  abuse@lacnic.net
+OrgAbuseRef:    https://rdap.arin.net/registry/entity/LWI100-ARIN
+
+
+#
+# ARIN WHOIS data and services are subject to the Terms of Use
+# available at: https://www.arin.net/resources/registry/whois/tou/
+#
+# If you see inaccuracies in the results, please report at
+# https://www.arin.net/resources/registry/whois/inaccuracy_reporting/
+#
+# Copyright 1997-2020, American Registry for Internet Numbers, Ltd.
+#
+
+
+
+Found a referral to whois.lacnic.net.
+
+
+% Joint Whois - whois.lacnic.net
+%  This server accepts single ASN, IPv4 or IPv6 queries
+ 
+% LACNIC resource: whois.lacnic.net
+
+
+% Copyright LACNIC lacnic.net
+%  The data below is provided for information purposes
+%  and to assist persons in obtaining information about or
+%  related to AS and IP numbers registrations
+%  By submitting a whois query, you agree to use this data
+%  only for lawful purposes.
+%  2020-01-22 23:09:38 (-03 -03:00)
+
+inetnum:     159.90/16
+status:      assigned
+aut-num:     N/A
+owner:       Universidad Simon Bolivar
+ownerid:     VE-USBO1-LACNIC
+responsible: Nicola Baglivi
+address:     DST. Edificio MYS, Planta Baja, Sartenejas, Baruta, --, -
+address:     1080 - Caracas - 
+country:     VE
+phone:       +58  2129063200 [0000]
+owner-c:     NIB
+tech-c:      JPF3
+abuse-c:     JPF3
+inetrev:     159.90/16
+nserver:     DNS.USB.VE  [lame - not published]
+nsstat:      20200121 QREFUSED
+nslastaa:    20130813
+nserver:     DNS2.USB.VE  
+nsstat:      20200121 AA
+nslastaa:    20200121
+nserver:     DNS3.USB.VE  
+nsstat:      20200121 TIMEOUT
+nslastaa:    20191203
+created:     19920330
+changed:     20070228
+
+nic-hdl:     JPF3
+person:      Javier Pose Fernandez
+e-mail:      jpose@USB.VE
+address:     Valle Sartenejs, EDF. MYS-008, USB, -, -
+address:     1080 - Caracas - DC
+country:     VE
+phone:       +58 212 9063212 []
+created:     20070227
+changed:     20190402
+
+nic-hdl:     NIB
+person:      Nicola Baglivi
+e-mail:      nbaglivi@USB.VE
+address:     USB. Dirección de Servicios Telemáticos. Edf. MYS,, 024, Planta Baja
+address:     1080 - Caracas - MI
+country:     VE
+phone:       +58  2129063200 [0000]
+created:     20100125
+changed:     20190529
+
+% whois.lacnic.net accepts only direct match queries.
+% Types of queries are: POCs, ownerid, CIDR blocks, IP
+% and AS numbers.
+
