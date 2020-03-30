@@ -8,6 +8,9 @@ syntax:
 	[[:alpha:]] ) : ennumeration (second indent) 
 	--------------------------- : sub question separator
 	[ | | | .. ] : references ( at the end of each answer ) 
+	-- .* -- : comments
+	" excerpt " : extracts from command execution
+	EXAMPLE: code
 
 
 ################################ Sartenejas, 29 de Noviembre de 2012 Universidad Simon Bolivar                      
@@ -32,11 +35,13 @@ Syllabus:
 		\- public, private
 		\- passphrase
 		\- creation process
+		\- local and remote config files
 	\- ssh-agent [ only identities ]
 		\- single sign on	
 		\- ssh-add
-		\- single sign-on
 		\- agent forward 
+			\- Reason of existence <- IMP 
+			\- 
 
 
 00. Que Es SSH?, Por Que Fue Creado?
@@ -273,7 +278,8 @@ Syllabus:
 		ssh_host_algorithm[.pub]
 
 
-	[https://www.ssh.com/ssh/passphrase | https://www.ssh.com/ssh/identity-key ]
+	[https://www.ssh.com/ssh/passphrase | https://www.ssh.com/ssh/identity-key 
+		| man ssh ] 
 
 05. Como Se Crean Las Llaves SSH de Un Usuario? Debe Crear Sus Llaves SSH.
 
@@ -285,7 +291,7 @@ Syllabus:
 		-b: number of bits in the key to create.
 		-f: name of the keyfile.
 
-	e.g.: 
+	EXAMPLE: 	
 	ssh-keygen -t rsa -b 4096 
 
 		-- a dialog starts requesting path confirmation and passphrase: --
@@ -325,11 +331,11 @@ Syllabus:
 
 09. Que Es ssh-agent? Para Que Sirve el Comando ssh-add?
 
-	ssh-agent keeps track of private keys used for public key authentication 
-	primarily so a user doesn't has to give a password or passphrase 
-	repeatedly. It is an implementation of # Single sign-on #. It works like
-	a keyring since identity keys can be added to it useng ssh-add, or by
-	means of a configuration file. 
+	ssh-agent keeps track of PRIVATE KEYS (on the local host ) used for key-based
+	authentication primarily so a user doesn't has to give a password or passphrase 
+	repeatedly (REMINDER: Private keys are created using passphrases).  It is an
+	implementation of # Single sign-on #. It works like a keyring since identity 
+	keys can be added to it useng ssh-add, or by means of a configuration file. 
 
 	It usually starts in the beggining of a X11 session or a logging session
 	and other windows or programs are clients to the ssh-client program.  By 
@@ -337,15 +343,14 @@ Syllabus:
 	found and automatically used for authentication.  <- why does it need 
 	to be found ? ### 
 
-	-- In order to connect to a server using the agent, the server must allow
-	public key authentication. --
-
-	
-	Since SSH protocol implements * agent forwarding * 
-	
+	-- Note: In order to connect to a server using the agent, the server must allow
+	public key authentication, and must have the local file ~/.ssh/authorized_keys 
+	with at least one public-key of the local host so that key-based logins from 
+	our pc are enabled --
+			
 				---------------------------
 
-	ssh-add adds private keys identities to the authentication agent. If no file
+	ssh-add adds PRIVATE KEYS identities to the authentication agent. If no file
 	is specified, it search by default in: 
 		~/.ssh/id_rsa
 		~/.ssh/id_ecdsa
@@ -356,9 +361,83 @@ Syllabus:
 	The authentication agent must be running and the variable SSH_AGENT_SOCKET
 	must contain its socket for ssh-add to work. 
 
+	Furthermore, in order to access some remote host ( of course, with 
+	some sshd listening on some known port), the account to log into must 
+	have added the public key of the remote host to the folder: 
+		~/.ssh/authorized_keys
+	
+	EXAMPLE: 
+		-- local side --
+		scp -v ~/.ssh/id_rsa-mine.pub name@remote_hostname:~/.ssh
+		-- server side -- 
+		cat id_rsa-mine >> authorized_keys
 
-	[ man ssh-agent | man ssh-add | https://www.ssh.com/ssh/agent ]
+	this way, key authentication, rather than password, is carried out. 
 
+
+	-- Note: using verbose output one may notice that identity public files are checked
+	for prescence (p.e. id-rsa.pub) , I asume this is for comparison on an existing 
+	'authorized_hosts' file on the remote host, so key-based authentication is used.
+	No surprise password authentication also shows to be the following authentication
+	method : 
+		
+	"
+		debug1: Authentications that can continue: publickey,password
+		debug1: Next authentication method: publickey
+		debug1: Offering public key: /home/shinji/.ssh/id_rsa RSA SHA256:fxIRt27f8Eao4N27FQ28nhzCI8HefEnOJgDIkbj/eec agent
+		debug1: Authentications that can continue: publickey,password
+		debug1: Offering public key: shinji@tato-00 RSA SHA256:CEMGIQwVwXEC1uT1DmsXDmIO/vD+pVHv6IvAK26wTCI agent
+		debug1: Authentications that can continue: publickey,password
+		debug1: Trying private key: /home/shinji/.ssh/id_dsa
+		debug1: Trying private key: /home/shinji/.ssh/id_ecdsa
+		debug1: Trying private key: /home/shinji/.ssh/id_ed25519
+		debug1: Trying private key: /home/shinji/.ssh/id_xmss
+		debug1: Next authentication method: password 
+				"
+
+	Thus probably enforced authentication method is key-based login. --
+	
+
+	In order to choose a particular identity file choose : -i ident_name.pub 
+
+	EXAMPLE: 
+		eval `ssh-agent -S`	 -- turn on ssh-agent --
+		ssh-add ~/.ssh/id_rsa-mine.pub
+		
+		-- Trying login -- 
+		
+		ssh -i ~/.ssh/id_rsa-mine name@remote_hostname 
+
+		-- This will ask for passphrase, but only once. After that, 	
+		successive logins to that host are mediated by ssh-agent --
+		
+				---------------------------
+
+	AGENT FORWARDING: 	
+
+	An additional feature to ssh-agent is * agent forwarding *. Suppose there's a 	
+	need to use ssh FROM a remote server ( Not necessarily with other's people access ).
+	Then, in order to use single sign-on, we'd have to repeat configuration process ()
+	on the remote host. Besides, if server is actually accesible with other (untrusted)
+	user with high permission, using ssh-agent might be dangerous since our private
+	keys can be retrieved from the agent ( ### dunno how ### ).
+
+	Therefore, ssh allows to use the agent as if it were local on the server, thus 
+	implementing a sort  of transitive single sign-on.
+
+	-- Note: In order to use agent forwarding: 
+		ForwardAgent must be set to yes on client <- man ssh_config
+		AllowAgentForwarding must be set to yes on serve <-sshd_config
+		--
+		
+	EXAMPLE: 
+		ssh -A login_name@remote_hostaname
+
+		### Include verfication ?? ###
+
+
+	[ man ssh-agent | man ssh-add | https://www.ssh.com/ssh/agent 
+		| https://dev.to/levivm/how-to-use-ssh-and-ssh-agent-forwarding-more-secure-ssh-2c32 ]
 10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
 
 	ssh -vvv ### 
@@ -448,6 +527,8 @@ Notes:
 	@ sshd is the daemon process spawned by openssh-server to listen for incoming 
 	connections. One may think that daemons, for server software are the ones
 	always listening. 
+
+	@ check: man environ <- it's amazing
 
 Glossary: 
 	@ forward: reenviar
