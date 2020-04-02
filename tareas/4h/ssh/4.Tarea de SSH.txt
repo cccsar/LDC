@@ -369,6 +369,7 @@ Syllabus:
 	EXAMPLE: 
 		-- local side --
 		scp -v ~/.ssh/id_rsa-mine.pub name@remote_hostname:~/.ssh
+
 		-- server side -- 
 		cat id_rsa-mine >> authorized_keys
 
@@ -438,12 +439,12 @@ Syllabus:
 
 	[ man ssh-agent | man ssh-add | https://www.ssh.com/ssh/agent 
 		| https://dev.to/levivm/how-to-use-ssh-and-ssh-agent-forwarding-more-secure-ssh-2c32 ]
+
 10. Como Hago Para Ver el Proceso de Autenticacion de Manera Detallada?
 
 	ssh -vvv  
 	
 	Examples of this process are on files ssh-v.txt, ssh-vv.txt and ssh-vvv.txt
-
 
 	[ man ssh | jorge ] 
 
