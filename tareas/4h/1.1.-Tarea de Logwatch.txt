@@ -6,9 +6,38 @@
 
 1) ¿Qué es logwatch?
 
+*Output from 'apt-cache show logwatch': 
+
+    Description-en: log analyser with nice output written in Perl
+     Logwatch is a modular log analyser that runs every night
+     and mails you the results. It can also be run from command line.
+     .
+     The output is by service and you can limit the output to one particular
+     service. The subscripts which are responsible for the output, mostly
+     convert the raw log lines in structured format.
+     .
+     Logwatch generally ignores the time component in the output, that means,
+     you will know that the reported event was logged in the requested range of
+     time, but you will have to go to the raw log files to get the exact details.
+
+*Output from DESCRIPTION section of the man page:
+     Logwatch is a customizable, pluggable log-monitoring system.  It will go through your logs for a given period of time and make a  report  in  the
+     areas that you wish with the detail that you wish.  Logwatch is being used for Linux and many types of UNIX.
+
+Doubts: 
+    - output by service?
+    - subscripts?
+
+
 2) ¿Dónde se guardan normalmente los logs en una computadora? ¿Qué logs se
 guardan en messages, dmesg, Xorg.0.log, daemon, maillog o mail.log? ¿Para
 qué pueden ser útiles?
+
+# No builtin documentation for messages
+
+DOUBTS:
+    - what is the ring buffer dmesg reffers to? 
+
 
 3)Mencione 3 cosas que debe estar muy pendiente a la hora de revisar un
 logwatch. En el caso de encontrar algo, ¿qué debe hacer?
