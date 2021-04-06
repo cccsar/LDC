@@ -1,113 +1,269 @@
-LOGWATCH(8)                                                           User Manuals                                                           LOGWATCH(8)
+SYSTEMD-JOURNALD.SERVICE(8systemd-journald.serviSYSTEMD-JOURNALD.SERVICE(8)
 
 NAME
-       logwatch - system log analyzer and reporter
+       systemd-journald.service, systemd-journald.socket, systemd-journald-
+       dev-log.socket, systemd-journald-audit.socket, systemd-
+       journald@.service, systemd-journald@.socket, systemd-journald-
+       varlink@.socket, systemd-journald - Journal service
 
 SYNOPSIS
-       logwatch [--detail level ] [--logfile log-file-group ] [--service service-name ] [--mailto address ] [--archives] [--range range ] [--debug level
-       ] [--filename file-name ] [--logdir directory ] [--hostlimit hosts ] [--hostname hostname ] [--html_wrap number  of  characters  ]  [--hostformat
-       host based options ] [--output output-type ] [--format report format ] [--subject email subject ] [--encode encoding to use ] [--numeric] [--ver‐
-       sion] [--help|--usage]
+       systemd-journald.service
+
+       systemd-journald.socket
+
+       systemd-journald-dev-log.socket
+
+       systemd-journald-audit.socket
+
+       systemd-journald@.service
+
+       systemd-journald@.socket
+
+       systemd-journald-varlink@.socket
+
+       /lib/systemd/systemd-journald
 
 DESCRIPTION
-       Logwatch is a customizable, pluggable log-monitoring system.  It will go through your logs for a given period of time and make a  report  in  the
-       areas that you wish with the detail that you wish.  Logwatch is being used for Linux and many types of UNIX.
+       systemd-journald is a system service that collects and stores
+       logging data. It creates and maintains structured, indexed journals
+       based on logging information that is received from a variety of
+       sources:
 
-OPTIONS
-       --detail level
-              This  is  the detail level of the report.  level can be a positive integer, or high, med, low, which correspond to the integers 10, 5, and
-              0, respectively.
+       •   Kernel log messages, via kmsg
 
-       --logfile log-file-group
-              This will force Logwatch to process only the set of logfiles defined by log-file-group  (i.e.  messages,  xferlog,  ...).   Logwatch  will
-              therefore process all services that use those logfiles.  This option can be specified more than once to specify multiple logfile-groups.
+       •   Simple system log messages, via the libc syslog(3) call
 
-       --service service-name
-              This  will  force  Logwatch to process only the service specified in service-name (i.e. login, pam, identd, ...).  Logwatch will therefore
-              also process any log-file-groups necessary to process these services.  This option can be specified more than  once  to  specify  multiple
-              services  to  process.   A  useful service-name is All which will process all services (and logfile-groups) for which you have filters in‐
-              stalled.
+       •   Structured system log messages via the native Journal API, see
+           sd_journal_print(3)
 
-       --mailto address
-              Mail the results to the email address or user specified in address.
+       •   Standard output and standard error of service units. For further
+           details see below.
 
-       --range range
-              You can specify a date-range to process. Common ranges are Yesterday, Today, All, and Help.  Additional options are  listed  when  invoked
-              with the Help parameter.
+       •   Audit records, originating from the kernel audit subsystem
 
-       --archives
-              Each  log-file-group has basic logfiles (i.e. /var/log/messages) as well as archives (i.e. /var/log/messages.? or /var/log/messages.?.gz).
-              When used with "--range all", this option will make Logwatch search through the archives in addition to the regular logfiles.   For  other
-              values of --range, Logwatch will search the appropriate archived logs.
+       The daemon will implicitly collect numerous metadata fields for each
+       log messages in a secure and unfakeable way. See systemd.journal-
+       fields(7) for more information about the collected metadata.
 
-       --debug level
-              For debugging purposes.  level can range from 0 to 100.  This will really clutter up your output.  You probably don't want to use this.
+       Log data collected by the journal is primarily text-based but can
+       also include binary data where necessary. Individual fields making
+       up a log record stored in the journal may be up to 2^64-1 bytes in
+       size.
 
-       --filename file-name
-              Save the output to file-name instead of displaying or mailing it.
+       The journal service stores log data either persistently below
+       /var/log/journal or in a volatile way below /run/log/journal/ (in
+       the latter case it is lost at reboot). By default, log data is
+       stored persistently if /var/log/journal/ exists during boot, with an
+       implicit fallback to volatile storage otherwise. Use Storage= in
+       journald.conf(5) to configure where log data is placed,
+       independently of the existence of /var/log/journal/.
 
-       --logdir directory
-              Look in directory for log subdirectories or log files first before looking in the default directories.
+       On systems where /var/log/journal/ does not exist yet but where
+       persistent logging is desired (and the default journald.conf is
+       used), it is sufficient to create the directory, and ensure it has
+       the correct access modes and ownership:
 
-       --hostlimit host1,host2
-              Limit report to hostname - host1, host2.
+           mkdir -p /var/log/journal
+           systemd-tmpfiles --create --prefix /var/log/journal
 
-       --hostname hostname
-              Use  hostname for the reports instead of this system's hostname.  In addition, if HostLimit is set in the logwatch.conf configuration file
-              (see MORE INFORMATION, below), then only logs from this hostname will be processed (where appropriate).
+       See journald.conf(5) for information about the configuration of this
+       service.
 
-       --html_wrap num-characters
-              Number of characters that html output should be wrapped to. Default is 80.
+STREAM LOGGING
+       The systemd service manager invokes all service processes with
+       standard output and standard error connected to the journal by
+       default. This behaviour may be altered via the
+       StandardOutput=/StandardError= unit file settings, see
+       systemd.exec(5) for details. The journal converts the log byte
+       stream received this way into individual log records, splitting the
+       stream at newline ("\n", ASCII 10) and NUL bytes.
 
-       --hostformat split
-              Use split approach when formatting report for multiple hosts - none [default], split, splitmail.
+       If systemd-journald.service is stopped, the stream connections
+       associated with all services are terminated. Further writes to those
+       streams by the service will result in EPIPE errors. In order to
+       react gracefully in this case it is recommended that programs
+       logging to standard output/error ignore such errors. If the SIGPIPE
+       UNIX signal handler is not blocked or turned off, such write
+       attempts will also result in such process signals being generated,
+       see signal(7). To mitigate this issue, systemd service manager
+       explicitly turns off the SIGPIPE signal for all invoked processes by
+       default (this may be changed for each unit individually via the
+       IgnoreSIGPIPE= option, see systemd.exec(5) for details). After the
+       standard output/standard error streams have been terminated they may
+       not be recovered until the services they are associated with are
+       restarted. Note that during normal operation,
+       systemd-journald.service stores copies of the file descriptors for
+       those streams in the service manager. If systemd-journald.service is
+       restarted using systemctl restart or equivalent operation instead of
+       a pair of separate systemctl stop and systemctl start commands (or
+       equivalent operations), these stream connections are not terminated
+       and survive the restart. It is thus safe to restart
+       systemd-journald.service, but stopping it is not recommended.
 
-       --output output-type
-              Report using output-type - stdout [default], mail, file.
+       Note that the log record metadata for records transferred via such
+       standard output/error streams reflect the metadata of the peer the
+       stream was originally created for. If the stream connection is
+       passed on to other processes (such as further child processes forked
+       off the main service process), the log records will not reflect
+       their metadata, but will continue to describe the original process.
+       This is different from the other logging transports listed above,
+       which are inherently record based and where the metadata is always
+       associated with the individual record.
 
-       --format format
-              Format report using format - text [default], html.
+       In addition to the implicit standard output/error logging of
+       services, stream logging is also available via the systemd-cat(1)
+       command line tool.
 
-       --subject email-subject
-              Customize the email subject sent by Logwatch.  Option --output must be set to mail.
+       Currently, the number of parallel log streams systemd-journald will
+       accept is limited to 4096. When this limit is reached further log
+       streams may be established but will receive EPIPE right from the
+       beginning.
 
-       --encode encoding
-              Encode report using encoding - none [default], base64.
+JOURNAL NAMESPACES
+       Journal 'namespaces' are both a mechanism for logically isolating
+       the log stream of projects consisting of one or more services from
+       the rest of the system and a mechanism for improving performance.
+       Multiple journal namespaces may exist simultaneously, each defining
+       its own, independent log stream managed by its own instance of
+       systemd-journald. Namespaces are independent of each other, both in
+       the data store and in the IPC interface. By default only a single
+       'default' namespace exists, managed by systemd-journald.service (and
+       its associated socket units). Additional namespaces are created by
+       starting an instance of the systemd-journald@.service service
+       template. The instance name is the namespace identifier, which is a
+       short string used for referencing the journal namespace. Service
+       units may be assigned to a specific journal namespace through the
+       LogNamespace= unit file setting, see systemd.exec(5) for details.
+       The --namespace= switch of journalctl(1) may be used to view the log
+       stream of a specific namespace. If the switch is not used the log
+       stream of the default namespace is shown, i.e. log data from other
+       namespaces is not visible.
 
-       --numeric
-              Inhibits additional name lookups, displaying IP addresses numerically.
+       Services associated with a specific log namespace may log via
+       syslog, the native logging protocol of the journal and via
+       stdout/stderr; the logging from all three transports is associated
+       with the namespace.
 
-       --usage
-              Displays usage information
+       By default only the default namespace will collect kernel and audit
+       log messages.
 
-       --help same as --usage.
+       The systemd-journald instance of the default namespace is configured
+       through /etc/systemd/journald.conf (see below), while the other
+       instances are configured through
+       /etc/systemd/journald@NAMESPACE.conf. The journal log data for the
+       default namespace is placed in /var/log/journal/MACHINE_ID (see
+       below) while the data for the other namespaces is located in
+       /var/log/journal/MACHINE_ID.NAMESPACE.
+
+SIGNALS
+       SIGUSR1
+           Request that journal data from /run/ is flushed to /var/ in
+           order to make it persistent (if this is enabled). This must be
+           used after /var/ is mounted, as otherwise log data from /run is
+           never flushed to /var regardless of the configuration. Use the
+           journalctl --flush command to request flushing of the journal
+           files, and wait for the operation to complete. See journalctl(1)
+           for details.
+
+       SIGUSR2
+           Request immediate rotation of the journal files. Use the
+           journalctl --rotate command to request journal file rotation,
+           and wait for the operation to complete.
+
+       SIGRTMIN+1
+           Request that all unwritten log data is written to disk. Use the
+           journalctl --sync command to trigger journal synchronization,
+           and wait for the operation to complete.
+
+KERNEL COMMAND LINE
+       A few configuration parameters from journald.conf may be overridden
+       on the kernel command line:
+
+       systemd.journald.forward_to_syslog=,
+       systemd.journald.forward_to_kmsg=,
+       systemd.journald.forward_to_console=,
+       systemd.journald.forward_to_wall=
+           Enables/disables forwarding of collected log messages to syslog,
+           the kernel log buffer, the system console or wall.
+
+           See journald.conf(5) for information about these settings.
+
+       Note that these kernel command line options are only honoured by the
+       default namespace, see above.
+
+ACCESS CONTROL
+       Journal files are, by default, owned and readable by the
+       "systemd-journal" system group but are not writable. Adding a user
+       to this group thus enables them to read the journal files.
+
+       By default, each user, with a UID outside the range of system users,
+       dynamic service users, and the nobody user, will get their own set
+       of journal files in /var/log/journal/. See Users, Groups, UIDs and
+       GIDs on systemd systems[1] for more details about UID ranges. These
+       journal files will not be owned by the user, however, in order to
+       avoid that the user can write to them directly. Instead, file system
+       ACLs are used to ensure the user gets read access only.
+
+       Additional users and groups may be granted access to journal files
+       via file system access control lists (ACL). Distributions and
+       administrators may choose to grant read access to all members of the
+       "wheel" and "adm" system groups with a command such as the
+       following:
+
+           # setfacl -Rnm g:wheel:rx,d:g:wheel:rx,g:adm:rx,d:g:adm:rx /var/log/journal/
+
+       Note that this command will update the ACLs both for existing
+       journal files and for future journal files created in the
+       /var/log/journal/ directory.
 
 FILES
-       /usr/share/logwatch/
-              This directory contains all the perl executables and configuration files shipped with the logwatch distribution.
+       /etc/systemd/journald.conf
+           Configure systemd-journald behavior. See journald.conf(5).
 
-       /etc/logwatch
-              This directory contains local configuration files that override the default configuration.  See MORE INFORMATION below for  more  informa‐
-              tion.
+       /run/log/journal/machine-id/*.journal,
+       /run/log/journal/machine-id/*.journal~,
+       /var/log/journal/machine-id/*.journal,
+       /var/log/journal/machine-id/*.journal~
+           systemd-journald writes entries to files in
+           /run/log/journal/machine-id/ or /var/log/journal/machine-id/
+           with the ".journal" suffix. If the daemon is stopped uncleanly,
+           or if the files are found to be corrupted, they are renamed
+           using the ".journal~" suffix, and systemd-journald starts
+           writing to a new file.  /run is used when /var/log/journal is
+           not available, or when Storage=volatile is set in the
+           journald.conf(5) configuration file.
 
-EXAMPLES
-       logwatch --service ftpd-xferlog --range all --detail high --archives
-              This will print out all FTP transfers that are stored in all current and archived xferlogs.
-       logwatch --service pam_pwdb --range yesterday --detail high
-              This will print out login information for the previous day...
+           When systemd-journald ceases writing to a journal file, it will
+           be renamed to "original-name@suffix.journal" (or
+           "original-name@suffix.journal~"). Such files are "archived" and
+           will not be written to any more.
 
-MORE INFORMATION
-       The directory /usr/share/doc/logwatch-* contains several files with additional documentation:
-       HOWTO-Customize-LogWatch
-              Documents  the  directory  structure of Logwatch configuration and executable files, and describes how to customize Logwatch by overriding
-              these default files.
-       LICENSE
-              Describes the License under which Logwatch is distributed.  Additional clauses may be specified in individual files.
-       README
-              Describes how to install, where to find it, mailing lists, and other useful information.
+           In general, it is safe to read or copy any journal file (active
+           or archived).  journalctl(1) and the functions in the sd-
+           journal(3) library should be able to read all entries that have
+           been fully written.
 
-AUTHOR
-       Kirk Bauer <kirk@kaybee.org>
-       http://sourceforge.net/projects/logwatch
+           systemd-journald will automatically remove the oldest archived
+           journal files to limit disk use. See SystemMaxUse= and related
+           settings in journald.conf(5).
 
-Linux                                                                   May 2012                                                             LOGWATCH(8)
+       /dev/kmsg, /dev/log, /run/systemd/journal/dev-log,
+       /run/systemd/journal/socket, /run/systemd/journal/stdout
+           Sockets and other file node paths that systemd-journald will
+           listen on and are visible in the file system. In addition to
+           these, systemd-journald can listen for audit events using
+           netlink(7).
+
+       If journal namespacing is used these paths are slightly altered to
+       include a namespace identifier, see above.
+
+SEE ALSO
+       systemd(1), journalctl(1), journald.conf(5), systemd.journal-
+       fields(7), sd-journal(3), systemd-coredump(8), setfacl(1),
+       sd_journal_print(3), pydoc systemd.journal
+
+NOTES
+        1. Users, Groups, UIDs and GIDs on systemd systems
+           https://systemd.io/UIDS-GIDS
+
+systemd 245                                     SYSTEMD-JOURNALD.SERVICE(8)

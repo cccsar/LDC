@@ -29,14 +29,115 @@ Doubts:
     - subscripts?
 
 
-2) ¿Dónde se guardan normalmente los logs en una computadora? ¿Qué logs se
-guardan en messages, dmesg, Xorg.0.log, daemon, maillog o mail.log? ¿Para
-qué pueden ser útiles?
+2) a) ¿Dónde se guardan normalmente los logs en una computadora? 
+   b) ¿Qué logs se guardan en messages, dmesg, Xorg.0.log, daemon, maillog o mail.log? 
+   c) ¿Para qué pueden ser útiles?
 
-# No builtin documentation for messages
+a)
+*Result from searches of log related manpages: 
+ - man 7 hier:
+       /var/log
+              Miscellaneous log files.
+ - man 7 file-hier: 
+       /run/log/
+           Runtime system logs. System components may place private logs in this directory. Always writable, even when /var/log/ might not be accessible
+       /var/log/
+           Persistent system logs. System components may place private logs in this directory, though it is recommended to do most logging via the
+           syslog(3) and sd_journal_print(3) calls.
 
-DOUBTS:
-    - what is the ring buffer dmesg reffers to? 
+b) 
+*messages: didn't find anything.
+*dmesg: 
+
+Output from DESCRIPTION of dmesg manpage: 
+    dmesg is used to examine or control the kernel ring buffer.
+
+    Now, about the ring buffer:
+
+    Sources: [https://www.computerhope.com/unix/dmesg.htm,
+            https://www.quora.com/What-is-a-ring-buffer-in-Linux]
+        It is a data structure that records messages related to the operation of the kernel
+        that happens to be a circular buffer: constant size and modulo the size.
+
+*Xorg.0.log:
+
+Required:
+
+What is Xorg?
+
+Source: [https://es.wikipedia.org/wiki/X.Org_Server ]
+    Open Source implementation of the X window system (refer to ssh task for more info on X) 
+    that sources as a branch of XFree86 due to a license change of XFree86 on 2004 (it was
+    originally distributed with a MIT license but the new XFree86 license was incompatible 
+    with GNU License).
+
+Actual Answer:
+
+Source : man xorg
+    File where logs for the 1-st display of the Xorg server are saved. A different n 
+    represent a different display.
+
+*daemon
+
+Output from 'man 7 daemon' DESCRIPTION under 'New-Style Daemons':   
+
+       Note that new-style init systems guarantee execution of daemon
+       processes in a clean process context: it is guaranteed that the
+       environment block is sanitized, that the signal handlers and mask is
+       reset and that no left-over file descriptors are passed. Daemons will
+       be executed in their own session, with standard input connected to
+       /dev/null and standard output/error connected to the systemd-
+       journald.service(8) logging service, unless otherwise configured. The
+       umask is reset.
+
+This just contrast aspects of new-style systemd daemons against traditional SystemV daemons.
+In particular, their logging is now performed by journald.service
+
+systemd-journald.service:
+
+Output from manpage DESCRIPTION
+   
+       systemd-journald is a system service that collects and stores
+       logging data. It creates and maintains structured, indexed journals
+       based on logging information that is received from a variety of
+       sources:
+
+       •   Kernel log messages, via kmsg
+
+       •   Simple system log messages, via the libc syslog(3) call
+
+       •   Structured system log messages via the native Journal API, see
+           sd_journal_print(3)
+
+       •   Standard output and standard error of service units. For further
+           details see below.
+
+       •   Audit records, originating from the kernel audit subsystem
+
+       The daemon will implicitly collect numerous metadata fields for each
+       log messages in a secure and unfakeable way. See systemd.journal-
+       fields(7) for more information about the collected metadata.
+
+       Log data collected by the journal is primarily text-based but can
+       also include binary data where necessary. Individual fields making
+       up a log record stored in the journal may be up to 2^64-1 bytes in
+       size.
+
+       The journal service stores log data either persistently below
+       /var/log/journal or in a volatile way below /run/log/journal/ (in
+       the latter case it is lost at reboot). By default, log data is
+       stored persistently if /var/log/journal/ exists during boot, with an
+       implicit fallback to volatile storage otherwise. Use Storage= in
+       journald.conf(5) to configure where log data is placed,
+       independently of the existence of /var/log/journal/.
+
+       On systems where /var/log/journal/ does not exist yet but where
+       persistent logging is desired (and the default journald.conf is
+       used), it is sufficient to create the directory, and ensure it has
+       the correct access modes and ownership:
+
+           mkdir -p /var/log/journal
+           systemd-tmpfiles --create --prefix /var/log/journal
 
 
 3)Mencione 3 cosas que debe estar muy pendiente a la hora de revisar un
